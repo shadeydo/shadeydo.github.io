@@ -2,30 +2,31 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Recipes Index</title>
-        <link rel="stylesheet" href="style.css" />
+        <title>Hamstrr. Login</title>
+        <script src="scripts.js"></script>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <h1>Shade's Recipes:</h1>
-        <div>
-            <p>
-                Delicious meals to saciate your soul!
-                <br />
-                <small><i>sponsored by shade from shadetown.</i></small>
-            </p>
+        <div class="header">
+            <h1>Hamstrr.</h1>
         </div>
-        <div>
-            <ul>
-                <li>
-                    <b><a href="recipes/cream-of-wheat.html">Cream of Wheat</a></b>
-                </li>
-                <li>
-                    <b><a href="recipes/pretzels.html">Hot Pretzels</a></b>
-                </li>
-                <li>
-                    <b><a href="recipes/cereal-milk.html">Cereal With Milk</a></b>
-                </li>
-            </ul>
+        <p class="centertext">
+            Welcome to the Hamstrr. company portal! Please enter your username and department-issued password.
+        </p>
+        <div class="login">
+            <div>
+                <label for="username"> Username: </label>
+                <input type="text" id="username" placeholder="e.g. arnold" />
+            </div>
+            <div>
+                <label for="password"> Password: </label>
+                <input type="password" id="password" placeholder="e.g. arnoldlovescake91" />
+            </div>
+
+            <button onclick="login()" id="login">Login</button>
+        </div>
+        <div id="alertbox">
+            <ul id="alert"></ul>
         </div>
     </body>
 </html>
