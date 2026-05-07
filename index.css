@@ -1,4 +1,4 @@
-canvas {
+#background {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,15 +6,34 @@ canvas {
     pointer-events: none;
 }
 
+#background::after {
+  content:"";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* mix-blend-mode: overlay; */
+   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 50%, black 100%);
+  mask-image: radial-gradient(ellipse at center, transparent 50%, black 100%);
+}
+
+
 #header {
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.255);
+    background-color: rgba(0, 0, 0, 0.5);
     gap: 20px;
-    padding:10px;
-    backdrop-filter: blur(3px);
+    padding:16px;
+    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3px);
-    color:rgba(255, 255, 255, 0.587);
+    color:rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    margin:4px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
