@@ -4,11 +4,13 @@ import { pass } from 'three/tsl';
 import { bloom } from 'three/addons/tsl/display/BloomNode.js';
 
 
+
+
+
 const renderer = new THREE.WebGPURenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("background").appendChild(renderer.domElement);
 await renderer.init();
-renderer.setPixelRatio(window.devicePixelRatio)
 
 
 const scene = new THREE.Scene();
@@ -19,6 +21,26 @@ const graphCenterX = 0.3892857142857143;
 const graphCenterY = -0.403505291005291;
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 
+
+const adapter = await navigator.gpu.requestAdapter();
+const gpuInfo = adapter.info;
+const cores = navigator.hardwareConcurrency;
+const memory = navigator.deviceMemory; // GB, Chrome only
+
+let tier;
+if (cores <= 4) tier = 'low';
+else if (cores <= 8) tier = 'mid';  
+else tier = 'high'; 
+
+tier = "low"; // debug
+
+if (tier == 'low') {
+    renderer.setPixelRatio(window.devicePixelRatio*0.125)
+} else if (tier == 'mid') {
+    renderer.setPixelRatio(window.devicePixelRatio)
+} else {
+    renderer.setPixelRatio(window.devicePixelRatio)
+}
 const uvNode = TSL.uv();
 
 const aspectUniform = TSL.uniform(window.innerHeight / window.innerWidth);
@@ -184,3 +206,4 @@ function animate() {
     pipeline.render();
 }
 renderer.setAnimationLoop(animate);
+

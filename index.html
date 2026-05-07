@@ -9,7 +9,7 @@
             margin: 0;
         }
     </style>
- <script type="importmap">
+    <script type="importmap">
     {
         "imports": {
             "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.webgpu.js",
@@ -19,23 +19,34 @@
         }
     }
 </script>
- <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
 
 </head>
 
 <body>
     <script type="module" src="main.js"></script>
     <div id="background">
+        <div class="sk-cube-grid" id="loading">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+    </div>
     </div>
 
-     <div id="header">
-        <h1>Shade Rothkopf</h1>
-        <span>Home</span>
-        <span>About</span>
+    <div id="header">
+        <span selected>Shade Rothkopf</span>
         <span>Projects</span>
         <span>Contact</span>
     </div>
+
 </body>
 
-   
+
 </html>
