@@ -219,11 +219,12 @@ const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
 const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
 
-const clock = new THREE.Clock();
+const timer = new THREE.Timer();
 
 let firstFrame = true;
 function animate() {
-    const t = clock.getElapsedTime()/8+10;
+    timer.update();
+    const t = (timer.getElapsed()/8+10);
     if (isCoarse) {
         mouseTarget.y = 0.6*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
         mouseTarget.x = 0.75*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
