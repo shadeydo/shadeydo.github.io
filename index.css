@@ -1,9 +1,10 @@
 #background {
     position: absolute;
-    width:100%;
+    width:100vw;
+    height:100vh;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -26,26 +27,30 @@
 #header {
     display: inline-flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.75);
     gap: 20px;
-    padding:16px;
-    margin:4px;
-    color:rgba(255, 255, 255, 0.66);
-    font-family: monospace, monospace;
-    border-radius: 14px;
-    font-size: 16px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(3px);
+    font-size: large;
+    z-index: 10;
+
     
 }
 
-span {
+.block {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.75);
+    color:rgba(255, 255, 255, 0.66);
+    padding:16px;
+    margin:4px;
+    border-radius: 14px;
+}
+
+#header span {
     display: block;
     margin: 0;
     padding:0;
 }
 
-span:hover {
+#header span:hover {
     color: #ff6767;
     cursor: pointer;
     
@@ -54,11 +59,61 @@ span:hover {
 [selected] {
     color: #ff6767;
     font-weight: bold;
-    font-size: 20px;
+    font-size:larger;
 }
 
 body {
-    background-color: black;
+    background-color: rgb(32, 32, 32);
+    font-family: monospace;
+}
+
+#content {
+    position:absolute;
+    top:0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    pointer-events: none;
+}
+
+#bio {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 40vw;
+    max-height: 100vh;
+    gap:10px;
+    pointer-events: auto;
+    
+}
+p {
+  margin-top: 0;
+}
+
+em {
+    color:#ff6767
+}
+
+img {
+  width:300px;
+  object-fit: cover;
+}
+
+@media (max-width: 800px) {
+  #content {
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    bottom:0;
+  }
+
+  #bio {
+    max-height: 60vh;
+    width:calc(100% - 40px);
+    flex-direction: column-reverse;
+    align-self: stretch;
+    align-items: center;
+    overflow-y: scroll;
+  }
 }
 
 

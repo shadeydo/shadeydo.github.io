@@ -30,8 +30,8 @@ let iterations;
 let palette;
 let useBloom;
 
-if (cores <= 4 || memory <=4 || debugMode == "low") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.25);
+if (cores <= 4 || memory <=1 || debugMode == "low") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     iterations = 10;
     useBloom = false;
     palette = [
@@ -98,7 +98,7 @@ const roots = Array.from({ length: numRoots }, (_, i) => {
 
 const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
 
-window.addEventListener("mousemove", (event) => {
+window.addEventListener("pointermove", (event) => {
     mouseTarget.x = ((event.clientX / window.innerWidth) * graphScale.value - graphScale.value / 2 + graphCenterX);
     mouseTarget.y = -((event.clientY / window.innerHeight) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
 });
