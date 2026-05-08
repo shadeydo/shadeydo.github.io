@@ -22,17 +22,20 @@ const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log(cores,memory);
+console.log(cores, memory);
 
-const debugMode = "lo";
+const debugMode = "h";
 
 let iterations;
 let palette;
 let useBloom;
 
-if (cores <= 4 || memory <=1 || debugMode == "low") {
+
+
+if (cores <= 2 || memory <= 1 || debugMode == "low") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     iterations = 10;
+    console.log("low")
     useBloom = false;
     palette = [
         new THREE.Color(0x0E0210),
@@ -46,8 +49,34 @@ if (cores <= 4 || memory <=1 || debugMode == "low") {
         new THREE.Color(0x80a49c),
         new THREE.Color(0xd5d5d5),
     ].reverse();
+} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
+    iterations = 15;
+    console.log("medium");
+    useBloom = true;
+    palette = [
+        new THREE.Color(0x0E0210),
+        new THREE.Color(0x36073D),
+        new THREE.Color(0x450e7b),
+
+        new THREE.Color(0x310d8a),
+
+        new THREE.Color(0x7e0e4d),
+
+        new THREE.Color(0xb80f1f),
+        new THREE.Color(0xcb0f0f),
+        new THREE.Color(0xd69318),
+        new THREE.Color(0xdbb11d),
+        new THREE.Color(0xdfcf21),
+        new THREE.Color(0x7f965a),
+        new THREE.Color(0x80a49c),
+        new THREE.Color(0x80b2dd),
+        new THREE.Color(0xabc4d9),
+        new THREE.Color(0xd5d5d5),
+    ].reverse();
 } else {
     renderer.setPixelRatio(window.devicePixelRatio);
+    console.log("high")
     iterations = 20;
     useBloom = true;
     palette = [
@@ -96,12 +125,6 @@ const roots = Array.from({ length: numRoots }, (_, i) => {
     return TSL.uniform(new THREE.Vector2(Math.cos(angle) * radius, Math.sin(angle) * radius));
 });
 
-const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
-
-window.addEventListener("pointermove", (event) => {
-    mouseTarget.x = ((event.clientX / window.innerWidth) * graphScale.value - graphScale.value / 2 + graphCenterX);
-    mouseTarget.y = -((event.clientY / window.innerHeight) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
-});
 
 function cMultiply(z1, z2) {
     const a = z1.x;
@@ -189,17 +212,40 @@ const pipeline = new THREE.RenderPipeline(renderer);
 pipeline.outputNode = useBloom
     ? pass(scene, camera).add(bloom(pass(scene, camera), .2, 1, .6))
     : pass(scene, camera);
-const lerpSpeed = 0.1;
+
+const lerpSpeed = 0.01;
+
+const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
+
+const clock = new THREE.Clock();
 
 let firstFrame = true;
 function animate() {
+    const t = clock.getElapsedTime()/8+10;
+    if (isCoarse) {
+        mouseTarget.y = 0.6*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
+        mouseTarget.x = 0.75*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
+    }
     roots[0].value.x += (mouseTarget.x - roots[0].value.x) * lerpSpeed;
     roots[0].value.y += (mouseTarget.y - roots[0].value.y) * lerpSpeed;
     pipeline.render();
 
     if (firstFrame) {
         firstFrame = false;
+        roots[0].value.x = mouseTarget.x;
+        roots[0].value.y = mouseTarget.y;
         document.getElementById("loading").style.display = "none";
     }
+
+
+}
+
+if (!isCoarse) {
+    window.addEventListener("mousemove", (event) => {
+        mouseTarget.x = ((event.clientX / window.innerWidth) * graphScale.value - graphScale.value / 2 + graphCenterX);
+        mouseTarget.y = -((event.clientY / window.innerHeight) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
+    });
 }
 renderer.setAnimationLoop(animate);

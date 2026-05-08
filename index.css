@@ -78,8 +78,6 @@ body {
 
 #bio {
     display: flex;
-    flex-direction: row-reverse;
-    width: 40vw;
     max-height: 100vh;
     gap:10px;
     pointer-events: auto;
@@ -87,6 +85,9 @@ body {
 }
 p {
   margin-top: 0;
+  flex:1;
+  min-width: 40ch;
+  max-width: 50ch;
 }
 
 em {
@@ -98,7 +99,15 @@ img {
   object-fit: cover;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
+  #content {
+    bottom:0;
+    top:auto;
+    right:0;
+  }
+}
+
+@media (orientation: portrait){
   #content {
     flex-direction: column;
     align-items: center;
@@ -107,12 +116,20 @@ img {
   }
 
   #bio {
-    max-height: 60vh;
+    position:absolute;
+    max-height: 50vh;
     width:calc(100% - 40px);
-    flex-direction: column-reverse;
-    align-self: stretch;
+    flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    bottom:0;
+  }
+  
+  img {
+    width:100%;
+  }
+  p {
+    max-width: 100%;
   }
 }
 
