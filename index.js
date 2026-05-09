@@ -6,9 +6,16 @@ import { bloom } from "three/addons/tsl/display/BloomNode.js";
 let width = window.innerWidth;
 let height = window.innerHeight;
 const renderer = new THREE.WebGPURenderer({ antialias: false });
-renderer.setSize(width, height);
+
 document.getElementById("background").appendChild(renderer.domElement);
 await renderer.init();
+
+height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    window.innerHeight
+  );
+  renderer.setSize(width, height);
 
 
 const radius = .3;
@@ -214,7 +221,7 @@ scene.add(mesh);
 
 const pipeline = new THREE.RenderPipeline(renderer);
 pipeline.outputNode = useBloom
-    ? pass(scene, camera).add(bloom(pass(scene, camera), .2, 1, .6))
+    ? pass(scene, camera).add(bloom(pass(scene, camera), .3, 2, .6))
     : pass(scene, camera);
 
 const lerpSpeed = 0.01;
