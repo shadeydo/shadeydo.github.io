@@ -3,8 +3,10 @@ import * as TSL from "three/tsl";
 import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
+let width = window.innerWidth;
+let height = window.innerHeight;
 const renderer = new THREE.WebGPURenderer({ antialias: false });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(width, height);
 document.getElementById("background").appendChild(renderer.domElement);
 await renderer.init();
 
@@ -106,13 +108,15 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-let graphScale = TSL.uniform((window.innerWidth / window.innerHeight) * .5);
+let graphScale = TSL.uniform((width / height) * .5);
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
-const aspectUniform = TSL.uniform(window.innerHeight / window.innerWidth);
+const aspectUniform = TSL.uniform(height / width);
 
 window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    aspectUniform.value = window.innerHeight / window.innerWidth;
+    width = window.innerWidth;
+    height = window.innerHeight;
+    renderer.setSize(width, height);
+    aspectUniform.value = height / width;
 });
 
 const uvNode = TSL.uv();
@@ -245,8 +249,8 @@ function animate() {
 
 if (!isCoarse) {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = ((event.clientX / window.innerWidth) * graphScale.value - graphScale.value / 2 + graphCenterX);
-        mouseTarget.y = -((event.clientY / window.innerHeight) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
+        mouseTarget.x = ((event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX);
+        mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
     });
 }
 renderer.setAnimationLoop(animate);

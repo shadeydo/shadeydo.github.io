@@ -1,27 +1,39 @@
 #bio {
     display: flex;
     max-height: calc(100vh - 40px);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     pointer-events: auto;
     align-items: flex-start;
     position:absolute;
     right:0;
     top:0;
 }
-p {
-  margin-top: 0;
+#paragraph {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 40ch;
-  max-width: 50ch;
+  max-width: 55ch;
 }
 
 em {
     color:#ff6767
 }
 
-#img-of-me {
+#picture-block {
   max-width: 20vw;
-  object-fit: cover;
-  max-height: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#img-of-me {
+  width: 100%;
+}
+
+p {
+  margin: 0;
 }
 
 @media (max-width: 1200px) {
@@ -38,23 +50,49 @@ em {
 
   #bio {
     position:absolute;
-    max-height: 50vh;
     width:100vw;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
-    bottom:0;
     right:auto;
-    top:auto;
+    top:60vh;
   }
-  
-  #img-of-me {
-    width:100%;
-    max-width: calc(100% - 36px);
-    max-height: none;
-    
+  #picture-block {
+    max-width: 60vw;
   }
-  p {
+
+  #paragraph {
     max-width: 100%;
   }
+}
+
+.social-icons {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top:10px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+.social-link img {
+  width: 39px;
+  height: 39px;
+  display: block;
+  filter: invert(1);
+  opacity: 50%;
 }
