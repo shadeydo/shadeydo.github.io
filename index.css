@@ -1,15 +1,13 @@
 #bio {
-    display: flex;
-    max-height: calc(100vh - 40px);
-    /* overflow-y: scroll; */
-    pointer-events: auto;
-    align-items: flex-start;
-    position:absolute;
-    right:0;
-    top:0;
+  display: flex;
+  pointer-events: auto;
+  align-items: flex-start;
+  align-self: flex-end;
+
 }
+
 #paragraph {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 40ch;
@@ -17,11 +15,11 @@
 }
 
 em {
-    color:#ff6767
+  color: #ff6767
 }
 
 #picture-block {
-  max-width: 20vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,35 +28,48 @@ em {
 
 #img-of-me {
   width: 100%;
-  height:auto;
+  height: auto;
 }
 
 p {
   margin: 0;
 }
 
+#mobile-spacer {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   #bio {
     align-items: flex-end;
-    position:absolute;
-    bottom:0;
-    top:auto;
-    right:0;
+  }
+
+  body {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  #picture-block {
+    width: 25vw;
   }
 }
 
-@media (orientation: portrait){
+@media (orientation: portrait) {
+  #mobile-spacer {
+    display: block;
+    height: 60vh;
+  }
 
   #bio {
-    position:absolute;
-    width:100vw;
+    justify-self: flex-end;
+    width: 100vw;
     flex-direction: column;
     align-items: center;
-    right:auto;
-    top:60vh;
+    margin-bottom: 100px;
   }
+
   #picture-block {
-    max-width: 60vw;
+    width: 60vw;
   }
 
   #paragraph {
@@ -71,7 +82,7 @@ p {
   gap: 5px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .social-link {
