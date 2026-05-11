@@ -4,6 +4,7 @@
     left: 0;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     z-index: 0;
     pointer-events: none;
 }
@@ -36,14 +37,13 @@ a {
     margin-bottom: 10px;
     height: 30px;
     position: absolute;
-    top:0;
-    left:0;
+    top: env(safe-area-inset-top);
+    left: env(safe-area-inset-left);
 }
 
 @media (max-width: 550px) {
     #header {
         width: calc(100% - 36px);
-
     }
 }
 

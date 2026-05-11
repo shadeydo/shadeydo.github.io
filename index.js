@@ -4,7 +4,7 @@ import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
 let width = window.innerWidth;
-let height = window.innerHeight;
+let height = window.screen.height;
 const renderer = new THREE.WebGPURenderer({ antialias: false });
 
 document.getElementById("background").appendChild(renderer.domElement);
@@ -259,5 +259,8 @@ if (!isCoarse) {
         mouseTarget.x = ((event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX);
         mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
     });
+} else {
+    roots[0].value.x = 0.26417076
+    roots[0].value.y = -0.38847134
 }
 renderer.setAnimationLoop(animate);
