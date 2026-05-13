@@ -7,9 +7,6 @@ import { bloom } from "three/addons/tsl/display/BloomNode.js";
 const renderer = new THREE.WebGPURenderer();
 document.body.prepend(renderer.domElement);
 
-const topInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0');
-window.scrollTo(0, topInset);
-
 let width = window.innerWidth;
 let height = window.outerHeight;
 
@@ -224,7 +221,7 @@ pipeline.outputNode = useBloom
     ? pass(scene, camera).add(bloom(pass(scene, camera), .3, 2, .6))
     : pass(scene, camera);
 
-const lerpSpeed = 0.01;
+const lerpSpeed = 0.05;
 
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
