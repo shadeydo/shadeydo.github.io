@@ -4,7 +4,7 @@ import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
 
-const renderer = new THREE.WebGPURenderer();
+const renderer = new THREE.WebGPURenderer({ antialias: false });
 document.body.prepend(renderer.domElement);
 
 
@@ -24,14 +24,12 @@ window.addEventListener("resize", () => {
 });
 
 // constants up here!
-const runtime = 60;
-const iterations = runtime*.9;
-const timeStepSize = 5/runtime;
-const epsilon = 0.05; // radius of source
 
-const friction = 0.1;
+const epsilon = .05; // radius of source
 
-const pendulumLength = 1.0;
+const friction = 0.2;
+
+const pendulumLength = .8;
 const gravity = 1.0;
 const chargeMass = 1;
 
@@ -43,7 +41,7 @@ let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 const lerpSpeed = 0.05;
 
 const sources = 5;
-const startAngle = Math.PI/4;
+const startAngle = 3 * Math.PI / 4;
 const radius = 1;
 
 const sourcesArray = Array.from({ length: sources }, (_, i) => {
@@ -52,14 +50,47 @@ const sourcesArray = Array.from({ length: sources }, (_, i) => {
 });
 
 
+
+const cores = navigator.hardwareConcurrency;
+const memory = navigator.deviceMemory;
+
+
+console.log(cores, memory);
+
+const debugMode = "l";
+
+let useBloom;
+let runtime;
+
+
+if (cores <= 2 || memory <= 1 || debugMode == "low") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
+    console.log("low")
+    runtime = 15;
+    useBloom = false;
+} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
+    console.log("medium");
+    runtime = 30;
+    useBloom = true;
+} else {
+    renderer.setPixelRatio(window.devicePixelRatio);
+    console.log("high")
+    runtime = 60;
+    useBloom = true;
+}
+
+const iterations = runtime * 1;
+const timeStepSize = 8 / runtime;
+
 const palette = [
     new THREE.Color(0xDD614A),
     new THREE.Color(0x0B6E4F),
     new THREE.Color(0x120D0C),
     new THREE.Color(0x212198),
     new THREE.Color(0xC6C2B8)
- 
-    
+
+
 ]
 
 let sourcesUniform = TSL.uniformArray(sourcesArray, "vec2");
@@ -93,33 +124,7 @@ function calc_acceleration(charge, velocity) {
 
 
 
-const cores = navigator.hardwareConcurrency;
-const memory = navigator.deviceMemory;
 
-
-console.log(cores, memory);
-
-const debugMode = "h";
-
-let useBloom;
-
-
-
-
-
-if (cores <= 2 || memory <= 1 || debugMode == "low") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
-    console.log("low")
-    useBloom = false;
-} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("medium");
-    useBloom = false;
-} else {
-    renderer.setPixelRatio(window.devicePixelRatio);
-    console.log("high")
-    useBloom = false;
-}
 
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -193,6 +198,7 @@ const timer = new THREE.Timer();
 
 let firstFrame = true;
 
+
 const mouseTarget = { x: sourcesArray[0].value.x, y: sourcesArray[0].value.y };
 
 function animate() {
@@ -200,10 +206,14 @@ function animate() {
 
     sourcesArray[0].value.x += (mouseTarget.x - sourcesArray[0].value.x) * lerpSpeed;
     sourcesArray[0].value.y += (mouseTarget.y - sourcesArray[0].value.y) * lerpSpeed;
-
+console.log(sourcesArray[0].value.x, sourcesArray[0].value.y);
     pipeline.render();
     if (firstFrame) {
         firstFrame = false;
+        sourcesArray[0].value.x = -10
+        sourcesArray[0].value.y = 10
+        mouseTarget.x = -0.768;
+        mouseTarget.y = 0.670;
         document.getElementById("loading").style.display = "none";
     }
 }
