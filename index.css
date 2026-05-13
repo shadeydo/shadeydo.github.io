@@ -28,7 +28,7 @@ em {
 
 #img-of-me {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 p {
@@ -57,7 +57,7 @@ p {
 @media (orientation: portrait) {
   #mobile-spacer {
     display: block;
-    height: 60vh;
+    height: 70dvh;
   }
 
   #bio {
@@ -76,6 +76,12 @@ p {
     max-width: 100%;
   }
 }
+
+
+
+
+
+
 
 .social-icons {
   display: flex;

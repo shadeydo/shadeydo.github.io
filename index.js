@@ -3,20 +3,27 @@ import * as TSL from "three/tsl";
 import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
+
+const renderer = new THREE.WebGPURenderer();
+document.body.prepend(renderer.domElement);
+
+const topInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0');
+window.scrollTo(0, topInset);
+
 let width = window.innerWidth;
-let height = window.screen.height;
-const renderer = new THREE.WebGPURenderer({ antialias: false });
+let height = window.outerHeight;
 
-document.getElementById("background").appendChild(renderer.domElement);
 await renderer.init();
+renderer.setSize(width, height);
 
-height = Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    window.innerHeight
-  );
-  renderer.setSize(width, height);
 
+window.addEventListener("resize", () => {
+    width = window.innerWidth;
+    height = window.outerHeight;
+    
+    renderer.setSize(width, height);
+    aspectUniform.value = height / width;
+});
 
 const radius = .3;
 const startAngle = 7 * Math.PI / 4;
@@ -119,13 +126,6 @@ let graphScale = TSL.uniform((width / height) * .5);
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 const aspectUniform = TSL.uniform(height / width);
 
-window.addEventListener("resize", () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    renderer.setSize(width, height);
-    aspectUniform.value = height / width;
-});
-
 const uvNode = TSL.uv();
 const x = uvNode.x.mul(graphScale).sub(graphScale.div(2)).add(graphCenter.x);
 const i = uvNode.y.mul(aspectUniform.mul(graphScale)).sub(aspectUniform.mul(graphScale).div(2)).add(graphCenter.y);
@@ -212,7 +212,7 @@ palette.forEach((c, i) => {
     color = color.add(TSL.select(match, TSL.vec3(c.r, c.g, c.b), TSL.vec3(0, 0, 0)));
 });
 
-const colorNode = TSL.vec4(color, TSL.float(1));
+const colorNode = color;
 
 const material = new THREE.MeshBasicNodeMaterial({ colorNode });
 const geometry = new THREE.PlaneGeometry(2, 2);

@@ -20,10 +20,11 @@
         }
     }
 </script>
+    <script type="module" src="resume.js"></script>
 </head>
 
 <body>
-    <script type="module" src="projects.js"></script>
+
     <div id="background">
         <div class="sk-cube-grid" id="loading">
             <div class="sk-cube sk-cube1"></div>
@@ -40,12 +41,16 @@
 
     <div id="header" class="block">
         <img id="logo" src="public/favicon/web-app-manifest-512x512.png">
-        <a href="index.html"><span>Shade Rothkopf</span></a>
-        <a href="projects.html"><span>Projects</span></a>
-        <a href="resume.html"><span selected> Resume</span></a>
+        <div id="options">
+            <a href="index.html"><span>Shade Rothkopf</span></a>
+            <a href="projects.html"><span>Projects</span></a>
+            <a href="resume.html"><span selected>Resume</span></a>
+        </div>
     </div>
 
-    <div id="temp" class="block"><h1>work in progress!</h1></div>
+    <div id="temp" class="block">
+        <h1>work in progress!</h1>
+    </div>
 
 </body>
 
