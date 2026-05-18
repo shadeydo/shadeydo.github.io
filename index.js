@@ -217,9 +217,13 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 const pipeline = new THREE.RenderPipeline(renderer);
+
+const scenePass = pass(scene, camera);
+const bloomPass = bloom(scenePass, .1, .5, 0.1);
+
 pipeline.outputNode = useBloom
-    ? pass(scene, camera).add(bloom(pass(scene, camera), .3, 2, .6))
-    : pass(scene, camera);
+    ? scenePass.add(bloomPass)
+    : scenePass;
 
 const lerpSpeed = 0.05;
 
@@ -245,6 +249,8 @@ function animate() {
         firstFrame = false;
         roots[0].value.x = mouseTarget.x;
         roots[0].value.y = mouseTarget.y;
+        mouseTarget.x = .2;
+        mouseTarget.y = -.2;
         document.getElementById("loading").style.display = "none";
     }
 

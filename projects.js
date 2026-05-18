@@ -27,15 +27,15 @@ window.addEventListener("resize", () => {
 
 const epsilon = .05; // radius of source
 
-const friction = 0.2;
+const friction = 0.1;
 
-const pendulumLength = .8;
+const pendulumLength = 1;
 const gravity = 1.0;
 const chargeMass = 1;
 
-const graphScale = 3;
-const graphCenterX = 0;
-const graphCenterY = 0;
+const graphScale = 2;
+const graphCenterX = -.5;
+const graphCenterY = .2;
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 
 const lerpSpeed = 0.05;
@@ -80,15 +80,15 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
     useBloom = true;
 }
 
-const iterations = runtime * 1;
+const iterations = runtime * .7;
 const timeStepSize = 8 / runtime;
 
-const palette = [
-    new THREE.Color(0xDD614A),
-    new THREE.Color(0x0B6E4F),
-    new THREE.Color(0x120D0C),
-    new THREE.Color(0x212198),
-    new THREE.Color(0xC6C2B8)
+let palette = [
+    new THREE.Color(0x0000F6),
+    new THREE.Color(0xFFFFFF),
+    new THREE.Color(0x000000),
+    new THREE.Color(0xFFFFFF),
+    new THREE.Color(0x000000)
 
 
 ]
@@ -175,12 +175,45 @@ const simulate = TSL.Fn(() => {
 });
 const simulatedPoints = simulate();
 
+
+// palette = [
+//     new THREE.Color(0x0E0210),
+//     new THREE.Color(0x36073D),
+//     new THREE.Color(0x450e7b),
+//     new THREE.Color(0x310d8a),
+//     new THREE.Color(0x7e0e4d),
+//     new THREE.Color(0xb80f1f),
+//     new THREE.Color(0xd69318),
+//     new THREE.Color(0xdfcf21),
+//     new THREE.Color(0x80a49c),
+//     new THREE.Color(0xd5d5d5),
+// ].reverse();
+
+
+
 const mindists = get_closest_source(simulatedPoints);
+
 let color = TSL.vec3(0, 0, 0);
+
+// color = color.add(
+// TSL.select(mindists.greaterThan(3),new THREE.Color(0xd5d5d5),
+// TSL.select(mindists.greaterThan(2),new THREE.Color(0x80a49c),
+// TSL.select(mindists.greaterThan(1.5),new THREE.Color(0x80a49c),
+// TSL.select(mindists.greaterThan(1.25),new THREE.Color(0xdfcf21),
+// TSL.select(mindists.greaterThan(1),new THREE.Color(0xd69318),
+// TSL.select(mindists.greaterThan(0.8),new THREE.Color(0xb80f1f),
+// TSL.select(mindists.greaterThan(0.6),new THREE.Color(0x7e0e4d),
+// TSL.select(mindists.greaterThan(.4),new THREE.Color(0x310d8a),
+// TSL.select(mindists.greaterThan(.2),new THREE.Color(0x450e7b),
+// TSL.select(mindists.greaterThan(.1),new THREE.Color(0x36073D),
+// TSL.vec3(0, 0, 0)
+// )))))))))));
+
 palette.forEach((c, i) => {
     const match = mindists.equal(TSL.float(i));
     color = color.add(TSL.select(match, TSL.vec3(c.r, c.g, c.b), TSL.vec3(0, 0, 0)));
 });
+
 
 const colorNode = color;
 
@@ -190,9 +223,15 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 const pipeline = new THREE.RenderPipeline(renderer);
+
+const scenePass = pass(scene, camera);
+const bloomPass = bloom(scenePass, 0.05, .5, 0.01);
+
 pipeline.outputNode = useBloom
-    ? pass(scene, camera).add(bloom(pass(scene, camera), .05, 2, .5))
-    : pass(scene, camera);
+    ? scenePass.add(bloomPass)
+    : scenePass;
+
+
 
 const timer = new THREE.Timer();
 
@@ -206,12 +245,12 @@ function animate() {
 
     sourcesArray[0].value.x += (mouseTarget.x - sourcesArray[0].value.x) * lerpSpeed;
     sourcesArray[0].value.y += (mouseTarget.y - sourcesArray[0].value.y) * lerpSpeed;
-console.log(sourcesArray[0].value.x, sourcesArray[0].value.y);
+    // console.log(sourcesArray[0].value.x, sourcesArray[0].value.y);
     pipeline.render();
     if (firstFrame) {
         firstFrame = false;
-        sourcesArray[0].value.x = -10
-        sourcesArray[0].value.y = 10
+        sourcesArray[0].value.x = -.85
+        sourcesArray[0].value.y = .7
         mouseTarget.x = -0.768;
         mouseTarget.y = 0.670;
         document.getElementById("loading").style.display = "none";

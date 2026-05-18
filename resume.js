@@ -34,7 +34,7 @@ const gravity = 1.0;
 const chargeMass = 1;
 
 const graphScale = 10;
-const graphCenterX = 0;
+const graphCenterX = 2;
 const graphCenterY = 0;
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 
@@ -190,9 +190,14 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 const pipeline = new THREE.RenderPipeline(renderer);
+
+const scenePass = pass(scene, camera);
+const bloomPass = bloom(scenePass, .1, .5, 0.1);
+
 pipeline.outputNode = useBloom
-    ? pass(scene, camera).add(bloom(pass(scene, camera), .05, 2, .5))
-    : pass(scene, camera);
+    ? scenePass.add(bloomPass)
+    : scenePass;
+    
 
 const timer = new THREE.Timer();
 
@@ -203,17 +208,21 @@ const mouseTarget = { x: sourcesArray[0].value.x, y: sourcesArray[0].value.y };
 
 function animate() {
     timer.update();
+    const t = (timer.getElapsed());
 
     sourcesArray[0].value.x += (mouseTarget.x - sourcesArray[0].value.x) * lerpSpeed;
     sourcesArray[0].value.y += (mouseTarget.y - sourcesArray[0].value.y) * lerpSpeed;
-
+    if (isCoarse) {
+        mouseTarget.y = 3*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
+        mouseTarget.x = 3*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
+    }
     pipeline.render();
     if (firstFrame) {
         firstFrame = false;
         sourcesArray[0].value.x = -10
         sourcesArray[0].value.y = 10
-        mouseTarget.x = -5;
-        mouseTarget.y = 2;
+        mouseTarget.x = -1;
+        mouseTarget.y = 0;
 
         document.getElementById("loading").style.display = "none";
     }

@@ -70,6 +70,15 @@ a {
   }
 }
 
+#mobile-spacer {
+  display: none;
+}
+@media (orientation: portrait) {
+  #mobile-spacer {
+    display: block;
+    height: 70dvh;
+  }
+}
 .block {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(3px);

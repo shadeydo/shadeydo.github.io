@@ -48,11 +48,12 @@
         </div>
     </div>
 
-    <div id="temp" class="block">
-        <h1>work in progress!</h1>
-    </div>
+    <div id="mobile-spacer"></div>
+    <div id="my-pdf" class="block"></div>
+    
 
 </body>
 
-
+ <script src="https://unpkg.com/pdfobject"></script>
+    <script>PDFObject.embed("public/ShadeRothkopfResume.pdf", "#my-pdf");</script>
 </html>

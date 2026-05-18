@@ -1,0 +1,35 @@
+#content {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(300px, 100%/4), 1fr));
+    gap:30px;
+    margin: 50px; */
+}
+details {
+    max-width: 500px;
+}
+summary {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+.project-img {
+    max-width:100%;
+    object-fit: cover;
+
+}
