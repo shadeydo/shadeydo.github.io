@@ -1,8 +1,14 @@
+[selected] {
+  color: #ff6767;
+}
+
+
 #bio {
   display: flex;
   pointer-events: auto;
   align-items: flex-start;
   align-self: flex-end;
+
 
 }
 
@@ -12,6 +18,7 @@
   align-items: center;
   min-width: 40ch;
   max-width: 55ch;
+  margin-right: 0;
 }
 
 em {
@@ -29,6 +36,7 @@ em {
 #img-of-me {
   width: 100%;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 p {
@@ -74,6 +82,7 @@ p {
 
   #paragraph {
     max-width: 100%;
+    margin: 4px;
   }
 }
 

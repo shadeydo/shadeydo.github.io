@@ -4,12 +4,13 @@ import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
 
-const renderer = new THREE.WebGPURenderer({ antialias: false });
+const renderer = new THREE.WebGPURenderer({ antialias: true });
 document.body.prepend(renderer.domElement);
 
 
 let width = window.innerWidth;
 let height = window.outerHeight;
+let graphScale = width / height;
 
 await renderer.init();
 renderer.setSize(width, height);
@@ -18,6 +19,7 @@ renderer.setSize(width, height);
 window.addEventListener("resize", () => {
     width = window.innerWidth;
     height = window.outerHeight;
+    graphScale = width / height;
 
     renderer.setSize(width, height);
     aspectUniform.value = height / width;
@@ -25,7 +27,7 @@ window.addEventListener("resize", () => {
 
 // constants up here!
 
-const epsilon = .05; // radius of source
+
 
 const friction = 0.1;
 
@@ -33,15 +35,15 @@ const pendulumLength = 1;
 const gravity = 1.0;
 const chargeMass = 1;
 
-const graphScale = 2;
-const graphCenterX = -.5;
-const graphCenterY = .2;
+
+const graphCenterX = .2;
+const graphCenterY = -.1;
 let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
 
 const lerpSpeed = 0.05;
 
 const sources = 5;
-const startAngle = 3 * Math.PI / 4;
+const startAngle = -Math.PI / 4;
 const radius = 1;
 
 const sourcesArray = Array.from({ length: sources }, (_, i) => {
@@ -51,37 +53,21 @@ const sourcesArray = Array.from({ length: sources }, (_, i) => {
 
 
 
+
 const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log(cores, memory);
+console.log("CPU cores:", cores, "| memory:", memory);
 
-const debugMode = "l";
+const debugMode = "w";
 
 let useBloom;
-let runtime;
 
+let iterations;
+let timeStepSize;
+let epsilon;
 
-if (cores <= 2 || memory <= 1 || debugMode == "low") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
-    console.log("low")
-    runtime = 15;
-    useBloom = false;
-} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("medium");
-    runtime = 30;
-    useBloom = true;
-} else {
-    renderer.setPixelRatio(window.devicePixelRatio);
-    console.log("high")
-    runtime = 60;
-    useBloom = true;
-}
-
-const iterations = runtime * .7;
-const timeStepSize = 8 / runtime;
 
 let palette = [
     new THREE.Color(0x0000F6),
@@ -89,9 +75,41 @@ let palette = [
     new THREE.Color(0x000000),
     new THREE.Color(0xFFFFFF),
     new THREE.Color(0x000000)
-
-
 ]
+
+
+if (cores <= 2 || memory <= 1 || debugMode == "low") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
+    console.log("low")
+    iterations = 15;
+    timeStepSize = 0.25;
+    epsilon = 0.05;
+    useBloom = false;
+    palette = [
+        new THREE.Color(0x0000F6),
+        new THREE.Color(0xFFFFFF),
+        new THREE.Color(0x171717),
+        new THREE.Color(0xFFFFFF),
+        new THREE.Color(0x171717)
+    ]
+
+} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
+    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
+    console.log("medium");
+    iterations = 30;
+    timeStepSize = .2;
+    epsilon = 0.035;
+    useBloom = true;
+} else {
+    renderer.setPixelRatio(window.devicePixelRatio);
+    console.log("high")
+    iterations = 50;
+    timeStepSize = 0.15;
+    epsilon = 0.02;
+    useBloom = true;
+}
+
+
 
 let sourcesUniform = TSL.uniformArray(sourcesArray, "vec2");
 
@@ -233,28 +251,38 @@ pipeline.outputNode = useBloom
 
 
 
-const timer = new THREE.Timer();
 
 let firstFrame = true;
 
 
-const mouseTarget = { x: sourcesArray[0].value.x, y: sourcesArray[0].value.y };
+const mouseTarget = { x: 0, y: 0 };
+
+const SETTLE_THRESHOLD = .000001;
+let isAnimating = true;
+
 
 function animate() {
-    timer.update();
+    const xdist = mouseTarget.x - sourcesArray[0].value.x;
+    const ydist = mouseTarget.y - sourcesArray[0].value.y;
+    const dist = xdist * xdist + ydist * ydist;
 
-    sourcesArray[0].value.x += (mouseTarget.x - sourcesArray[0].value.x) * lerpSpeed;
-    sourcesArray[0].value.y += (mouseTarget.y - sourcesArray[0].value.y) * lerpSpeed;
-    // console.log(sourcesArray[0].value.x, sourcesArray[0].value.y);
+    sourcesArray[0].value.x += xdist * lerpSpeed;
+    sourcesArray[0].value.y += ydist * lerpSpeed;
+
     pipeline.render();
     if (firstFrame) {
         firstFrame = false;
-        sourcesArray[0].value.x = -.85
-        sourcesArray[0].value.y = .7
-        mouseTarget.x = -0.768;
-        mouseTarget.y = 0.670;
+        mouseTarget.x = 0.2;
+        mouseTarget.y = -0.3;
         document.getElementById("loading").style.display = "none";
     }
+
+    if (dist < SETTLE_THRESHOLD) {
+        renderer.setAnimationLoop(null); 
+        isAnimating = false;
+        console.log("paused");
+    }
+   
 }
 
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
@@ -262,7 +290,16 @@ if (!isCoarse) {
     window.addEventListener("mousemove", (event) => {
         mouseTarget.x = (event.clientX / width) * graphScale - graphScale / 2 + graphCenterX;
         mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
+        if (!isAnimating) {
+            isAnimating = true;
+            console.log("animating")
+            renderer.setAnimationLoop(animate);
+        }
+        // console.log(mouseTarget);
     });
 }
 
+sourcesArray[0].value.x = 0.18
+sourcesArray[0].value.y = -0.27
+void renderer.domElement.offsetWidth;
 renderer.setAnimationLoop(animate);

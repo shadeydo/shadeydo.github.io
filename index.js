@@ -35,7 +35,7 @@ const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log(cores, memory);
+console.log("CPU cores:",cores,"| memory:", memory);
 
 const debugMode = "h";
 
@@ -233,7 +233,12 @@ const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
 
 const timer = new THREE.Timer();
 
+
+const SETTLE_THRESHOLD = .000001;
+let isAnimating = true;
+
 let firstFrame = true;
+
 function animate() {
     timer.update();
     const t = (timer.getElapsed()/8+10);
@@ -241,19 +246,28 @@ function animate() {
         mouseTarget.y = 0.6*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
         mouseTarget.x = 0.75*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
     }
-    roots[0].value.x += (mouseTarget.x - roots[0].value.x) * lerpSpeed;
-    roots[0].value.y += (mouseTarget.y - roots[0].value.y) * lerpSpeed;
+
+    const xdist = mouseTarget.x - roots[0].value.x;
+    const ydist = mouseTarget.y - roots[0].value.y;
+    const dist = xdist * xdist + ydist * ydist;
+
+
+    roots[0].value.x += xdist * lerpSpeed;
+    roots[0].value.y += ydist * lerpSpeed;
     pipeline.render();
 
     if (firstFrame) {
         firstFrame = false;
-        roots[0].value.x = mouseTarget.x;
-        roots[0].value.y = mouseTarget.y;
+        
         mouseTarget.x = .2;
         mouseTarget.y = -.2;
         document.getElementById("loading").style.display = "none";
     }
-
+if (dist < SETTLE_THRESHOLD) {
+        renderer.setAnimationLoop(null); // pause
+        isAnimating = false;
+        console.log("paused")
+    }
 
 }
 
@@ -261,9 +275,16 @@ if (!isCoarse) {
     window.addEventListener("mousemove", (event) => {
         mouseTarget.x = ((event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX);
         mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
+        if (!isAnimating) {
+            isAnimating = true;
+            console.log("animating")
+            renderer.setAnimationLoop(animate);
+        }
     });
-} else {
-    roots[0].value.x = 0.26417076
-    roots[0].value.y = -0.38847134
 }
+
+
+roots[0].value.x = .21;
+roots[0].value.y = -.21;
+
 renderer.setAnimationLoop(animate);
