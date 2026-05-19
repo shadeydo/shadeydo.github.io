@@ -2,9 +2,17 @@
 <html lang="en">
 
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FR2DLL4KGR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FR2DLL4KGR');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Shade Rothkopf</title>
+    <title>Resumé - Shade Rothkopf</title>
 
     <link rel="stylesheet" href="resume.css">
     <link rel="stylesheet" href="global.css">
@@ -43,17 +51,18 @@
         <img id="logo" src="public/favicon/web-app-manifest-512x512.png">
         <div id="options">
             <a class="header-link" id="header-home" href="index.html">Shade Rothkopf</a>
-            <a class="header-link" id="header-projects" href="projects.html">Projects</a>
+            <a class="header-link" id="header-projects" href="projects.html">Ventures</a>
             <a class="header-link" id="header-resume" href="resume.html" selected>Resumé</a>
         </div>
     </div>
 
     <div id="mobile-spacer"></div>
     <div id="my-pdf" class="block"></div>
-    
+
 
 </body>
 
- <script src="https://unpkg.com/pdfobject"></script>
-    <script>PDFObject.embed("public/ShadeRothkopfResume.pdf", "#my-pdf");</script>
+<script src="https://unpkg.com/pdfobject"></script>
+<script>PDFObject.embed("public/ShadeRothkopfResume.pdf", "#my-pdf");</script>
+
 </html>
