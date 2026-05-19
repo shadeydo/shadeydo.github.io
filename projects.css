@@ -1,5 +1,5 @@
 [selected] {
-  color: #4343ff;
+  color: #7e83ff;
 }
 
 #content {
@@ -12,6 +12,10 @@
     max-width: 800px;
     display: flex;
     gap: 4px;
+}
+
+#second-column {
+    margin-bottom: 300px;
 }
 
 .project-card {
@@ -82,7 +86,7 @@ h4 {
     hyphens: auto;
 }
 .link-btn:hover {
-    background-color: rgba(255, 255, 255, 0.691);
+    background-color: rgba(255, 255, 255, 0.7);
     color:black;
     
 }
