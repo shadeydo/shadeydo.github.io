@@ -9,7 +9,7 @@ document.body.prepend(renderer.domElement);
 
 
 let width = window.innerWidth;
-let height = window.outerHeight;
+let height = window.innerHeight;
 let graphScale = width / height;
 
 await renderer.init();
@@ -58,7 +58,7 @@ const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log("CPU cores:", cores, "| memory:", memory);
+// console.log("CPU cores:", cores, "| memory:", memory);
 
 const debugMode = "w";
 
@@ -95,14 +95,14 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
 
 } else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("medium");
+    console.log("projects: medium");
     iterations = 30;
     timeStepSize = .2;
     epsilon = 0.035;
     useBloom = true;
-} else {
+} else {3
     renderer.setPixelRatio(window.devicePixelRatio);
-    console.log("high")
+    console.log("projects: high")
     iterations = 50;
     timeStepSize = 0.15;
     epsilon = 0.02;
@@ -280,7 +280,7 @@ function animate() {
     if (dist < SETTLE_THRESHOLD) {
         renderer.setAnimationLoop(null); 
         isAnimating = false;
-        console.log("paused");
+        // console.log("paused");
     }
    
 }
@@ -292,7 +292,7 @@ if (!isCoarse) {
         mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            console.log("animating")
+            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
         // console.log(mouseTarget);

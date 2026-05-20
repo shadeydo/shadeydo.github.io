@@ -9,7 +9,7 @@ document.body.prepend(renderer.domElement);
 
 
 let width = window.innerWidth;
-let height = window.outerHeight;
+let height = window.innerHeight;
 let graphScale = width/height*5;
 
 await renderer.init();
@@ -56,7 +56,7 @@ const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log("CPU cores:",cores,"| memory:", memory);
+// console.log("CPU cores:",cores,"| memory:", memory);
 
 const debugMode = "";
 
@@ -66,12 +66,12 @@ let runtime;
 
 if (cores <= 2 || memory <= 1 || debugMode == "low") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.5);
-    console.log("low")
+    console.log("resume: low")
     runtime = 15;
     useBloom = false;
 } else {
     renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("medium/high");
+    console.log("resume:medium/high");
     runtime = 30;
     useBloom = true;
 }
@@ -233,7 +233,7 @@ function animate() {
     if (dist < SETTLE_THRESHOLD) {
         renderer.setAnimationLoop(null); 
         isAnimating = false;
-        console.log("paused");
+        // console.log("paused");
     }
     
 }
@@ -245,7 +245,7 @@ if (!isCoarse) {
         mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            console.log("animating")
+            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });

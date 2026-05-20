@@ -8,7 +8,7 @@ const renderer = new THREE.WebGPURenderer();
 document.body.prepend(renderer.domElement);
 
 let width = window.innerWidth;
-let height = window.outerHeight;
+let height = window.innerHeight;
 
 await renderer.init();
 renderer.setSize(width, height);
@@ -48,7 +48,7 @@ let useBloom;
 if (cores <= 2 || memory <= 1 || debugMode == "low") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     iterations = 10;
-    console.log("low")
+    console.log("index: low")
     useBloom = false;
     palette = [
         new THREE.Color(0x0E0210),
@@ -65,7 +65,7 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
 } else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.75);
     iterations = 15;
-    console.log("medium");
+    console.log("index: medium");
     useBloom = true;
     palette = [
         new THREE.Color(0x0E0210),
@@ -89,7 +89,7 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
     ].reverse();
 } else {
     renderer.setPixelRatio(window.devicePixelRatio);
-    console.log("high")
+    console.log("index: high")
     iterations = 20;
     useBloom = true;
     palette = [
@@ -266,7 +266,7 @@ function animate() {
 if (dist < SETTLE_THRESHOLD) {
         renderer.setAnimationLoop(null); // pause
         isAnimating = false;
-        console.log("paused")
+        // console.log("paused")
     }
 
 }
@@ -277,7 +277,7 @@ if (!isCoarse) {
         mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            console.log("animating")
+            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });

@@ -239,7 +239,9 @@
                                     <div class="skill" lang>Data Science</div>
                                 </div>
                             </div>
-                            <a class="link-btn" href="https://modrinth.com/plugin/calcmod" target="_blank">
+                            <a class="link-btn"
+                                href="https://experience.arcgis.com/experience/a482e48e713e4c5484ddf91427124de4/"
+                                target="_blank">
                                 Visit
                             </a>
                         </div>
@@ -276,7 +278,7 @@
                                     <div class="skill" lang>Creative Writing</div>
                                 </div>
                             </div>
-                            <a class="link-btn" href="cuban-missile-crisis.html" target="_blank">
+                            <a class="link-btn" href="projects/cuban-missile-crisis.html" target="_blank">
                                 Play
                             </a>
                         </div>
@@ -369,7 +371,7 @@
                                     <div class="skill" lang>Generative Art</div>
                                 </div>
                             </div>
-                            <a class="link-btn" href="art.html" target="_blank">
+                            <a class="link-btn" href="projects/art.html" target="_blank">
                                 Visit
                             </a>
                         </div>
@@ -455,7 +457,9 @@
                         <h2>This Website!</h2>
                         <p>2026</p>
                     </span>
-                    <img class="project-img" src="public/images/ThisSite.png">
+                    <div id="meta-wrapper">
+                        <iframe id="meta" class="project-img"></iframe>
+                    </div>
                 </div>
                 <div class="project-body">
                     <div>
@@ -484,6 +488,17 @@
 
 
 </body>
+<script>
+    // in projects.html script
+    const depth = (() => {
+        let d = 0, w = window;
+        while (w.frameElement) { d++; w = w.parent; }
+        return d;
+    })();
 
+
+    document.getElementById('meta').src = 'index.html';
+    
+</script>
 
 </html>
