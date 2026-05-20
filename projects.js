@@ -260,45 +260,8 @@ const mouseTarget = { x: 0, y: 0 };
 
 
 let isAnimating = true;
-
-
-function animate() {
-    if (isCoarse) {
-        mouseTarget.x = .2 - (window.scrollY / 10000);
-        mouseTarget.y = (window.scrollY / document.body.scrollHeight) * (aspectUniform.value) * 0.8 - .7;
-    }
-    
-    if (firstFrame) {
-        firstFrame = false;
-        
-        sourcesArray[0].value.x = mouseTarget.x+0.02;
-        sourcesArray[0].value.y = mouseTarget.y-0.02;
-
-        document.getElementById("loading").style.display = "none";
-    }
-    
-    const xdist = mouseTarget.x - sourcesArray[0].value.x;
-    const ydist = mouseTarget.y - sourcesArray[0].value.y;
-    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
-
-    sourcesArray[0].value.x += xdist * lerpSpeed;
-    sourcesArray[0].value.y += ydist * lerpSpeed;
-
-    pipeline.render();
-    
-
-    if (settled) {
-        renderer.setAnimationLoop(null);
-        isAnimating = false;
-        console.log("paused")
-    }
-
-
-}
-
-
-
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
 if (isCoarse) {
     window.addEventListener('scroll', (event) => {
         if (!isAnimating) {
@@ -318,6 +281,44 @@ if (isCoarse) {
         }
         // console.log(mouseTarget);
     });
+}
+
+
+
+function animate() {
+    if (isCoarse) {
+        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height)*1);
+        const t = scrollFraction * Math.PI;
+        mouseTarget.y = -0.5*Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+        mouseTarget.x = 0.3*Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)))+.3;
+    }
+
+    if (firstFrame) {
+        firstFrame = false;
+
+        sourcesArray[0].value.x = mouseTarget.x;
+        sourcesArray[0].value.y = mouseTarget.y - 0.03;
+
+        document.getElementById("loading").style.display = "none";
+    }
+
+    const xdist = mouseTarget.x - sourcesArray[0].value.x;
+    const ydist = mouseTarget.y - sourcesArray[0].value.y;
+    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
+
+    sourcesArray[0].value.x += xdist * lerpSpeed;
+    sourcesArray[0].value.y += ydist * lerpSpeed;
+
+    pipeline.render();
+
+
+    if (settled) {
+        renderer.setAnimationLoop(null);
+        isAnimating = false;
+        console.log("paused")
+    }
+
+
 }
 
 
