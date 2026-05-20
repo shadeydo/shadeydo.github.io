@@ -18,7 +18,7 @@ renderer.setSize(width, height);
 
 window.addEventListener("resize", () => {
     width = window.innerWidth;
-    height = window.outerHeight;
+    height = window.innerHeight;
     graphScale = width / height * 5;
     renderer.setSize(width, height);
     aspectUniform.value = height / width;

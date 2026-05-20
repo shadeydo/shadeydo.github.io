@@ -18,7 +18,7 @@ renderer.setSize(width, height);
 
 window.addEventListener("resize", () => {
     width = window.innerWidth;
-    height = window.outerHeight;
+    height = window.innerHeight;
     graphScale = width / height;
 
     renderer.setSize(width, height);
@@ -100,7 +100,8 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
     timeStepSize = .2;
     epsilon = 0.035;
     useBloom = true;
-} else {3
+} else {
+    3
     renderer.setPixelRatio(window.devicePixelRatio);
     console.log("projects: high")
     iterations = 50;
@@ -257,49 +258,68 @@ let firstFrame = true;
 
 const mouseTarget = { x: 0, y: 0 };
 
-const SETTLE_THRESHOLD = .000001;
+
 let isAnimating = true;
 
 
 function animate() {
+    if (isCoarse) {
+        mouseTarget.x = .2 - (window.scrollY / 10000);
+        mouseTarget.y = (window.scrollY / document.body.scrollHeight) * (aspectUniform.value) * 0.8 - .7;
+    }
+    
+    if (firstFrame) {
+        firstFrame = false;
+        
+        sourcesArray[0].value.x = mouseTarget.x+0.02;
+        sourcesArray[0].value.y = mouseTarget.y-0.02;
+
+        document.getElementById("loading").style.display = "none";
+    }
+    
     const xdist = mouseTarget.x - sourcesArray[0].value.x;
     const ydist = mouseTarget.y - sourcesArray[0].value.y;
-    const dist = xdist * xdist + ydist * ydist;
+    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
 
     sourcesArray[0].value.x += xdist * lerpSpeed;
     sourcesArray[0].value.y += ydist * lerpSpeed;
 
     pipeline.render();
-    if (firstFrame) {
-        firstFrame = false;
-        mouseTarget.x = 0.2;
-        mouseTarget.y = -0.3;
-        document.getElementById("loading").style.display = "none";
+    
+
+    if (settled) {
+        renderer.setAnimationLoop(null);
+        isAnimating = false;
+        console.log("paused")
     }
 
-    if (dist < SETTLE_THRESHOLD) {
-        renderer.setAnimationLoop(null); 
-        isAnimating = false;
-        // console.log("paused");
-    }
-   
+
 }
 
+
+
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-if (!isCoarse) {
+if (isCoarse) {
+    window.addEventListener('scroll', (event) => {
+        if (!isAnimating) {
+            isAnimating = true;
+            console.log("animating")
+            renderer.setAnimationLoop(animate);
+        }
+    });
+} else {
     window.addEventListener("mousemove", (event) => {
         mouseTarget.x = (event.clientX / width) * graphScale - graphScale / 2 + graphCenterX;
         mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            // console.log("animating")
+            console.log("animating")
             renderer.setAnimationLoop(animate);
         }
         // console.log(mouseTarget);
     });
 }
 
-sourcesArray[0].value.x = 0.18
-sourcesArray[0].value.y = -0.27
+
 void renderer.domElement.offsetWidth;
 renderer.setAnimationLoop(animate);

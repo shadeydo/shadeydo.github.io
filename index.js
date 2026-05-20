@@ -16,8 +16,8 @@ renderer.setSize(width, height);
 
 window.addEventListener("resize", () => {
     width = window.innerWidth;
-    height = window.outerHeight;
-    
+    height = window.innerHeight;
+
     renderer.setSize(width, height);
     aspectUniform.value = height / width;
 });
@@ -35,7 +35,7 @@ const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
 
-console.log("CPU cores:",cores,"| memory:", memory);
+console.log("CPU cores:", cores, "| memory:", memory);
 
 const debugMode = "h";
 
@@ -229,62 +229,79 @@ const lerpSpeed = 0.05;
 
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-const mouseTarget = { x: roots[0].value.x, y: roots[0].value.y };
+const mouseTarget = { x: roots[0].value.x-0.01, y: roots[0].value.y+0.01 };
+
+let isAnimating = true;
+let firstFrame = true;
 
 const timer = new THREE.Timer();
 
-
-const SETTLE_THRESHOLD = .000001;
-let isAnimating = true;
-
-let firstFrame = true;
-
 function animate() {
-    timer.update();
-    const t = (timer.getElapsed()/8+10);
+
     if (isCoarse) {
-        mouseTarget.y = 0.6*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
-        mouseTarget.x = 0.75*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
+        let t;
+        if (document.body.scrollHeight > height) {
+            t = window.scrollY / 500 + 9.5;
+            // console.log(document.body.scrollHeight, height)
+        } else {
+            timer.update();
+            t = (timer.getElapsed() / 8 + 10);
+            // console.log(t);
+        }
+        mouseTarget.y = 0.6 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+        mouseTarget.x = 0.75 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
     }
 
     const xdist = mouseTarget.x - roots[0].value.x;
     const ydist = mouseTarget.y - roots[0].value.y;
-    const dist = xdist * xdist + ydist * ydist;
+    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
+
+    if (firstFrame) {
+        firstFrame = false;
+        roots[0].value.x = mouseTarget.x + 0.01;
+        roots[0].value.y = mouseTarget.y - 0.01;
+        document.getElementById("loading").style.display = "none";
+    }
 
 
     roots[0].value.x += xdist * lerpSpeed;
     roots[0].value.y += ydist * lerpSpeed;
+
+
+
+
     pipeline.render();
 
-    if (firstFrame) {
-        firstFrame = false;
-        
-        mouseTarget.x = .2;
-        mouseTarget.y = -.2;
-        document.getElementById("loading").style.display = "none";
-    }
-if (dist < SETTLE_THRESHOLD) {
-        renderer.setAnimationLoop(null); // pause
+    if (settled) {
+        renderer.setAnimationLoop(null);
         isAnimating = false;
-        // console.log("paused")
+        console.log("paused")
     }
-
 }
 
-if (!isCoarse) {
+
+
+if (isCoarse) {
+    window.addEventListener('scroll', (event) => {
+        if (!isAnimating) {
+            isAnimating = true;
+            console.log("animating")
+            renderer.setAnimationLoop(animate);
+        }
+    });
+} else {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = ((event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX);
+        mouseTarget.x = (event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX;
         mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            // console.log("animating")
+            console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });
 }
 
 
-roots[0].value.x = .21;
-roots[0].value.y = -.21;
+
 
 renderer.setAnimationLoop(animate);
