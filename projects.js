@@ -6,7 +6,7 @@ import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
 const renderer = new THREE.WebGPURenderer({ antialias: true });
 document.body.prepend(renderer.domElement);
-
+const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -60,7 +60,7 @@ const memory = navigator.deviceMemory;
 
 // console.log("CPU cores:", cores, "| memory:", memory);
 
-const debugMode = "w";
+const debugMode = "";
 
 let useBloom;
 
@@ -77,13 +77,18 @@ let palette = [
     new THREE.Color(0x000000)
 ]
 
-
-if (cores <= 2 || memory <= 1 || debugMode == "low") {
+if (isCoarse) {
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    iterations = 10;
+    timeStepSize = 0.4;
+    epsilon = 0.1;
+    useBloom = true;
+} else if (cores <= 2 || memory <= 1 || debugMode == "low") {
     renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     console.log("low")
-    iterations = 15;
-    timeStepSize = 0.25;
-    epsilon = 0.05;
+    iterations = 10;
+    timeStepSize = 0.4;
+    epsilon = 0.1;
     useBloom = false;
     palette = [
         new THREE.Color(0x0000F6),
@@ -104,9 +109,9 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
     3
     renderer.setPixelRatio(window.devicePixelRatio);
     console.log("projects: high")
-    iterations = 50;
-    timeStepSize = 0.15;
-    epsilon = 0.02;
+    iterations = 60;
+    timeStepSize = 0.13;
+    epsilon = 0.015;
     useBloom = true;
 }
 
@@ -181,14 +186,9 @@ const simulate = TSL.Fn(() => {
         newAccel = calc_acceleration(newPoints, halfVel).toVar();
         newVel = halfVel.add(newAccel.mul(timeStepSize * 0.5)).toVar();
 
-        points.assign(newPoints);
+        points.assign(newPoints);   // only once
         vel.assign(newVel);
         acceleration.assign(newAccel);
-
-        points.assign(newPoints);
-        vel.assign(newVel);
-        acceleration.assign(newAccel);
-
     });
     return points;
 });
@@ -260,7 +260,7 @@ const mouseTarget = { x: 0, y: 0 };
 
 
 let isAnimating = true;
-const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
 
 if (isCoarse) {
     window.addEventListener('scroll', (event) => {
@@ -287,10 +287,10 @@ if (isCoarse) {
 
 function animate() {
     if (isCoarse) {
-        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height)*1);
+        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height) * 1);
         const t = scrollFraction * Math.PI;
-        mouseTarget.y = -0.5*Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
-        mouseTarget.x = 0.3*Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)))+.3;
+        mouseTarget.y = -0.5 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+        mouseTarget.x = 0.3 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t))) + .3;
     }
 
     if (firstFrame) {
