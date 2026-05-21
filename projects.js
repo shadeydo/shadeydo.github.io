@@ -78,7 +78,7 @@ let palette = [
 ]
 
 if (isCoarse) {
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(window.devicePixelRatio*0.75);
     iterations = 10;
     timeStepSize = 0.4;
     epsilon = 0.1;
