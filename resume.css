@@ -3,7 +3,8 @@
     top:0;
     right:0;
     width: 40vw;
-    height: calc(100vh - 36px);
+    height: calc(100vh - 36px - 40px);
+    margin:20px;
 }
 #mobile-spacer {
     display: none;
@@ -11,16 +12,16 @@
 
 @media (max-width: 1000px) {
     #my-pdf {
-        position:relative;
-        width: calc(100vw - 36px);
-        height: calc((100vw - 36px) / 0.7727272727);
+        position: relative;
+        width: calc(100vw - 36px - 40px);
+        height: calc((100vw - 36px - 40px) / 0.7727272727);
         margin-bottom: 100px;
-        
     }
     #mobile-spacer {
         display: block;
-        height: 70dvh;
+        height: 78dvh;
     }
+    
 
 }
 

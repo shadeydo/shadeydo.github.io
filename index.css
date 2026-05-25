@@ -8,8 +8,6 @@
   pointer-events: auto;
   align-items: flex-start;
   align-self: flex-end;
-
-
 }
 
 #paragraph {
@@ -65,19 +63,20 @@ p {
 @media (orientation: portrait) {
   #mobile-spacer {
     display: block;
-    height: 70dvh;
+    height: 78dvh;
   }
 
   #bio {
     justify-self: flex-end;
-    width: 100vw;
+    width: calc(100vw - 28px);
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
+    gap:10px;
+    margin:0 14px 300px 14px;
   }
 
   #picture-block {
-    width: 60vw;
+    width: calc(100vw - 40px - 28px);
   }
 
   #paragraph {

@@ -183,7 +183,7 @@ p {
 @media (orientation: portrait) {
     #mobile-spacer {
         display: block;
-        height: 70vh;
+        height: 78vh;
     }
 
     #content {
@@ -192,10 +192,10 @@ p {
         width: calc(100vw - 8px);
         max-width: initial;
         max-height: fit-content;
-        gap:26px;
+        gap:14px;
     }
     .column {
-        gap:26px;
+        gap:14px;
         padding:0 10px;
     }
 
