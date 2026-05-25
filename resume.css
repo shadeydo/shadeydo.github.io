@@ -2,7 +2,7 @@
     position: absolute;
     top:0;
     right:0;
-    width: 50vw;
+    width: 40vw;
     height: calc(100vh - 36px);
 }
 #mobile-spacer {

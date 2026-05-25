@@ -192,7 +192,13 @@ p {
         width: calc(100vw - 8px);
         max-width: initial;
         max-height: fit-content;
+        gap:26px;
     }
+    .column {
+        gap:26px;
+        padding:0 10px;
+    }
+
 
 
 }

@@ -3,253 +3,234 @@ import * as TSL from "three/tsl";
 import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
-
 const renderer = new THREE.WebGPURenderer({ antialias: false });
 document.body.prepend(renderer.domElement);
 
-
 let width = window.innerWidth;
 let height = window.innerHeight;
-let graphScale = width/height*5;
+let graphScale;
+const aspectUniform = TSL.uniform(height / width);
+const framesPerIteration = 3;
+const useBloom = true;
+const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+let brushRadius;
+let percentFill;
+const decayChance = 0;
+
+if (isCoarse) {
+    graphScale = 2;
+    brushRadius = 100;
+    percentFill = 1;
+
+} else {
+    graphScale = 2;
+    brushRadius = 1;
+    percentFill = 50;
+}
 
 await renderer.init();
 renderer.setSize(width, height);
 
-
 window.addEventListener("resize", () => {
     width = window.innerWidth;
     height = window.innerHeight;
-    graphScale = width / height * 5;
     renderer.setSize(width, height);
     aspectUniform.value = height / width;
 });
 
-// constants up here!
-
-const epsilon = 2; // radius of source
-
-const friction = 0.1;
-
-const pendulumLength = .8;
-const gravity = 1.0;
-const chargeMass = 1;
-
-
-const graphCenterX = 2;
-const graphCenterY = 0;
-let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
-
-const lerpSpeed = 0.01;
-
-const sources = 5;
-const startAngle = 3 * Math.PI / 4;
-const radius = 1;
-
-const sourcesArray = Array.from({ length: sources }, (_, i) => {
-    const angle = startAngle + (2 * Math.PI * i) / sources;
-    return TSL.uniform(new THREE.Vector2(Math.cos(angle) * radius, Math.sin(angle) * radius));
-});
-
-
-
-const cores = navigator.hardwareConcurrency;
-const memory = navigator.deviceMemory;
-
-
-// console.log("CPU cores:",cores,"| memory:", memory);
-
-const debugMode = "";
-
-let useBloom;
-let runtime;
-
-
-if (cores <= 2 || memory <= 1 || debugMode == "low") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
-    console.log("resume: low")
-    runtime = 15;
-    useBloom = false;
-} else {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("resume:medium/high");
-    runtime = 30;
-    useBloom = true;
-}
-
-const iterations = runtime * 1;
-const timeStepSize = 8 / runtime;
-
-const palette = [
-    new THREE.Color(0xDD614A),
-    new THREE.Color(0x0B6E4F),
-    new THREE.Color(0x120D0C),
-    new THREE.Color(0x212198),
-    new THREE.Color(0xC6C2B8)
-
-
-]
-
-let sourcesUniform = TSL.uniformArray(sourcesArray, "vec2");
-
-function get_closest_source(point) {
-    let minDist = TSL.dot(point.sub(sourcesArray[0]), point.sub(sourcesArray[0]));
-    let minIndex = TSL.float(0);
-
-    for (let i = 1; i < sourcesArray.length; i++) {
-        const diff = point.sub(sourcesArray[i]);
-        const dist = TSL.dot(diff, diff);
-        const isCloser = dist.lessThan(minDist);
-        minDist = TSL.select(isCloser, dist, minDist);
-        minIndex = TSL.select(isCloser, TSL.float(i), minIndex);
-    }
-    return minIndex;
-}
-
-function calc_acceleration(charge, velocity) {
-    let acceleration = TSL.vec2(0, 0);
-    for (let i = 0; i < sourcesArray.length; i++) {
-        const diff = charge.sub(sourcesArray[i]);
-        const distSquared = TSL.dot(diff, diff).add(epsilon);
-        acceleration = acceleration.add(diff.div(distSquared.mul(TSL.sqrt(distSquared))));
-    }
-    return acceleration
-        .sub(charge.mul(gravity / pendulumLength))
-        .sub(velocity.mul(friction))
-        .div(chargeMass);
-}
-
-
-
-
-
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
+const GRID_W = Math.floor(width / graphScale);
+const GRID_H = Math.floor(height / graphScale);
 
-const aspectUniform = TSL.uniform(height / width);
+function makeStorageTex() {
+    const texture = new THREE.StorageTexture(GRID_W, GRID_H);
+    texture.format = THREE.RedFormat;
+    texture.type = THREE.UnsignedByteType;
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+}
 
-const uvNode = TSL.uv();
-const x = uvNode.x.mul(graphScale).sub(graphScale / 2).add(graphCenter.x);
-const y = uvNode.y.mul(aspectUniform.mul(graphScale)).sub(aspectUniform.mul(graphScale).div(2)).add(graphCenter.y);
-let vel = TSL.vec2(0, 0);
-let points = TSL.vec2(x, y);
-
-
-const simulate = TSL.Fn(() => {
-    let acceleration = calc_acceleration(points, vel);
-
-
-    let newVel = vel.add(acceleration.mul(timeStepSize));
-    let newPoints = points.add(newVel.add(vel).div(2).mul(timeStepSize));
-    let newAccel = calc_acceleration(newPoints, newVel);
+const textureA = makeStorageTex();
+const textureB = makeStorageTex();
 
 
-    let prevPoints = points.toVar();
-    let prevVel = vel.toVar();
-    let prevAccel = acceleration.toVar();
+const clearCompute = TSL.Fn(() => {
+    const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W), TSL.instanceIndex.div(GRID_W));
+    TSL.textureStore(textureA, coord, TSL.vec4(0, 0, 0, 1)).toWriteOnly();
+})().compute(GRID_W * GRID_H);
 
-    points = newPoints.toVar();
-    vel = newVel.toVar();
-    acceleration = newAccel.toVar();
+await renderer.computeAsync(clearCompute);
 
-    TSL.Loop(iterations, () => {
-        const halfVel = vel.add(acceleration.mul(timeStepSize * 0.5)).toVar();
-        newPoints = points.add(halfVel.mul(timeStepSize)).toVar();
-        newAccel = calc_acceleration(newPoints, halfVel).toVar();
-        newVel = halfVel.add(newAccel.mul(timeStepSize * 0.5)).toVar();
 
-        points.assign(newPoints);
-        vel.assign(newVel);
-        acceleration.assign(newAccel);
 
-        points.assign(newPoints);
-        vel.assign(newVel);
-        acceleration.assign(newAccel);
 
-    });
-    return points;
-});
-const simulatedPoints = simulate();
 
-const mindists = get_closest_source(simulatedPoints);
-let color = TSL.vec3(0, 0, 0);
-palette.forEach((c, i) => {
-    const match = mindists.equal(TSL.float(i));
-    color = color.add(TSL.select(match, TSL.vec3(c.r, c.g, c.b), TSL.vec3(0, 0, 0)));
-});
+let pingPong = 0;
+const displayTex = TSL.texture(textureA, TSL.uv().flipY());
+const rawVal = displayTex.r.mul(255).round().toInt();
 
-const colorNode = color;
 
-const material = new THREE.MeshBasicNodeMaterial({ colorNode });
-const geometry = new THREE.PlaneGeometry(2, 2);
-const mesh = new THREE.Mesh(geometry, material);
+
+const cursorX = TSL.uniform(-999, 'int');
+const cursorY = TSL.uniform(-999, 'int');
+
+
+function makePaintCompute(targetTex) {
+    return TSL.Fn(() => {
+        const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W), TSL.instanceIndex.div(GRID_W));
+        const dx = coord.x.toFloat().sub(cursorX.toFloat());
+        const dy = coord.y.toFloat().sub(cursorY.toFloat());
+        const dist = dx.mul(dx).add(dy.mul(dy)).sqrt();
+        TSL.If(dist.lessThanEqual(brushRadius), () => {
+            const hash = TSL.uint(coord.x).mul(2246822519).bitXor(TSL.uint(coord.y).mul(3266489917)).bitXor(TSL.frameId.mul(1013904223)).toFloat().div(4294967295.0);
+            TSL.If(hash.lessThan(percentFill / 100), () => {
+                TSL.textureStore(targetTex, coord, TSL.vec4(TSL.float(1).div(255), 0, 0, 1)).toWriteOnly();
+            });
+        });
+    })().compute(GRID_W * GRID_H);
+}
+
+const paintComputeA = makePaintCompute(textureA);
+const paintComputeB = makePaintCompute(textureB);
+
+
+function makeBrainCompute(readTex, writeTex) {
+    return TSL.Fn(() => {
+        const coord = TSL.ivec2(
+            TSL.instanceIndex.mod(GRID_W),
+            TSL.instanceIndex.div(GRID_W)
+        );
+
+        const getCell = (dx, dy) => {
+            const nx = coord.x.add(dx).add(GRID_W).mod(GRID_W);
+            const ny = coord.y.add(dy).add(GRID_H).mod(GRID_H);
+            return TSL.textureLoad(readTex, TSL.ivec2(nx, ny)).r.mul(255).round().toInt();
+        };
+
+        const self = getCell(0, 0);
+        const nw = getCell(-1, -1);
+        const n = getCell(0, -1);
+        const ne = getCell(1, -1);
+        const w = getCell(-1, 0);
+        const e = getCell(1, 0);
+        const sw = getCell(-1, 1);
+        const s = getCell(0, 1);
+        const se = getCell(1, 1);
+
+        const count = TSL.int(0).toVar();
+        for (const neighbor of [nw, n, ne, w, e, sw, s, se]) {
+            count.addAssign(neighbor.equal(1).select(TSL.int(1), TSL.int(0)));
+        }
+
+        const newState = TSL.int(0).toVar();
+        TSL.If(self.equal(2), () => {
+            newState.assign(0);
+        }).ElseIf(self.equal(1), () => {
+            newState.assign(2);
+        }).Else(() => {
+            TSL.If(count.equal(2), () => {
+                newState.assign(1);
+            });
+        });
+
+
+        const decayHash = TSL.uint(coord.x).mul(2246822519).bitXor(TSL.uint(coord.y).mul(3266489917)).bitXor(TSL.frameId.mul(1013904223)).toFloat().div(4294967295.0);
+        const decayed = TSL.select(decayHash.lessThan(decayChance), TSL.int(0), newState);
+
+        const isBorder = coord.x.equal(0)
+            .or(coord.x.equal(GRID_W - 1))
+            .or(coord.y.equal(0))
+            .or(coord.y.equal(GRID_H - 1));
+
+        const stored = TSL.select(isBorder, TSL.int(0), decayed).toFloat().div(255);
+        TSL.textureStore(writeTex, coord, TSL.vec4(stored, 0, 0, 1)).toWriteOnly();
+    })().compute(GRID_W * GRID_H);
+}
+
+const computeAtoB = makeBrainCompute(textureA, textureB);
+const computeBtoA = makeBrainCompute(textureB, textureA);
+
+
+
+const color = TSL.select(
+    rawVal.equal(1), new THREE.Color(0xFFFFFF),
+    TSL.select(
+        rawVal.equal(2), new THREE.Color(0x00FF00),
+        new THREE.Color(0x000000)
+    )
+);
+
+const material = new THREE.MeshBasicNodeMaterial({ colorNode: color });
+const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
 scene.add(mesh);
 
 const pipeline = new THREE.RenderPipeline(renderer);
-
 const scenePass = pass(scene, camera);
-const bloomPass = bloom(scenePass, .1, .5, 0.1);
+const bloomPass = bloom(scenePass, 0.1, 0.2, 0.1);
+pipeline.outputNode = useBloom ? scenePass.add(bloomPass) : scenePass;
 
-pipeline.outputNode = useBloom
-    ? scenePass.add(bloomPass)
-    : scenePass;
-    
-
-const timer = new THREE.Timer();
-
-let firstFrame = true;
-
-
-const mouseTarget = { x: 0, y: 0 };
-
-const SETTLE_THRESHOLD = .000001;
-let isAnimating = true;
-
-
-function animate() {
-    timer.update();
-    const t = (timer.getElapsed());
-
-    const xdist = mouseTarget.x - sourcesArray[0].value.x;
-    const ydist = mouseTarget.y - sourcesArray[0].value.y;
-    const dist = xdist * xdist + ydist * ydist;
-
-    sourcesArray[0].value.x += xdist * lerpSpeed;
-    sourcesArray[0].value.y += ydist * lerpSpeed;
-    if (isCoarse) {
-        mouseTarget.y = 3*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
-        mouseTarget.x = 3*Math.sin(t)*Math.cos(t)/(1+(Math.sin(t)*Math.sin(t)));
-    }
-    pipeline.render();
-    if (firstFrame) {
-        firstFrame = false;
-        sourcesArray[0].value.x = -10
-        sourcesArray[0].value.y = 10
-        mouseTarget.x = -1;
-        mouseTarget.y = 0;
-
-        document.getElementById("loading").style.display = "none";
-    }
-    if (dist < SETTLE_THRESHOLD) {
-        renderer.setAnimationLoop(null); 
-        isAnimating = false;
-        // console.log("paused");
-    }
-    
-}
-
-const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+let mouseActive = false;
 if (!isCoarse) {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = (event.clientX / width) * graphScale - graphScale / 2 + graphCenterX;
-        mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
-        if (!isAnimating) {
-            isAnimating = true;
-            // console.log("animating")
-            renderer.setAnimationLoop(animate);
-        }
+        cursorX.value = Math.floor((event.clientX / width) * GRID_W);
+        cursorY.value = Math.floor((event.clientY / height) * GRID_H);
+        mouseActive = true;
     });
-    
+}
+const timer = new THREE.Timer();
+
+
+let frame = 0;
+
+async function animate() {
+    if (frame === 0) {
+        document.getElementById("loading").style.display = "none";
+    }
+
+
+    if (mouseActive) {
+        const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
+        await renderer.computeAsync(paintCompute);
+        mouseActive = false;
+    } else if (isCoarse) {
+        if (mouseActive = true) {
+            if (frame % 2 == 0) {
+                cursorX.value = (width / graphScale) / 2;
+                cursorY.value = 10;
+            } else {
+                cursorX.value = (width / graphScale) / 2;
+                cursorY.value = (height/graphScale)-100;
+            }
+
+
+            if (frame < 16) {
+                const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
+                await renderer.computeAsync(paintCompute);
+            }
+
+        }
+
+        mouseActive = false;
+    }
+
+
+    if (frame % framesPerIteration === 0) {
+        if (pingPong === 0) {
+            await renderer.computeAsync(computeAtoB);
+            displayTex.value = textureB;
+            pingPong = 1;
+        } else {
+            await renderer.computeAsync(computeBtoA);
+            displayTex.value = textureA;
+            pingPong = 0;
+        }
+    }
+
+    pipeline.render();
+    frame++;
 }
 
 renderer.setAnimationLoop(animate);
