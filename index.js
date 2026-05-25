@@ -275,7 +275,7 @@ function animate() {
     if (settled) {
         renderer.setAnimationLoop(null);
         isAnimating = false;
-        console.log("paused")
+        // console.log("paused")
     }
 }
 
@@ -285,7 +285,7 @@ if (isCoarse) {
     window.addEventListener('scroll', (event) => {
         if (!isAnimating) {
             isAnimating = true;
-            console.log("animating")
+            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });
@@ -295,7 +295,7 @@ if (isCoarse) {
         mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
-            console.log("animating")
+            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });

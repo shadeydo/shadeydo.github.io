@@ -20,7 +20,7 @@ jobs:
       id: sitemap
       uses: cicirello/generate-sitemap@v1
       with:
-        base-url: 'https://shadeydo.github.io'
+        base-url: https://shadeydo.github.io
 
     - name: Commit and push the sitemap
       uses: stefanzweifel/git-auto-commit-action@v5
