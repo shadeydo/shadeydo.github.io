@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,12 +16,14 @@ jobs:
     steps:
     - name: Checkout the repo
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Generate the sitemap
       id: sitemap
       uses: cicirello/generate-sitemap@v1
       with:
-        base-url: https://shadeydo.github.io
+        base-url-path: https://shadeydo.github.io/
 
     - name: Commit and push the sitemap
       uses: stefanzweifel/git-auto-commit-action@v5
