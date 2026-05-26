@@ -18,7 +18,7 @@ let percentFill;
 const decayChance = 0;
 
 if (isCoarse) {
-    graphScale = 2;
+    graphScale = 1;
     brushRadius = 100;
     percentFill = 1;
 
@@ -28,9 +28,25 @@ if (isCoarse) {
     percentFill = 50;
 }
 
+const cores = navigator.hardwareConcurrency;
+const memory = navigator.deviceMemory;
+const debugMode = "high";
+if (cores <= 2 || memory <= 1 || debugMode == "low") {
+    graphScale = 5;
+    renderer.antialias = false;
+    renderer.setPixelRatio(window.devicePixelRatio/graphScale);
+    console.log("resume: low")
+    
+} else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
+    renderer.setPixelRatio(window.devicePixelRatio/graphScale);
+    console.log("resume: medium");
+} else {
+    renderer.setPixelRatio(window.devicePixelRatio);
+    console.log("resume: high")
+}
+
 await renderer.init();
 renderer.setSize(width, height);
-
 window.addEventListener("resize", () => {
     width = window.innerWidth;
     height = window.innerHeight;

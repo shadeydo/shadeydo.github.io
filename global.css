@@ -84,6 +84,7 @@ a {
   padding: 14px;
   margin: 4px;
   border-radius: 14px;
+  transition-timing-function: ease-out;
 }
 
 .header-link {
@@ -126,6 +127,8 @@ a {
 }
 
 #loading.spinner {
+  opacity: 1;
+  display:block;
   width: 30vh;
   height: 30vh;
   position: fixed;
@@ -135,6 +138,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: visible;
+  z-index: 999;
 }
 
 

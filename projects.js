@@ -297,7 +297,7 @@ function animate() {
         firstFrame = false;
 
         sourcesArray[0].value.x = mouseTarget.x;
-        sourcesArray[0].value.y = mouseTarget.y - 0.03;
+        sourcesArray[0].value.y = mouseTarget.y - 0.07;
 
         document.getElementById("loading").style.display = "none";
     }

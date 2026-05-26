@@ -255,11 +255,10 @@ function animate() {
     const xdist = mouseTarget.x - roots[0].value.x;
     const ydist = mouseTarget.y - roots[0].value.y;
     const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
-
     if (firstFrame) {
         firstFrame = false;
-        roots[0].value.x = mouseTarget.x + 0.01;
-        roots[0].value.y = mouseTarget.y - 0.01;
+        roots[0].value.x = mouseTarget.x + 0.05;
+        roots[0].value.y = mouseTarget.y - 0.05;
         document.getElementById("loading").style.display = "none";
     }
 
