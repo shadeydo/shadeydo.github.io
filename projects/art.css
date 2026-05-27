@@ -1,15 +1,32 @@
 body {
     padding: 16px;
-    background-color: rgb(101, 101, 101);
+    object-fit: cover;
     transition: opacity 0.3s ease;
+    padding-bottom: 350px;
+}
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 110vh;
+    overflow: hidden;
+    z-index: -1;
+    margin:0;
 }
 
+
+#background-svg {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin:0;
+
+}
 body.is-loaded .block {
     opacity: 1;
-    transition: opacity 0.3s ease;
-}
-
-.block img {
     transition: opacity 0.3s ease;
 }
 
@@ -39,15 +56,21 @@ body.is-loaded .block {
 }
 
 .block {
-    width: calc(33.3333% - 70px);
+    width: calc(33.33333333% - 37.3px);
     margin-bottom: 16px;
+    background-color: rgb(30, 17, 9);
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+    padding-bottom: 10px;
 }
+
 
 .block img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 4px;
+    transition: opacity 0.3s ease;
 }
 
 .skills {
@@ -61,50 +84,50 @@ body.is-loaded .block {
 }
 
 .skill {
-    background-color: rgba(255, 255, 255, 0.116);
-    border-radius: 10px;
-    padding: 6px 8px;
-    border-color: rgba(255, 255, 255, 0.206);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 4px 6px;
+    border-color: rgba(255, 255, 255, 0.1);
     border-style: solid;
     border-width: 1px;
     align-content: center;
-    opacity: .75;
+    opacity: .5;
 
 }
 
 .endcap {
     display: flex;
     gap: 6px;
-    margin-top: 12px;
+    margin-top: 10px;
     min-width: 100%;
     max-height: 70px;
     justify-content: flex-end;
-
+    font-size: x-small;
 }
 
 .endcap p {
     margin: 0;
-    opacity: .75;
+    opacity: .3;
     align-content: center;
 
 }
 
 .block.wide {
-    width: calc(66.666% - 90px);
+    width: calc(66.666% - 54px);
 }
 
 
 @media (max-width: 1300px) {
     .block {
-        width: calc(50% - 75px);
+        width: calc(50% - 46px);
     }
     .block.wide {
-    width: calc(100% - 100px);
+    width: calc(100% - 72px);
 }
 }
 
 @media (max-width: 800px) {
     .block {
-        width: calc(100% - 100px);
+        width: calc(100% - 72px);
     }
 }

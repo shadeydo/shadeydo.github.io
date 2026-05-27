@@ -1,36 +1,21 @@
 body {
   font-family: monospace;
   background-color: #121212;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   width: 100vw;
-  display:flex;
+  display: flex;
   flex-direction: column;
   min-height: 100dvh;
   overflow-x: hidden;
 }
 
 canvas {
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
 }
-
-/* 
-#background::after {
-  content:"";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  -webkit-mask-image: radial-gradient(ellipse at center, transparent 50%, black 100%);
-  mask-image: radial-gradient(ellipse at center, transparent 50%, black 100%);
-}  */
 
 a {
   color: inherit;
@@ -42,25 +27,32 @@ a {
   align-items: center;
   z-index: 10;
   margin-bottom: 10px;
-  height: 30px;
   position: fixed;
   top: env(safe-area-inset-top);
   left: env(safe-area-inset-left);
   font-size: large;
-  gap:16px;
+  gap: 16px;
+  padding:12px 14px;
+}
+
+#logo {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+
 }
 
 #options {
   display: flex;
-  gap:16px;
-  margin-right:8px;
-  
+  gap: 16px;
+  margin-right: 8px;
+
 }
 
 
 @media (max-width: 550px) {
   #header {
-    width: calc(100% - 36px);
+    width: calc(100% - 8px);
   }
 }
 
@@ -68,11 +60,13 @@ a {
   #header {
     font-size: medium;
   }
+
   .header-link:hover {
     font-size: large;
   }
+
   [selected] {
-    font-size:large;
+    font-size: large;
   }
 }
 
@@ -85,6 +79,10 @@ a {
   margin: 4px;
   border-radius: 14px;
   transition-timing-function: ease-out;
+  border-style:solid;
+  border-width:2px;
+  border-color:rgba(255,255,255,.1);
+  box-sizing: border-box;
 }
 
 .header-link {
@@ -104,11 +102,11 @@ a {
 }
 
 #header-projects:hover {
-  color:#7e83ff;
+  color: #7e83ff;
 }
 
 #header-resume:hover {
-  color:#3ea885;
+  color: #3ea885;
 }
 
 [selected]:hover {
@@ -116,10 +114,7 @@ a {
 }
 
 
-#logo {
-  max-width: 100%;
-  max-height: 100%;
-}
+
 
 [selected] {
   font-weight: bold;
@@ -128,7 +123,7 @@ a {
 
 #loading.spinner {
   opacity: 1;
-  display:block;
+  display: block;
   width: 30vh;
   height: 30vh;
   position: fixed;
@@ -139,7 +134,7 @@ a {
   align-items: center;
   justify-content: center;
   visibility: visible;
-  z-index: 999;
+  z-index:999;
 }
 
 

@@ -76,7 +76,8 @@ p {
   }
 
   #picture-block {
-    width: calc(100vw - 40px - 28px);
+    width: calc(100vw - 28px - 8px);
+
   }
 
   #paragraph {
