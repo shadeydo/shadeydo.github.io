@@ -8,21 +8,31 @@ const renderer = new THREE.WebGPURenderer({ antialias: true });
 document.body.prepend(renderer.domElement);
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-let width = window.innerWidth;
-let height = window.innerHeight;
-let graphScale = width / height;
+const width = TSL.uniform(window.innerWidth);
+const height = TSL.uniform(window.innerHeight);
+if (isCoarse) {
+    height.value = window.screen.height;
+}
+
+const graphScale = width.value / height.value;
 
 await renderer.init();
-renderer.setSize(width, height);
-
+renderer.setSize(width.value, height.value);
 
 window.addEventListener("resize", () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    graphScale = width / height;
+    width.value = window.innerWidth;
+    if (!isCoarse) {
+        height.value = window.innerHeight;
+    }
+  
+    renderer.setSize(width.value, height.value);
 
-    renderer.setSize(width, height);
-    aspectUniform.value = height / width;
+    aspectUniform.value = height.value / width.value;
+
+    if (!isAnimating) {
+        isAnimating = true;
+        renderer.setAnimationLoop(animate);
+    }
 });
 
 // constants up here!
@@ -78,7 +88,7 @@ let palette = [
 ]
 
 if (isCoarse) {
-    renderer.setPixelRatio(window.devicePixelRatio*0.75);
+    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
     iterations = 10;
     timeStepSize = 0.4;
     epsilon = 0.1;
@@ -154,7 +164,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 
-const aspectUniform = TSL.uniform(height / width);
+const aspectUniform = TSL.uniform(height.value / width.value);
 
 const uvNode = TSL.uv();
 const x = uvNode.x.mul(graphScale).sub(graphScale / 2).add(graphCenter.x);
@@ -272,8 +282,8 @@ if (isCoarse) {
     });
 } else {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = (event.clientX / width) * graphScale - graphScale / 2 + graphCenterX;
-        mouseTarget.y = -((event.clientY / height) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
+        mouseTarget.x = (event.clientX / width.value) * graphScale - graphScale / 2 + graphCenterX;
+        mouseTarget.y = -((event.clientY / height.value) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
             // console.log("animating")
@@ -287,7 +297,7 @@ if (isCoarse) {
 
 function animate() {
     if (isCoarse) {
-        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height) * 1);
+        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height.value) * 1);
         const t = scrollFraction * Math.PI;
         mouseTarget.y = -0.5 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
         mouseTarget.x = 0.3 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t))) + .3;
@@ -322,5 +332,5 @@ function animate() {
 }
 
 
-void renderer.domElement.offsetWidth;
+void renderer.domElement.offsetWidth.value;
 renderer.setAnimationLoop(animate);

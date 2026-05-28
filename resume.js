@@ -6,13 +6,19 @@ import { bloom } from "three/addons/tsl/display/BloomNode.js";
 const renderer = new THREE.WebGPURenderer({ antialias: false });
 document.body.prepend(renderer.domElement);
 
-let width = window.innerWidth;
-let height = window.innerHeight;
+const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+const width = TSL.uniform(window.innerWidth);
+const height = TSL.uniform(window.innerHeight);
+
+if (isCoarse) {
+    height.value = window.screen.availHeight;
+}
 let graphScale;
-const aspectUniform = TSL.uniform(height / width);
+const aspectUniform = TSL.uniform(height.value / width.value);
 const framesPerIteration = 3;
 const useBloom = true;
-const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
 let brushRadius;
 let percentFill;
 const decayChance = 0;
@@ -46,22 +52,27 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
 }
 
 await renderer.init();
-renderer.setSize(width, height);
+renderer.setSize(width.value, height.value);
 window.addEventListener("resize", () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    renderer.setSize(width, height);
-    aspectUniform.value = height / width;
+    width.value = window.innerWidth;
+    if (!isCoarse) {
+        height.value = window.innerHeight;
+    }
+    renderer.setSize(width.value, height.value);
+    GRID_W.value = Math.floor(width.value / graphScale)
+    GRID_H.value = Math.floor(height.value / graphScale)
+
+    aspectUniform.value = height.value / width.value;
 });
 
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-const GRID_W = Math.floor(width / graphScale);
-const GRID_H = Math.floor(height / graphScale);
+const GRID_W = TSL.uniform(Math.floor(width.value / graphScale));
+const GRID_H = TSL.uniform(Math.floor(height.value / graphScale));
 
 function makeStorageTex() {
-    const texture = new THREE.StorageTexture(GRID_W, GRID_H);
+    const texture = new THREE.StorageTexture(GRID_W.value, GRID_H.value);
     texture.format = THREE.RedFormat;
     texture.type = THREE.UnsignedByteType;
     texture.magFilter = THREE.NearestFilter;
@@ -74,9 +85,9 @@ const textureB = makeStorageTex();
 
 
 const clearCompute = TSL.Fn(() => {
-    const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W), TSL.instanceIndex.div(GRID_W));
+    const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W.value), TSL.instanceIndex.div(GRID_W.value));
     TSL.textureStore(textureA, coord, TSL.vec4(0, 0, 0, 1)).toWriteOnly();
-})().compute(GRID_W * GRID_H);
+})().compute(GRID_W.value * GRID_H.value);
 
 await renderer.computeAsync(clearCompute);
 
@@ -96,7 +107,7 @@ const cursorY = TSL.uniform(-999, 'int');
 
 function makePaintCompute(targetTex) {
     return TSL.Fn(() => {
-        const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W), TSL.instanceIndex.div(GRID_W));
+        const coord = TSL.ivec2(TSL.instanceIndex.mod(GRID_W.value), TSL.instanceIndex.div(GRID_W.value));
         const dx = coord.x.toFloat().sub(cursorX.toFloat());
         const dy = coord.y.toFloat().sub(cursorY.toFloat());
         const dist = dx.mul(dx).add(dy.mul(dy)).sqrt();
@@ -106,7 +117,7 @@ function makePaintCompute(targetTex) {
                 TSL.textureStore(targetTex, coord, TSL.vec4(TSL.float(1).div(255), 0, 0, 1)).toWriteOnly();
             });
         });
-    })().compute(GRID_W * GRID_H);
+    })().compute(GRID_W.value * GRID_H.value);
 }
 
 const paintComputeA = makePaintCompute(textureA);
@@ -116,13 +127,13 @@ const paintComputeB = makePaintCompute(textureB);
 function makeBrainCompute(readTex, writeTex) {
     return TSL.Fn(() => {
         const coord = TSL.ivec2(
-            TSL.instanceIndex.mod(GRID_W),
-            TSL.instanceIndex.div(GRID_W)
+            TSL.instanceIndex.mod(GRID_W.value),
+            TSL.instanceIndex.div(GRID_W.value)
         );
 
         const getCell = (dx, dy) => {
-            const nx = coord.x.add(dx).add(GRID_W).mod(GRID_W);
-            const ny = coord.y.add(dy).add(GRID_H).mod(GRID_H);
+            const nx = coord.x.add(dx).add(GRID_W.value).mod(GRID_W.value);
+            const ny = coord.y.add(dy).add(GRID_H.value).mod(GRID_H.value);
             return TSL.textureLoad(readTex, TSL.ivec2(nx, ny)).r.mul(255).round().toInt();
         };
 
@@ -157,13 +168,13 @@ function makeBrainCompute(readTex, writeTex) {
         const decayed = TSL.select(decayHash.lessThan(decayChance), TSL.int(0), newState);
 
         const isBorder = coord.x.equal(0)
-            .or(coord.x.equal(GRID_W - 1))
+            .or(coord.x.equal(GRID_W.value - 1))
             .or(coord.y.equal(0))
-            .or(coord.y.equal(GRID_H - 1));
+            .or(coord.y.equal(GRID_H.value - 1));
 
         const stored = TSL.select(isBorder, TSL.int(0), decayed).toFloat().div(255);
         TSL.textureStore(writeTex, coord, TSL.vec4(stored, 0, 0, 1)).toWriteOnly();
-    })().compute(GRID_W * GRID_H);
+    })().compute(GRID_W.value * GRID_H.value);
 }
 
 const computeAtoB = makeBrainCompute(textureA, textureB);
@@ -191,8 +202,8 @@ pipeline.outputNode = useBloom ? scenePass.add(bloomPass) : scenePass;
 let mouseActive = false;
 if (!isCoarse) {
     window.addEventListener("mousemove", (event) => {
-        cursorX.value = Math.floor((event.clientX / width) * GRID_W);
-        cursorY.value = Math.floor((event.clientY / height) * GRID_H);
+        cursorX.value = Math.floor((event.clientX / width.value) * GRID_W.value);
+        cursorY.value = Math.floor((event.clientY / height.value) * GRID_H.value);
         mouseActive = true;
     });
 }
@@ -212,13 +223,13 @@ async function animate() {
         await renderer.computeAsync(paintCompute);
         mouseActive = false;
     } else if (isCoarse) {
-        if (mouseActive = true) {
+        if (mouseActive) {
             if (frame % 2 == 0) {
-                cursorX.value = (width / graphScale) / 2;
+                cursorX.value = (width.value / graphScale) / 2;
                 cursorY.value = 10;
             } else {
-                cursorX.value = (width / graphScale) / 2;
-                cursorY.value = (height/graphScale)-100;
+                cursorX.value = (width.value / graphScale) / 2;
+                cursorY.value = (height.value/graphScale)-100;
             }
 
 

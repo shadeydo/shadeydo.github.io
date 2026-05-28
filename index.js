@@ -6,20 +6,31 @@ import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
 const renderer = new THREE.WebGPURenderer();
 document.body.prepend(renderer.domElement);
+const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-let width = window.innerWidth;
-let height = window.innerHeight;
+const width = TSL.uniform(window.innerWidth);
+const height = TSL.uniform(window.outerHeight);
+
+if (isCoarse) {
+    height.value = window.screen.height;
+}
 
 await renderer.init();
-renderer.setSize(width, height);
+renderer.setSize(width.value, height.value);
 
 
 window.addEventListener("resize", () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    width.value = window.innerWidth;
+    if (!isCoarse) {
+        height.value = window.innerHeight;
+    }
+    aspectUniform.value = height.value / width.value;
+    renderer.setSize(width.value, height.value);
 
-    renderer.setSize(width, height);
-    aspectUniform.value = height / width;
+    if (!isAnimating) {
+        isAnimating = true;
+        renderer.setAnimationLoop(animate);
+    }
 });
 
 const radius = .3;
@@ -119,9 +130,9 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
 const scene = new THREE.Scene();
 const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-let graphScale = TSL.uniform((width / height) * .5);
-let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
-const aspectUniform = TSL.uniform(height / width);
+const graphScale = TSL.uniform((width.value / height.value) * .5);
+const graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
+const aspectUniform = TSL.uniform(height.value / width.value);
 
 const uvNode = TSL.uv();
 const x = uvNode.x.mul(graphScale).sub(graphScale.div(2)).add(graphCenter.x);
@@ -227,9 +238,9 @@ pipeline.outputNode = useBloom
 
 const lerpSpeed = 0.05;
 
-const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-const mouseTarget = { x: roots[0].value.x-0.01, y: roots[0].value.y+0.01 };
+
+const mouseTarget = { x: roots[0].value.x - 0.01, y: roots[0].value.y + 0.01 };
 
 let isAnimating = true;
 let firstFrame = true;
@@ -240,9 +251,9 @@ function animate() {
 
     if (isCoarse) {
         let t;
-        if (document.body.scrollHeight > height) {
+        if (document.body.scrollHeight > height.value) {
             t = window.scrollY / 500 + 9.5;
-            // console.log(document.body.scrollHeight, height)
+            // console.log(document.body.scrollHeight, height.value)
         } else {
             timer.update();
             t = (timer.getElapsed() / 8 + 10);
@@ -250,6 +261,8 @@ function animate() {
         }
         mouseTarget.y = 0.6 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
         mouseTarget.x = 0.75 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+    } else {
+        renderer.setSize(width.value, height.value);
     }
 
     const xdist = mouseTarget.x - roots[0].value.x;
@@ -290,8 +303,8 @@ if (isCoarse) {
     });
 } else {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = (event.clientX / width) * graphScale.value - graphScale.value / 2 + graphCenterX;
-        mouseTarget.y = -((event.clientY / height) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
+        mouseTarget.x = (event.clientX / width.value) * graphScale.value - graphScale.value / 2 + graphCenterX;
+        mouseTarget.y = -((event.clientY / height.value) * graphScale.value * aspectUniform.value - (graphScale.value * aspectUniform.value) / 2) + graphCenterY;
         if (!isAnimating) {
             isAnimating = true;
             // console.log("animating")
