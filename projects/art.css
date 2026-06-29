@@ -30,31 +30,6 @@ body.is-loaded .block {
     transition: opacity 0.3s ease;
 }
 
-.block:not(.loaded) img {
-    opacity: 0;
-}
-
-.block:not(.loaded)::before {
-    content: '';
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1; /* fallback square while image loads */
-    border-radius: 4px;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.06) 25%,
-        rgba(255,255,255,0.12) 50%,
-        rgba(255,255,255,0.06) 75%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.4s infinite;
-}
-
-@keyframes shimmer {
-    0%   { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
 .block {
     width: calc(33.33333333% - 37.3px);
     margin-bottom: 16px;
@@ -62,15 +37,25 @@ body.is-loaded .block {
     backdrop-filter: unset;
     -webkit-backdrop-filter: unset;
     padding-bottom: 10px;
+    transition: transform .3s ease-in-out, background-color 2s ease !important;
 }
 
+.block:hover {
+    transform: scale(1.005) translateY(-4px);
+    transform-origin:bottom;
+    background-color: black;
+}
+
+.block:hover img {
+    transform: translateY(-5px) scale(1.01);
+}
 
 .block img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 4px;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, all 1s ease;
 }
 
 .skills {

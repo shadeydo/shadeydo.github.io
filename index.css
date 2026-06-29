@@ -19,8 +19,14 @@
   margin-right: 0;
 }
 
-em {
-  color: #ff6767
+.body-link {
+  color: #ff6767;
+  font-style: italic;
+  transition: .1s ease;
+}
+
+.body-link:hover {
+  color: #ff8787;
 }
 
 #picture-block {
@@ -112,7 +118,7 @@ p {
 }
 
 .social-link:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   opacity: 1;
 }
 
