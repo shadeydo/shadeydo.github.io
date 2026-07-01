@@ -303,7 +303,7 @@ header {
   }
 }
 
-@media (max-width:400px) {
+@media (max-width:380px) {
    header {
     font-size: 12px;
     text-wrap-mode: wrap;
