@@ -4,6 +4,7 @@ body {
     transition: opacity 0.3s ease;
     padding-bottom: 350px;
 }
+
 #background {
     position: fixed;
     top: 0;
@@ -12,7 +13,7 @@ body {
     height: 110vh;
     overflow: hidden;
     z-index: -1;
-    margin:0;
+    margin: 0;
 }
 
 
@@ -22,16 +23,17 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    margin:0;
+    margin: 0;
 
 }
+
 body.is-loaded .block {
     opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .block {
-    width: calc(33.33333333% - 37.3px);
+    width: calc(33.33333333% - 50px);
     margin-bottom: 16px;
     background-color: rgb(30, 17, 9);
     backdrop-filter: unset;
@@ -42,8 +44,7 @@ body.is-loaded .block {
 
 .block:hover {
     transform: scale(1.005) translateY(-4px);
-    transform-origin:bottom;
-    background-color: black;
+    transform-origin: bottom;
 }
 
 .block:hover img {
@@ -64,7 +65,7 @@ body.is-loaded .block {
     flex-wrap: wrap;
     margin: 0;
     flex-grow: 1;
-    align-items:flex-end;
+    align-items: flex-end;
     align-self: flex-start;
 }
 
@@ -87,7 +88,7 @@ body.is-loaded .block {
     min-width: 100%;
     max-height: 70px;
     justify-content: flex-end;
-    font-size: x-small;
+    font-size: 11px;
 }
 
 .endcap p {
@@ -98,21 +99,22 @@ body.is-loaded .block {
 }
 
 .block.wide {
-    width: calc(66.666% - 54px);
+    width: calc(66.666% - 69.5px);
 }
 
 
 @media (max-width: 1300px) {
     .block {
-        width: calc(50% - 46px);
+        width: calc(50% - 58px);
     }
+
     .block.wide {
-    width: calc(100% - 72px);
-}
+        width: calc(100% - 81.5px);
+    }
 }
 
 @media (max-width: 800px) {
     .block {
-        width: calc(100% - 72px);
+        width: calc(100% - 81.5px);
     }
 }

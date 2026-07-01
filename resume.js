@@ -14,6 +14,18 @@ const height = TSL.uniform(window.innerHeight);
 if (isCoarse) {
     height.value = window.screen.availHeight;
 }
+
+let isPaused = false;
+const pauseBtn = document.getElementById("pause");
+pauseBtn.addEventListener("click", () => {
+    if (isPaused) {
+        pauseBtn.innerHTML = "⏸︎";    
+    } else {
+        pauseBtn.innerHTML = "⏵︎";
+    }
+    isPaused = !isPaused;
+});
+
 let graphScale;
 const aspectUniform = TSL.uniform(height.value / width.value);
 const framesPerIteration = 3;
@@ -40,11 +52,11 @@ const debugMode = "high";
 if (cores <= 2 || memory <= 1 || debugMode == "low") {
     graphScale = 5;
     renderer.antialias = false;
-    renderer.setPixelRatio(window.devicePixelRatio/graphScale);
+    renderer.setPixelRatio(window.devicePixelRatio / graphScale);
     console.log("resume: low")
-    
+
 } else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
-    renderer.setPixelRatio(window.devicePixelRatio/graphScale);
+    renderer.setPixelRatio(window.devicePixelRatio / graphScale);
     console.log("resume: medium");
 } else {
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -213,51 +225,53 @@ const timer = new THREE.Timer();
 let frame = 0;
 
 async function animate() {
-    if (frame === 0) {
-        document.getElementById("loading").style.display = "none";
-    }
+    if (!isPaused) {
+        if (frame === 0) {
+            document.getElementById("loading").style.display = "none";
+        }
 
 
-    if (mouseActive) {
-        const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
-        await renderer.computeAsync(paintCompute);
-        mouseActive = false;
-    } else if (isCoarse) {
         if (mouseActive) {
-            if (frame % 2 == 0) {
-                cursorX.value = (width.value / graphScale) / 2;
-                cursorY.value = 10;
+            const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
+            await renderer.computeAsync(paintCompute);
+            mouseActive = false;
+        } else if (isCoarse) {
+            if (mouseActive) {
+                if (frame % 2 == 0) {
+                    cursorX.value = (width.value / graphScale) / 2;
+                    cursorY.value = 10;
+                } else {
+                    cursorX.value = (width.value / graphScale) / 2;
+                    cursorY.value = (height.value / graphScale) - 100;
+                }
+
+
+                if (frame < 16) {
+                    const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
+                    await renderer.computeAsync(paintCompute);
+                }
+
+            }
+
+            mouseActive = false;
+        }
+
+
+        if (frame % framesPerIteration === 0) {
+            if (pingPong === 0) {
+                await renderer.computeAsync(computeAtoB);
+                displayTex.value = textureB;
+                pingPong = 1;
             } else {
-                cursorX.value = (width.value / graphScale) / 2;
-                cursorY.value = (height.value/graphScale)-100;
+                await renderer.computeAsync(computeBtoA);
+                displayTex.value = textureA;
+                pingPong = 0;
             }
-
-
-            if (frame < 16) {
-                const paintCompute = pingPong === 0 ? paintComputeA : paintComputeB;
-                await renderer.computeAsync(paintCompute);
-            }
-
         }
 
-        mouseActive = false;
+        pipeline.render();
+        frame++;
     }
-
-
-    if (frame % framesPerIteration === 0) {
-        if (pingPong === 0) {
-            await renderer.computeAsync(computeAtoB);
-            displayTex.value = textureB;
-            pingPong = 1;
-        } else {
-            await renderer.computeAsync(computeBtoA);
-            displayTex.value = textureA;
-            pingPong = 0;
-        }
-    }
-
-    pipeline.render();
-    frame++;
 }
 
 renderer.setAnimationLoop(animate);

@@ -13,6 +13,16 @@ const height = TSL.uniform(window.innerHeight);
 if (isCoarse) {
     height.value = window.screen.height;
 }
+let isPaused = false;
+const pauseBtn = document.getElementById("pause");
+pauseBtn.addEventListener("click", () => {
+    if (isPaused) {
+        pauseBtn.innerHTML = "⏸︎";    
+    } else {
+        pauseBtn.innerHTML = "⏵︎";
+    }
+    isPaused = !isPaused;
+});
 
 const graphScale = width.value / height.value;
 
@@ -24,7 +34,7 @@ window.addEventListener("resize", () => {
     if (!isCoarse) {
         height.value = window.innerHeight;
     }
-  
+
     renderer.setSize(width.value, height.value);
 
     aspectUniform.value = height.value / width.value;
@@ -296,38 +306,39 @@ if (isCoarse) {
 
 
 function animate() {
-    if (isCoarse) {
-        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height.value) * 1);
-        const t = scrollFraction * Math.PI;
-        mouseTarget.y = -0.5 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
-        mouseTarget.x = 0.3 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t))) + .3;
+    if (!isPaused) {
+        if (isCoarse) {
+            const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height.value) * 1);
+            const t = scrollFraction * Math.PI;
+            mouseTarget.y = -0.5 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+            mouseTarget.x = 0.3 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t))) + .3;
+        }
+
+        if (firstFrame) {
+            firstFrame = false;
+
+            sourcesArray[0].value.x = mouseTarget.x;
+            sourcesArray[0].value.y = mouseTarget.y - 0.07;
+
+            document.getElementById("loading").style.display = "none";
+        }
+
+        const xdist = mouseTarget.x - sourcesArray[0].value.x;
+        const ydist = mouseTarget.y - sourcesArray[0].value.y;
+        const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
+
+        sourcesArray[0].value.x += xdist * lerpSpeed;
+        sourcesArray[0].value.y += ydist * lerpSpeed;
+
+        pipeline.render();
+
+
+        if (settled) {
+            renderer.setAnimationLoop(null);
+            isAnimating = false;
+            // console.log("paused")
+        }
     }
-
-    if (firstFrame) {
-        firstFrame = false;
-
-        sourcesArray[0].value.x = mouseTarget.x;
-        sourcesArray[0].value.y = mouseTarget.y - 0.07;
-
-        document.getElementById("loading").style.display = "none";
-    }
-
-    const xdist = mouseTarget.x - sourcesArray[0].value.x;
-    const ydist = mouseTarget.y - sourcesArray[0].value.y;
-    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
-
-    sourcesArray[0].value.x += xdist * lerpSpeed;
-    sourcesArray[0].value.y += ydist * lerpSpeed;
-
-    pipeline.render();
-
-
-    if (settled) {
-        renderer.setAnimationLoop(null);
-        isAnimating = false;
-        // console.log("paused")
-    }
-
 
 }
 

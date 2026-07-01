@@ -59,7 +59,7 @@ main {
 .project-body p {
     margin-top: 0;
     overflow: visible;
-    line-height: 16px;
+    line-height: 18px;
 }
 
 h4 {
@@ -83,8 +83,8 @@ h4 {
     padding: 12px 24px;
     background-color: #0000f6a7;
     color: rgba(255, 255, 255, 0.95);
-    font-size: medium;
-    font-weight: bold;
+    font-size:14px;
+    font-weight: 600;
     border-radius: 10px;
     border-style: solid;
     border-color: #ffffff42;
@@ -123,6 +123,7 @@ hr {
 
 .link-btn:hover span {
     transform: scale(1.075);
+    letter-spacing: 0.05em;
 }
 
 .link-btn:active {
@@ -136,7 +137,7 @@ hr {
     display: flex;
     justify-content: space-between;
     line-height: normal;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .project-header p {
@@ -163,7 +164,7 @@ hr {
     border-style: solid;
     border-width: 1px;
     align-content: center;
-    font-size: smaller;
+    font-size: 11px;
     opacity: .75;
 }
 
@@ -173,18 +174,18 @@ hr {
 }
 
 h3 {
-    font-weight: normal;
-    font-size: medium;
+    font-weight: 400;
+    font-size: 14px;
     font-style: italic;
     opacity: .8;
-    margin: 4px 0 0 0;
+    margin: 3px 0 0 0;
 }
 
 h2 {
     letter-spacing: .05em;
     margin: 0;
-    font-size: larger;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 p {
@@ -287,6 +288,12 @@ p {
     #info {
         position: relative;
         flex-direction: column;
+    }
+    #info:hover {
+        border-bottom-left-radius: 14px !important;
+    }
+    #info-summary {
+        justify-content: center;
     }
 
 

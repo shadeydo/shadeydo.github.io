@@ -10,6 +10,16 @@ const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
 const width = TSL.uniform(window.innerWidth);
 const height = TSL.uniform(window.outerHeight);
+let isPaused = false;
+const pauseBtn = document.getElementById("pause");
+pauseBtn.addEventListener("click", () => {
+    if (isPaused) {
+        pauseBtn.innerHTML = "⏸︎";    
+    } else {
+        pauseBtn.innerHTML = "⏵︎";
+    }
+    isPaused = !isPaused;
+});
 
 if (isCoarse) {
     height.value = window.screen.height;
@@ -248,46 +258,46 @@ let firstFrame = true;
 const timer = new THREE.Timer();
 
 function animate() {
-
-    if (isCoarse) {
-        let t;
-        if (document.body.scrollHeight > height.value) {
-            t = window.scrollY / 500 + 9.5;
-            // console.log(document.body.scrollHeight, height.value)
+    if (!isPaused) {
+        if (isCoarse) {
+            let t;
+            if (document.body.scrollHeight > height.value) {
+                t = window.scrollY / 500 + 9.5;
+                // console.log(document.body.scrollHeight, height.value)
+            } else {
+                timer.update();
+                t = (timer.getElapsed() / 8 + 10);
+                // console.log(t);
+            }
+            mouseTarget.y = 0.6 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
+            mouseTarget.x = 0.75 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
         } else {
-            timer.update();
-            t = (timer.getElapsed() / 8 + 10);
-            // console.log(t);
+            renderer.setSize(width.value, height.value);
         }
-        mouseTarget.y = 0.6 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
-        mouseTarget.x = 0.75 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
-    } else {
-        renderer.setSize(width.value, height.value);
-    }
 
-    const xdist = mouseTarget.x - roots[0].value.x;
-    const ydist = mouseTarget.y - roots[0].value.y;
-    const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
-    if (firstFrame) {
-        firstFrame = false;
-        roots[0].value.x = mouseTarget.x + 0.05;
-        roots[0].value.y = mouseTarget.y - 0.05;
-        document.getElementById("loading").style.display = "none";
-    }
+        const xdist = mouseTarget.x - roots[0].value.x;
+        const ydist = mouseTarget.y - roots[0].value.y;
+        const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
+        if (firstFrame) {
+            firstFrame = false;
+            roots[0].value.x = mouseTarget.x + 0.05;
+            roots[0].value.y = mouseTarget.y - 0.05;
+            document.getElementById("loading").style.display = "none";
+        }
 
 
-    roots[0].value.x += xdist * lerpSpeed;
-    roots[0].value.y += ydist * lerpSpeed;
+        roots[0].value.x += xdist * lerpSpeed;
+        roots[0].value.y += ydist * lerpSpeed;
 
 
 
 
-    pipeline.render();
-
-    if (settled) {
-        renderer.setAnimationLoop(null);
-        isAnimating = false;
-        // console.log("paused")
+        pipeline.render();
+        if (settled) {
+            renderer.setAnimationLoop(null);
+            isAnimating = false;
+            // console.log("paused")
+        }
     }
 }
 
