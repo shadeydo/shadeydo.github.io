@@ -1,7 +1,11 @@
+:root {
+  --page-theme-color:var(--resume-theme-color);
+}
+
 #my-pdf {
     position: absolute;
     top:0;
-    right:0;
+    right: 0;
     width: 40vw;
     height: calc(100vh - 40px);
     margin:20px;
@@ -10,12 +14,23 @@
     display: none;
 }
 
+p {
+    margin:0;
+}
+
+
 @media (max-width: 1000px) {
+    main {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 100px;
+    }
     #my-pdf {
         position: relative;
         width: calc(100vw - 40px);
         height: calc((100vw - 40px) / 0.7727272727 + 50px);
-        margin-bottom: 100px;
+        
     }
     #mobile-spacer {
         display: block;
@@ -25,12 +40,16 @@
         justify-content: center;
         align-items: center;
         color:white;
-
     }
-    
+
+    #info {
+        position: relative;
+        flex-direction: column;
+        height:auto;
+    }
+    #info-summary {
+        justify-content: center;
+    }
 
 }
 
-[selected] {
-  color: #3ea885;
-}
