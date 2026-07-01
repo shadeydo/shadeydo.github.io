@@ -152,15 +152,10 @@ header {
 
 
 
-@media (max-width: 550px) {
-  #header {
-    width: calc(100% - 8px);
-  }
-}
-
-@media (max-width: 423px) {
+@media (max-width: 450px) {
   header {
     font-size: medium;
+    width: calc(100vw - 20px);
   }
 
   .header-link:hover {
@@ -170,8 +165,9 @@ header {
   [selected] {
     font-size: large;
   }
-
-
+  #logo {
+    height:26px;
+  }
 }
 
 .block {
