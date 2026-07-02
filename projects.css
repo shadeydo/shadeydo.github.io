@@ -1,5 +1,6 @@
 :root {
     --page-theme-color: var(--projects-theme-color);
+    overflow-x: hidden;
 }
 
 
@@ -36,6 +37,7 @@ main {
     grid-template-rows: 0fr;
     transition: grid-template-rows 350ms ease;
     overflow: hidden;
+    color:rgba(255, 255, 255, 0.6);
 }
 
 .project-body>* {
@@ -81,7 +83,7 @@ h4 {
 
 .link-btn {
     padding: 12px 24px;
-    background-color: #0000f6a7;
+    background-color: #0000f693;
     color: rgba(255, 255, 255, 0.95);
     font-size:14px;
     font-weight: 600;
@@ -106,7 +108,7 @@ hr {
     border-radius: 1px;
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.1);
     margin: 12px 6px;
 }
 
@@ -225,27 +227,6 @@ p {
     left: 0;
 }
 
-#info-video {
-    pointer-events: none;
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: 4px;
-    position: relative;
-}
-
-#info-video iframe {
-    pointer-events: all;
-    width: 200% !important;
-    max-height: unset;
-    height: 200% !important;
-    transform: scale(0.5);
-    transform-origin: top left;
-    border-width: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 
 #mobile-spacer {
     display: none;
@@ -299,3 +280,24 @@ p {
 
 
 }
+
+.block:not(header) {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+#info {
+    color:rgba(255, 255, 255, 0.6);
+}
+
+
+@media (pointer: coarse) {
+    .project-body {
+        color: rgba(255, 255, 255, 0.85);
+    }
+    .block:not(header) {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* main{ display:none; } */

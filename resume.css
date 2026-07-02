@@ -19,6 +19,28 @@ p {
     margin: 0;
 }
 
+#info-video {
+        pointer-events: none;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    #info-video iframe {
+        pointer-events: all;
+        width: 200% !important;
+        max-height: unset;
+        height: 200% !important;
+        transform: scale(0.5);
+        transform-origin: top left;
+        border-width: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
 
 @media (max-width: 1000px) {
     main {

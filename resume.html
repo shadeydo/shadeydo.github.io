@@ -74,11 +74,20 @@
             <div id="info-content">
                 <div>
                     <p>
-                        This is a <a class="body-link" href="https://playgameoflife.com/info" target="_blank">Cellular
-                            Automaton<a> called <a class="body-link"
-                                    href="https://en.wikipedia.org/wiki/Brian%27s_Brain" target="_blank">Brian's
-                                    Brain</a>. Unfortunately, because this requires a GPU ping-pong buffer, for the time being this is unsupported on mobile.
+                        This uses <a class="body-link" href="https://en.wikipedia.org/wiki/Beeman%27s_algorithm"
+                            target="_blank">Beeman's Algorithm</a> to simulate particle attractions towards five
+                        "gravity basins," one of which the cursor (or scroll on mobile) controls. The pixels are
+                        assigned colors based on
+                        which basin their corresponding coordinate points are closest to by the end of the
+                        simulation. It's inspired by the following 2swap video:
                     </p>
+                    <div class="info-visual" id="info-video">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/LavXSS5Xtbg?si=qXuPqF0vQj2o3J0s&amp;controls=0"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>

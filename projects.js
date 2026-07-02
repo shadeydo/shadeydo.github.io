@@ -3,7 +3,6 @@ import * as TSL from "three/tsl";
 import { pass } from "three/tsl";
 import { bloom } from "three/addons/tsl/display/BloomNode.js";
 
-
 const renderer = new THREE.WebGPURenderer({ antialias: true });
 document.body.prepend(renderer.domElement);
 const isCoarse = window.matchMedia('(pointer: coarse)').matches;
@@ -13,18 +12,13 @@ const height = TSL.uniform(window.innerHeight);
 if (isCoarse) {
     height.value = window.screen.height;
 }
+
 let isPaused = false;
 const pauseBtn = document.getElementById("pause");
 pauseBtn.addEventListener("click", () => {
-    if (isPaused) {
-        pauseBtn.innerHTML = "⏸︎";    
-    } else {
-        pauseBtn.innerHTML = "⏵︎";
-    }
+    pauseBtn.innerHTML = isPaused ? "⏸︎" : "⏵︎";
     isPaused = !isPaused;
 });
-
-const graphScale = width.value / height.value;
 
 await renderer.init();
 renderer.setSize(width.value, height.value);
@@ -34,10 +28,9 @@ window.addEventListener("resize", () => {
     if (!isCoarse) {
         height.value = window.innerHeight;
     }
-
     renderer.setSize(width.value, height.value);
 
-    aspectUniform.value = height.value / width.value;
+    updateCameraFrustum();
 
     if (!isAnimating) {
         isAnimating = true;
@@ -45,303 +38,291 @@ window.addEventListener("resize", () => {
     }
 });
 
-// constants up here!
+const a = TSL.uniform(0.63);
+const b = TSL.uniform(2.10);
 
+const aMin = .45, aMax = .65;
+const bMin = 1.8, bMax = 2.15;
 
-
-const friction = 0.1;
-
-const pendulumLength = 1;
-const gravity = 1.0;
-const chargeMass = 1;
-
-
-const graphCenterX = .2;
-const graphCenterY = -.1;
-let graphCenter = TSL.uniform(TSL.vec2(graphCenterX, graphCenterY));
-
-const lerpSpeed = 0.05;
-
-const sources = 5;
-const startAngle = -Math.PI / 4;
-const radius = 1;
-
-const sourcesArray = Array.from({ length: sources }, (_, i) => {
-    const angle = startAngle + (2 * Math.PI * i) / sources;
-    return TSL.uniform(new THREE.Vector2(Math.cos(angle) * radius, Math.sin(angle) * radius));
-});
-
-
-
+const seedJitter = 40;
+const displayScale = 115.0;
+const graphPosition = TSL.vec2(0, 50);
 
 const cores = navigator.hardwareConcurrency;
 const memory = navigator.deviceMemory;
 
-
-// console.log("CPU cores:", cores, "| memory:", memory);
+let useBloom;
+let particleCount;
+let totalSteps;
+let opacity;
 
 const debugMode = "";
-
-let useBloom;
-
-let iterations;
-let timeStepSize;
-let epsilon;
-
-
-let palette = [
-    new THREE.Color(0x0000F6),
-    new THREE.Color(0xFFFFFF),
-    new THREE.Color(0x000000),
-    new THREE.Color(0xFFFFFF),
-    new THREE.Color(0x000000)
-]
-
-if (isCoarse) {
+if (cores <= 2 || memory <= 1 || debugMode == "low") {
+    console.log("projects: low");
     renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    iterations = 10;
-    timeStepSize = 0.4;
-    epsilon = 0.1;
+    particleCount = 10_000;
+    totalSteps = 50;
     useBloom = true;
-} else if (cores <= 2 || memory <= 1 || debugMode == "low") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.5);
-    console.log("low")
-    iterations = 10;
-    timeStepSize = 0.4;
-    epsilon = 0.1;
-    useBloom = false;
-    palette = [
-        new THREE.Color(0x0000F6),
-        new THREE.Color(0xFFFFFF),
-        new THREE.Color(0x171717),
-        new THREE.Color(0xFFFFFF),
-        new THREE.Color(0x171717)
-    ]
-
+    opacity = .4;
 } else if (cores <= 4 || memory <= 2 || debugMode == "medium") {
-    renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    console.log("projects: medium");
-    iterations = 30;
-    timeStepSize = .2;
-    epsilon = 0.035;
-    useBloom = true;
+    if (isCoarse) {
+        console.log("projects: medium (mobile)");
+        renderer.setPixelRatio(window.devicePixelRatio*0.75);
+        particleCount = 100_000;
+        totalSteps = 50;
+        useBloom = true;
+        opacity = .75;
+    } else {
+        console.log("projects: medium");
+        renderer.setPixelRatio(window.devicePixelRatio);
+        particleCount = 100_000;
+        totalSteps = 50;
+        useBloom = true;
+        opacity = .2;
+    }
 } else {
-    3
-    renderer.setPixelRatio(window.devicePixelRatio);
-    console.log("projects: high")
-    iterations = 60;
-    timeStepSize = 0.13;
-    epsilon = 0.015;
-    useBloom = true;
-}
-
-
-
-let sourcesUniform = TSL.uniformArray(sourcesArray, "vec2");
-
-function get_closest_source(point) {
-    let minDist = TSL.dot(point.sub(sourcesArray[0]), point.sub(sourcesArray[0]));
-    let minIndex = TSL.float(0);
-
-    for (let i = 1; i < sourcesArray.length; i++) {
-        const diff = point.sub(sourcesArray[i]);
-        const dist = TSL.dot(diff, diff);
-        const isCloser = dist.lessThan(minDist);
-        minDist = TSL.select(isCloser, dist, minDist);
-        minIndex = TSL.select(isCloser, TSL.float(i), minIndex);
+    if (isCoarse) {
+        console.log("projects: high (mobile)");
+        renderer.setPixelRatio(window.devicePixelRatio);
+        particleCount = 250_000;
+        totalSteps = 50;
+        useBloom = true;
+        opacity = .65;
+    } else {
+        console.log("projects: high");
+        renderer.setPixelRatio(window.devicePixelRatio * 2);
+        particleCount = 500_000;
+        totalSteps = 50;
+        useBloom = true;
+        opacity = 0.1;
     }
-    return minIndex;
 }
 
-function calc_acceleration(charge, velocity) {
-    let acceleration = TSL.vec2(0, 0);
-    for (let i = 0; i < sourcesArray.length; i++) {
-        const diff = charge.sub(sourcesArray[i]);
-        const distSquared = TSL.dot(diff, diff).add(epsilon);
-        acceleration = acceleration.add(diff.div(distSquared.mul(TSL.sqrt(distSquared))));
-    }
-    return acceleration
-        .sub(charge.mul(gravity / pendulumLength))
-        .sub(velocity.mul(friction))
-        .div(chargeMass);
+function hash11(x) {
+    return TSL.fract(TSL.sin(x.mul(12.9898)).mul(43758.5453123));
 }
-
-
-
-
 
 const scene = new THREE.Scene();
-const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
+const viewHeight = 60;
+const camera = new THREE.OrthographicCamera(
+    -viewHeight * (width.value / height.value),
+    viewHeight * (width.value / height.value),
+    viewHeight,
+    -viewHeight,
+    0.1,
+    1000
+);
+camera.position.set(0, 30, 90);
+camera.lookAt(0, 0, 0);
 
-const aspectUniform = TSL.uniform(height.value / width.value);
+function updateCameraFrustum() {
+    const aspect = width.value / height.value;
+    camera.left = -viewHeight * aspect;
+    camera.right = viewHeight * aspect;
+    camera.top = viewHeight;
+    camera.bottom = -viewHeight;
+    camera.updateProjectionMatrix();
+}
 
-const uvNode = TSL.uv();
-const x = uvNode.x.mul(graphScale).sub(graphScale / 2).add(graphCenter.x);
-const y = uvNode.y.mul(aspectUniform.mul(graphScale)).sub(aspectUniform.mul(graphScale).div(2)).add(graphCenter.y);
-let vel = TSL.vec2(0, 0);
-let points = TSL.vec2(x, y);
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(new Float32Array(particleCount * 3), 3)
+);
+geometry.setDrawRange(0, particleCount);
 
+const material = new THREE.PointsMaterial({ color: 0xffffff });
+material.transparent = true;
+material.blending = THREE.AdditiveBlending;
+material.depthWrite = false;
+material.opacity = opacity;
+material.size = 10;
 
-const simulate = TSL.Fn(() => {
-    let acceleration = calc_acceleration(points, vel);
+const points = new THREE.Points(geometry, material);
+scene.add(points);
 
+const particlePosition = TSL.Fn(() => {
+    const id = TSL.vertexIndex.toFloat();
 
-    let newVel = vel.add(acceleration.mul(timeStepSize));
-    let newPoints = points.add(newVel.add(vel).div(2).mul(timeStepSize));
-    let newAccel = calc_acceleration(newPoints, newVel);
+    const rx = hash11(id).mul(seedJitter).sub(seedJitter * 0.5);
+    const ry = hash11(id.add(10.0)).mul(seedJitter).sub(seedJitter * 0.5);
 
+    const pos = TSL.vec2(rx, ry).toVar();
 
-    let prevPoints = points.toVar();
-    let prevVel = vel.toVar();
-    let prevAccel = acceleration.toVar();
+    TSL.Loop(totalSteps, () => {
+        const x = pos.x;
+        const y = pos.y;
 
-    points = newPoints.toVar();
-    vel = newVel.toVar();
-    acceleration = newAccel.toVar();
+        const newX = TSL.sin(x.mul(x).sub(y.mul(y)).add(a));
+        const newY = TSL.cos(TSL.float(2.0).mul(x).mul(y).add(b));
 
-    TSL.Loop(iterations, () => {
-        const halfVel = vel.add(acceleration.mul(timeStepSize * 0.5)).toVar();
-        newPoints = points.add(halfVel.mul(timeStepSize)).toVar();
-        newAccel = calc_acceleration(newPoints, halfVel).toVar();
-        newVel = halfVel.add(newAccel.mul(timeStepSize * 0.5)).toVar();
-
-        points.assign(newPoints);   // only once
-        vel.assign(newVel);
-        acceleration.assign(newAccel);
+        pos.assign(TSL.vec2(newX, newY));
     });
-    return points;
-});
-const simulatedPoints = simulate();
 
+    const rotated = TSL.vec2(pos.y, pos.x.negate());
 
-// palette = [
-//     new THREE.Color(0x0E0210),
-//     new THREE.Color(0x36073D),
-//     new THREE.Color(0x450e7b),
-//     new THREE.Color(0x310d8a),
-//     new THREE.Color(0x7e0e4d),
-//     new THREE.Color(0xb80f1f),
-//     new THREE.Color(0xd69318),
-//     new THREE.Color(0xdfcf21),
-//     new THREE.Color(0x80a49c),
-//     new THREE.Color(0xd5d5d5),
-// ].reverse();
+    return TSL.vec3(
+        rotated.x.mul(displayScale).add(graphPosition.x),
+        rotated.y.mul(displayScale).add(graphPosition.y),
+        0.0
+    );
+})();
 
-
-
-const mindists = get_closest_source(simulatedPoints);
-
-let color = TSL.vec3(0, 0, 0);
-
-// color = color.add(
-// TSL.select(mindists.greaterThan(3),new THREE.Color(0xd5d5d5),
-// TSL.select(mindists.greaterThan(2),new THREE.Color(0x80a49c),
-// TSL.select(mindists.greaterThan(1.5),new THREE.Color(0x80a49c),
-// TSL.select(mindists.greaterThan(1.25),new THREE.Color(0xdfcf21),
-// TSL.select(mindists.greaterThan(1),new THREE.Color(0xd69318),
-// TSL.select(mindists.greaterThan(0.8),new THREE.Color(0xb80f1f),
-// TSL.select(mindists.greaterThan(0.6),new THREE.Color(0x7e0e4d),
-// TSL.select(mindists.greaterThan(.4),new THREE.Color(0x310d8a),
-// TSL.select(mindists.greaterThan(.2),new THREE.Color(0x450e7b),
-// TSL.select(mindists.greaterThan(.1),new THREE.Color(0x36073D),
-// TSL.vec3(0, 0, 0)
-// )))))))))));
-
-palette.forEach((c, i) => {
-    const match = mindists.equal(TSL.float(i));
-    color = color.add(TSL.select(match, TSL.vec3(c.r, c.g, c.b), TSL.vec3(0, 0, 0)));
-});
-
-
-const colorNode = color;
-
-const material = new THREE.MeshBasicNodeMaterial({ colorNode });
-const geometry = new THREE.PlaneGeometry(2, 2);
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
+material.positionNode = particlePosition;
 
 const pipeline = new THREE.RenderPipeline(renderer);
 
+const gradColor0 = new THREE.Color(0x000000);
+const gradColor1 = new THREE.Color(0x5900ff);
+const gradColor2 = new THREE.Color(0x00ffea);
+
+
+
+function rgb2hsv(r, g, b) {
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const d = max - min;
+
+    let h = 0;
+    if (d !== 0) {
+        if (max === r) h = ((g - b) / d) % 6;
+        else if (max === g) h = (b - r) / d + 2;
+        else h = (r - g) / d + 4;
+        h = (h / 6 + 1) % 1;
+    }
+
+    return [h, max === 0 ? 0 : d / max, max];
+}
+
+const hsv0 = rgb2hsv(gradColor0.r, gradColor0.g, gradColor0.b);
+const hsv1 = rgb2hsv(gradColor1.r, gradColor1.g, gradColor1.b);
+const hsv2 = rgb2hsv(gradColor2.r, gradColor2.g, gradColor2.b);
+
+const gradStop1 = 0, gradStop2 = .5;
+
+const gradSmooth1 = Math.max(.9, 1e-4);
+
+function hsv2rgb(c) {
+    const K = TSL.vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    const p = TSL.abs(
+        c.x.add(K.xyz).fract().mul(6.0).sub(K.www)
+    );
+
+    return c.z.mul(
+        TSL.mix(K.xxx, TSL.clamp(p.sub(K.xxx), 0.0, 1.0), c.y)
+    );
+}
+
+function mixHue(h0, h1, t) {
+    const start = TSL.float(h0);
+    const diff = TSL.float(h1).sub(start);
+    const wrapped = diff.sub(TSL.round(diff));
+    return start.add(wrapped.mul(t)).fract();
+}
+
+function gradientMap(colorNode) {
+    const luma = TSL.dot(colorNode.rgb, TSL.vec3(0.2126, 0.7152, 0.0722));
+    const stepEpsilon = 1e-5;
+    const t1 = TSL.step(gradStop1 + stepEpsilon, luma);
+
+    const h_a = mixHue(hsv0[0], hsv1[0], t1);
+    const s_a = TSL.mix(hsv0[1], hsv1[1], t1);
+    const v_a = TSL.mix(hsv0[2], hsv1[2], t1);
+
+    const t2 = TSL.smoothstep(
+        gradStop2 - gradSmooth1 * 0.5,
+        gradStop2 + gradSmooth1 * 0.5,
+        luma
+    );
+    const h_b = mixHue(h_a, hsv2[0], t2);
+    const s_b = TSL.mix(s_a, hsv2[1], t2);
+    const v_b = TSL.mix(v_a, hsv2[2], t2);
+
+    const finalRgb = hsv2rgb(TSL.vec3(h_b, s_b, v_b));
+    return TSL.vec4(finalRgb, colorNode.a);
+}
+
 const scenePass = pass(scene, camera);
-const bloomPass = bloom(scenePass, 0.05, .5, 0.01);
+const gradedPass = gradientMap(scenePass);
 
-pipeline.outputNode = useBloom
-    ? scenePass.add(bloomPass)
-    : scenePass;
+const bloomStrength = 1;
+const bloomRadius = 1;
+const bloomThreshold = .15;
+const bloomPass = bloom(gradedPass, bloomStrength, bloomRadius, bloomThreshold);
 
+const combined = gradedPass.add(bloomPass);
+pipeline.outputNode = useBloom ? combined : gradedPass;
 
+const paramTarget = { x: a.value, y: b.value };
+const lerpSpeed = .08;
 
-
-let firstFrame = true;
-
-
-const mouseTarget = { x: 0, y: 0 };
-
+function updateParamTarget(clientX, clientY) {
+    const nx = THREE.MathUtils.clamp(clientX / width.value, 0, 1);
+    const ny = THREE.MathUtils.clamp(clientY / height.value, 0, 1);
+    paramTarget.x = aMin + nx * (aMax - aMin);
+    paramTarget.y = bMin + ny * (bMax - bMin);
+}
 
 let isAnimating = true;
 
-
 if (isCoarse) {
-    window.addEventListener('scroll', (event) => {
+    window.addEventListener("scroll", (event) => {
+
         if (!isAnimating) {
             isAnimating = true;
             // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
     });
+
 } else {
     window.addEventListener("mousemove", (event) => {
-        mouseTarget.x = (event.clientX / width.value) * graphScale - graphScale / 2 + graphCenterX;
-        mouseTarget.y = -((event.clientY / height.value) * graphScale * aspectUniform.value - (graphScale * aspectUniform.value) / 2) + graphCenterY;
+        updateParamTarget(event.clientX, event.clientY);
         if (!isAnimating) {
             isAnimating = true;
-            // console.log("animating")
             renderer.setAnimationLoop(animate);
         }
-        // console.log(mouseTarget);
     });
 }
 
+let firstFrame = true;
+const settleThreshold = 0.00001;
 
 
-function animate() {
-    if (!isPaused) {
-        if (isCoarse) {
-            const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height.value) * 1);
-            const t = scrollFraction * Math.PI;
-            mouseTarget.y = -0.5 * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t)));
-            mouseTarget.x = 0.3 * Math.sin(t) * Math.cos(t) / (1 + (Math.sin(t) * Math.sin(t))) + .3;
-        }
+async function animate() {
+    if (isPaused) return;
 
-        if (firstFrame) {
-            firstFrame = false;
+    if (isCoarse) {
+        const scrollFraction = window.scrollY / ((document.documentElement.scrollHeight - height.value) * 1);
+        const t = scrollFraction * Math.PI;
+        paramTarget.x = .57 + 0.15 * Math.cos(t + 1)
+        paramTarget.y = 2.05 + 0.1 * Math.sin(t);
 
-            sourcesArray[0].value.x = mouseTarget.x;
-            sourcesArray[0].value.y = mouseTarget.y - 0.07;
-
-            document.getElementById("loading").style.display = "none";
-        }
-
-        const xdist = mouseTarget.x - sourcesArray[0].value.x;
-        const ydist = mouseTarget.y - sourcesArray[0].value.y;
-        const settled = Math.abs(xdist) + Math.abs(ydist) < 0.001;
-
-        sourcesArray[0].value.x += xdist * lerpSpeed;
-        sourcesArray[0].value.y += ydist * lerpSpeed;
-
-        pipeline.render();
-
-
-        if (settled) {
-            renderer.setAnimationLoop(null);
-            isAnimating = false;
-            // console.log("paused")
-        }
+        //         const aMin = .45, aMax = .75;
+        //         const bMin = 1.8, bMax = 2.3;
     }
 
+    if (firstFrame) {
+        firstFrame = false;
+        a.value = paramTarget.x + 0.005;
+        b.value = paramTarget.y - 0.005;
+        document.getElementById("loading").style.display = "none";
+    }
+
+    const xdist = paramTarget.x - a.value;
+    const ydist = paramTarget.y - b.value;
+    const settled = Math.abs(xdist) + Math.abs(ydist) < settleThreshold;
+
+    a.value += xdist * lerpSpeed;
+    b.value += ydist * lerpSpeed;
+
+    pipeline.render();
+
+    if (settled) {
+        renderer.setAnimationLoop(null);
+        isAnimating = false;
+    }
 }
 
-
-void renderer.domElement.offsetWidth.value;
 renderer.setAnimationLoop(animate);
