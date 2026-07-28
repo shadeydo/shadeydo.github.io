@@ -60,7 +60,7 @@ const debugMode = "";
 if (cores <= 2 || memory <= 1 || debugMode == "low") {
     console.log("projects: low");
     renderer.setPixelRatio(window.devicePixelRatio * 0.75);
-    particleCount = 10_000;
+    particleCount = 50_000;
     totalSteps = 50;
     useBloom = true;
     opacity = .4;
