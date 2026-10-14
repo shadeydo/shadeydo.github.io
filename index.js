@@ -115,7 +115,7 @@ if (cores <= 2 || memory <= 1 || debugMode == "low") {
     useBloom = true;
     palette = [
         new THREE.Color(0x0E0210),
-        new THREE.Color(0xB041F),
+        new THREE.Color(0x0B041F),
         new THREE.Color(0x36073D),
         new THREE.Color(0x6c0d7a),
         new THREE.Color(0x450e7b),
