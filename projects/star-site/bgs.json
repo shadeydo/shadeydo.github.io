@@ -1,0 +1,3382 @@
+[
+    {
+        "Path": "bgs\/metal23_s.jpg",
+        "Avg": "#78767b",
+        "Dominant": "#77747a"
+    },
+    {
+        "Path": "bgs\/charcoal_corrugate_s.jpg",
+        "Avg": "#41444b",
+        "Dominant": "#373940"
+    },
+    {
+        "Path": "bgs\/hammered_brass_s.jpg",
+        "Avg": "#958a5b",
+        "Dominant": "#86794f"
+    },
+    {
+        "Path": "bgs\/flower04_s.jpg",
+        "Avg": "#5b6a51",
+        "Dominant": "#4b6643"
+    },
+    {
+        "Path": "bgs\/escher_horsemen_s.jpg",
+        "Avg": "#68b668",
+        "Dominant": "#2d992c"
+    },
+    {
+        "Path": "bgs\/artificial1_s.jpg",
+        "Avg": "#5f5d45",
+        "Dominant": "#454431"
+    },
+    {
+        "Path": "bgs\/churchfacade_s.jpg",
+        "Avg": "#7b6d69",
+        "Dominant": "#95837c"
+    },
+    {
+        "Path": "bgs\/pave6_s.jpg",
+        "Avg": "#b68158",
+        "Dominant": "#ba794d"
+    },
+    {
+        "Path": "bgs\/s_0017_s.jpg",
+        "Avg": "#455a6b",
+        "Dominant": "#263542"
+    },
+    {
+        "Path": "bgs\/icewall2_s.jpg",
+        "Avg": "#d4d3db",
+        "Dominant": "#cfced6"
+    },
+    {
+        "Path": "bgs\/avignon2_s.jpg",
+        "Avg": "#e5d3bd",
+        "Dominant": "#e5d3bd"
+    },
+    {
+        "Path": "bgs\/goldglobes_s.jpg",
+        "Avg": "#fbb207",
+        "Dominant": "#fbbf06"
+    },
+    {
+        "Path": "bgs\/stamp15_s.jpg",
+        "Avg": "#818181",
+        "Dominant": "#676767"
+    },
+    {
+        "Path": "bgs\/goldfloralangles_lg_s.jpg",
+        "Avg": "#826a49",
+        "Dominant": "#7f6b4a"
+    },
+    {
+        "Path": "bgs\/computer3_s.jpg",
+        "Avg": "#94b7c0",
+        "Dominant": "#85bac8"
+    },
+    {
+        "Path": "bgs\/illusion_s.jpg",
+        "Avg": "#c2c2c2",
+        "Dominant": "#c9c9c9"
+    },
+    {
+        "Path": "bgs\/stone3_s.jpg",
+        "Avg": "#873d2b",
+        "Dominant": "#883c2b"
+    },
+    {
+        "Path": "bgs\/ribbed_s.jpg",
+        "Avg": "#763512",
+        "Dominant": "#6f2a0f"
+    },
+    {
+        "Path": "bgs\/jupiter1_s.jpg",
+        "Avg": "#c8956c",
+        "Dominant": "#c59168"
+    },
+    {
+        "Path": "bgs\/pebbles10_s.jpg",
+        "Avg": "#776a64",
+        "Dominant": "#70645d"
+    },
+    {
+        "Path": "bgs\/flowertile1_s.jpg",
+        "Avg": "#d4d2c3",
+        "Dominant": "#dbd9c7"
+    },
+    {
+        "Path": "bgs\/ornatewindow1_s.jpg",
+        "Avg": "#a5a4a0",
+        "Dominant": "#cecac1"
+    },
+    {
+        "Path": "bgs\/wood10_s.jpg",
+        "Avg": "#895b3f",
+        "Dominant": "#885a3e"
+    },
+    {
+        "Path": "bgs\/arch1_s.jpg",
+        "Avg": "#4d4842",
+        "Dominant": "#544e48"
+    },
+    {
+        "Path": "bgs\/tile9_s.jpg",
+        "Avg": "#9c8f79",
+        "Dominant": "#b6a892"
+    },
+    {
+        "Path": "bgs\/claytile1_s.jpg",
+        "Avg": "#a45c44",
+        "Dominant": "#a5553b"
+    },
+    {
+        "Path": "bgs\/flowerpattern_s-1.jpg",
+        "Avg": "#78a5c0",
+        "Dominant": "#729ebb"
+    },
+    {
+        "Path": "bgs\/manjimup_jarrah_s.jpg",
+        "Avg": "#7d5151",
+        "Dominant": "#7d5251"
+    },
+    {
+        "Path": "bgs\/warptile_s.jpg",
+        "Avg": "#a3a3a3",
+        "Dominant": "#9e9e9e"
+    },
+    {
+        "Path": "bgs\/blood_s.jpg",
+        "Avg": "#ab2d28",
+        "Dominant": "#a92925"
+    },
+    {
+        "Path": "bgs\/cherry_s.jpg",
+        "Avg": "#850c0c",
+        "Dominant": "#810607"
+    },
+    {
+        "Path": "bgs\/design8_s.jpg",
+        "Avg": "#d4d4c5",
+        "Dominant": "#daddd0"
+    },
+    {
+        "Path": "bgs\/design2_s-1.jpg",
+        "Avg": "#9d8777",
+        "Dominant": "#9c8676"
+    },
+    {
+        "Path": "bgs\/tiretread_s.jpg",
+        "Avg": "#535353",
+        "Dominant": "#474747"
+    },
+    {
+        "Path": "bgs\/smalltile_s.jpg",
+        "Avg": "#7c562c",
+        "Dominant": "#7b5328"
+    },
+    {
+        "Path": "bgs\/barndoor2_s.jpg",
+        "Avg": "#81807d",
+        "Dominant": "#383433"
+    },
+    {
+        "Path": "bgs\/wallpaper9_s.jpg",
+        "Avg": "#ddbd7d",
+        "Dominant": "#e0c084"
+    },
+    {
+        "Path": "bgs\/paper3_s.jpg",
+        "Avg": "#e9dae0",
+        "Dominant": "#e9dae0"
+    },
+    {
+        "Path": "bgs\/drop1_s.jpg",
+        "Avg": "#2bd2e8",
+        "Dominant": "#92e7f4"
+    },
+    {
+        "Path": "bgs\/bluecrosstile_s.jpg",
+        "Avg": "#f4f3fa",
+        "Dominant": "#f5f4f9"
+    },
+    {
+        "Path": "bgs\/woodpanel10_s.jpg",
+        "Avg": "#844634",
+        "Dominant": "#824232"
+    },
+    {
+        "Path": "bgs\/saint_augustine_door2_s.jpg",
+        "Avg": "#686669",
+        "Dominant": "#3e3d3f"
+    },
+    {
+        "Path": "bgs\/rrans_rondo_s.jpg",
+        "Avg": "#d6d6d0",
+        "Dominant": "#c2c3bc"
+    },
+    {
+        "Path": "bgs\/paper1_s.jpg",
+        "Avg": "#dcb595",
+        "Dominant": "#ddb696"
+    },
+    {
+        "Path": "bgs\/woodtile19_s.jpg",
+        "Avg": "#66461e",
+        "Dominant": "#63441d"
+    },
+    {
+        "Path": "bgs\/s_0031_s.jpg",
+        "Avg": "#301d6a",
+        "Dominant": "#28145f"
+    },
+    {
+        "Path": "bgs\/s_0089_s.jpg",
+        "Avg": "#93b2a1",
+        "Dominant": "#ebe8dc"
+    },
+    {
+        "Path": "bgs\/acharya_grass17_s.jpg",
+        "Avg": "#576b47",
+        "Dominant": "#546948"
+    },
+    {
+        "Path": "bgs\/design24_s.jpg",
+        "Avg": "#321e1f",
+        "Dominant": "#1e0f11"
+    },
+    {
+        "Path": "bgs\/flowertile3_s.jpg",
+        "Avg": "#d5bec6",
+        "Dominant": "#d4b9c4"
+    },
+    {
+        "Path": "bgs\/water21_s.jpg",
+        "Avg": "#116ec4",
+        "Dominant": "#1373ce"
+    },
+    {
+        "Path": "bgs\/pink_paisley_s.jpg",
+        "Avg": "#90474c",
+        "Dominant": "#883d43"
+    },
+    {
+        "Path": "bgs\/board9_s.jpg",
+        "Avg": "#caaf77",
+        "Dominant": "#cfb47a"
+    },
+    {
+        "Path": "bgs\/kiltpattern1_s.jpg",
+        "Avg": "#7c0c0c",
+        "Dominant": "#7e1312"
+    },
+    {
+        "Path": "bgs\/sports_ballsbyadf_s.jpg",
+        "Avg": "#5b4b37",
+        "Dominant": "#362518"
+    },
+    {
+        "Path": "bgs\/timber2_s.jpg",
+        "Avg": "#c64509",
+        "Dominant": "#c54108"
+    },
+    {
+        "Path": "bgs\/tile70_s.jpg",
+        "Avg": "#bebebe",
+        "Dominant": "#bebebe"
+    },
+    {
+        "Path": "bgs\/floral1_s.jpg",
+        "Avg": "#fbfbf8",
+        "Dominant": "#f8f9f6"
+    },
+    {
+        "Path": "bgs\/rockpattern_s.jpg",
+        "Avg": "#cbc8ba",
+        "Dominant": "#dedbcf"
+    },
+    {
+        "Path": "bgs\/granite2_s.jpg",
+        "Avg": "#b79e91",
+        "Dominant": "#bba194"
+    },
+    {
+        "Path": "bgs\/circles_s.jpg",
+        "Avg": "#0e0d23",
+        "Dominant": "#040480"
+    },
+    {
+        "Path": "bgs\/s_0050_s.jpg",
+        "Avg": "#263d60",
+        "Dominant": "#1b325a"
+    },
+    {
+        "Path": "bgs\/mg_bluepattern_s.jpg",
+        "Avg": "#6262a6",
+        "Dominant": "#6c6db1"
+    },
+    {
+        "Path": "bgs\/tile11_s.jpg",
+        "Avg": "#a96d3f",
+        "Dominant": "#ca844d"
+    },
+    {
+        "Path": "bgs\/brushedrepeat_s.jpg",
+        "Avg": "#a3a3a3",
+        "Dominant": "#cdcdcd"
+    },
+    {
+        "Path": "bgs\/stone1_s.jpg",
+        "Avg": "#711c14",
+        "Dominant": "#801e16"
+    },
+    {
+        "Path": "bgs\/chesscastle_s.jpg",
+        "Avg": "#eeefde",
+        "Dominant": "#edf1e1"
+    },
+    {
+        "Path": "bgs\/cooltexture2_s.jpg",
+        "Avg": "#658a6d",
+        "Dominant": "#63876a"
+    },
+    {
+        "Path": "bgs\/stonetile17_s.jpg",
+        "Avg": "#7a7a7a",
+        "Dominant": "#848484"
+    },
+    {
+        "Path": "bgs\/pinkball_s.jpg",
+        "Avg": "#f37a7a",
+        "Dominant": "#f47f7f"
+    },
+    {
+        "Path": "bgs\/marigold3_s.jpg",
+        "Avg": "#837623",
+        "Dominant": "#efbe1e"
+    },
+    {
+        "Path": "bgs\/bluepaper_s.jpg",
+        "Avg": "#9a78a5",
+        "Dominant": "#9672a0"
+    },
+    {
+        "Path": "bgs\/coal3_s.jpg",
+        "Avg": "#3d3b41",
+        "Dominant": "#242227"
+    },
+    {
+        "Path": "bgs\/holly_s.jpg",
+        "Avg": "#18410c",
+        "Dominant": "#0e2b09"
+    },
+    {
+        "Path": "bgs\/leaf_water_s.jpg",
+        "Avg": "#72c2c4",
+        "Dominant": "#6ccadd"
+    },
+    {
+        "Path": "bgs\/curve7.jpg",
+        "Avg": "#d6d6d6",
+        "Dominant": "#050505"
+    },
+    {
+        "Path": "bgs\/spiral1_s.jpg",
+        "Avg": "#57054e",
+        "Dominant": "#600651"
+    },
+    {
+        "Path": "bgs\/s_0028_s.jpg",
+        "Avg": "#8d5743",
+        "Dominant": "#ddb359"
+    },
+    {
+        "Path": "bgs\/metal1_s.jpg",
+        "Avg": "#164714",
+        "Dominant": "#11420f"
+    },
+    {
+        "Path": "bgs\/twister1_s.jpg",
+        "Avg": "#935e39",
+        "Dominant": "#915c36"
+    },
+    {
+        "Path": "bgs\/flower06_s.jpg",
+        "Avg": "#233621",
+        "Dominant": "#20341f"
+    },
+    {
+        "Path": "bgs\/greyripple_s.jpg",
+        "Avg": "#b7c2be",
+        "Dominant": "#d0ddd9"
+    },
+    {
+        "Path": "bgs\/computer5_s.jpg",
+        "Avg": "#c6cfd9",
+        "Dominant": "#dce3eb"
+    },
+    {
+        "Path": "bgs\/bluenergy_s.jpg",
+        "Avg": "#020a7b",
+        "Dominant": "#04076a"
+    },
+    {
+        "Path": "bgs\/rings2_s.jpg",
+        "Avg": "#532f2c",
+        "Dominant": "#351817"
+    },
+    {
+        "Path": "bgs\/door8_s.jpg",
+        "Avg": "#836341",
+        "Dominant": "#4b2d30"
+    },
+    {
+        "Path": "bgs\/comcrose_s.jpg",
+        "Avg": "#c76d6b",
+        "Dominant": "#c46565"
+    },
+    {
+        "Path": "bgs\/plustile_s.jpg",
+        "Avg": "#99b7e0",
+        "Dominant": "#99b7e1"
+    },
+    {
+        "Path": "bgs\/tartan3_s.jpg",
+        "Avg": "#24404d",
+        "Dominant": "#1f363a"
+    },
+    {
+        "Path": "bgs\/wood32_s.jpg",
+        "Avg": "#dabd77",
+        "Dominant": "#dabc76"
+    },
+    {
+        "Path": "bgs\/goldleafpattern_s.jpg",
+        "Avg": "#4d4235",
+        "Dominant": "#b29577"
+    },
+    {
+        "Path": "bgs\/s_0054_s.jpg",
+        "Avg": "#a99452",
+        "Dominant": "#d0bb6f"
+    },
+    {
+        "Path": "bgs\/roadsection_s.jpg",
+        "Avg": "#282e26",
+        "Dominant": "#272c26"
+    },
+    {
+        "Path": "bgs\/woodpanel8_s.jpg",
+        "Avg": "#cfa859",
+        "Dominant": "#cda24e"
+    },
+    {
+        "Path": "bgs\/sky16_s.jpg",
+        "Avg": "#a1aec5",
+        "Dominant": "#8190ab"
+    },
+    {
+        "Path": "bgs\/artificial7_s.jpg",
+        "Avg": "#402b0b",
+        "Dominant": "#3c280b"
+    },
+    {
+        "Path": "bgs\/tile1_s-2.jpg",
+        "Avg": "#aea2a7",
+        "Dominant": "#cbc4b5"
+    },
+    {
+        "Path": "bgs\/brushsteel_s.jpg",
+        "Avg": "#aeb2ba",
+        "Dominant": "#b7bbc4"
+    },
+    {
+        "Path": "bgs\/floraltile2_s.jpg",
+        "Avg": "#f0b97f",
+        "Dominant": "#f1b97b"
+    },
+    {
+        "Path": "bgs\/artificial4_s-1.jpg",
+        "Avg": "#651757",
+        "Dominant": "#46185a"
+    },
+    {
+        "Path": "bgs\/bathroomtile1_s.jpg",
+        "Avg": "#cbcdc7",
+        "Dominant": "#e0e5df"
+    },
+    {
+        "Path": "bgs\/stonetile13_s.jpg",
+        "Avg": "#6e6058",
+        "Dominant": "#817269"
+    },
+    {
+        "Path": "bgs\/cards_s.jpg",
+        "Avg": "#8f8edd",
+        "Dominant": "#6c6ad3"
+    },
+    {
+        "Path": "bgs\/brick01_s.jpg",
+        "Avg": "#8b5641",
+        "Dominant": "#804430"
+    },
+    {
+        "Path": "bgs\/s_0008_s.jpg",
+        "Avg": "#324340",
+        "Dominant": "#1b2a28"
+    },
+    {
+        "Path": "bgs\/flowers01_s.jpg",
+        "Avg": "#99866a",
+        "Dominant": "#978066"
+    },
+    {
+        "Path": "bgs\/rockhouse_s.jpg",
+        "Avg": "#545c4a",
+        "Dominant": "#434b39"
+    },
+    {
+        "Path": "bgs\/steelpops2_s.jpg",
+        "Avg": "#5a6061",
+        "Dominant": "#495152"
+    },
+    {
+        "Path": "bgs\/wooddecoration2_s.jpg",
+        "Avg": "#c6854e",
+        "Dominant": "#c37e47"
+    },
+    {
+        "Path": "bgs\/powderblue_s.jpg",
+        "Avg": "#9d9eca",
+        "Dominant": "#8484b7"
+    },
+    {
+        "Path": "bgs\/flowerstand_s.jpg",
+        "Avg": "#ebebea",
+        "Dominant": "#f0f0ef"
+    },
+    {
+        "Path": "bgs\/plasterdecor3_s.jpg",
+        "Avg": "#999794",
+        "Dominant": "#a1a19f"
+    },
+    {
+        "Path": "bgs\/floral5_s.jpg",
+        "Avg": "#a79875",
+        "Dominant": "#b9b19c"
+    },
+    {
+        "Path": "bgs\/gas_s.jpg",
+        "Avg": "#692188",
+        "Dominant": "#661e84"
+    },
+    {
+        "Path": "bgs\/travertn_s.jpg",
+        "Avg": "#d2bfa3",
+        "Dominant": "#d2bea2"
+    },
+    {
+        "Path": "bgs\/floralpaper4_s.jpg",
+        "Avg": "#75584e",
+        "Dominant": "#6b524b"
+    },
+    {
+        "Path": "bgs\/squiggletile5_s.jpg",
+        "Avg": "#9c6b66",
+        "Dominant": "#a6736f"
+    },
+    {
+        "Path": "bgs\/ovals_s.jpg",
+        "Avg": "#696b0d",
+        "Dominant": "#66680c"
+    },
+    {
+        "Path": "bgs\/design20_s.jpg",
+        "Avg": "#c9957d",
+        "Dominant": "#ecd9c0"
+    },
+    {
+        "Path": "bgs\/blueblocktile_s.jpg",
+        "Avg": "#614c87",
+        "Dominant": "#604b86"
+    },
+    {
+        "Path": "bgs\/s_0035_s.jpg",
+        "Avg": "#3b693b",
+        "Dominant": "#21501a"
+    },
+    {
+        "Path": "bgs\/buildingfacade1_s.jpg",
+        "Avg": "#77534e",
+        "Dominant": "#8a615b"
+    },
+    {
+        "Path": "bgs\/floral7_s.jpg",
+        "Avg": "#f4dfd1",
+        "Dominant": "#f5e8da"
+    },
+    {
+        "Path": "bgs\/purpledragon_s.jpg",
+        "Avg": "#9e96bd",
+        "Dominant": "#babcd5"
+    },
+    {
+        "Path": "bgs\/panel2_s-1.jpg",
+        "Avg": "#938b80",
+        "Dominant": "#a99f91"
+    },
+    {
+        "Path": "bgs\/bluepattern_s.jpg",
+        "Avg": "#5a7393",
+        "Dominant": "#5a7393"
+    },
+    {
+        "Path": "bgs\/woodtile1_s.jpg",
+        "Avg": "#a28e6a",
+        "Dominant": "#a18d69"
+    },
+    {
+        "Path": "bgs\/blueandgoldpattern2_s.jpg",
+        "Avg": "#bdabbb",
+        "Dominant": "#e2d6e1"
+    },
+    {
+        "Path": "bgs\/water27_s.jpg",
+        "Avg": "#243738",
+        "Dominant": "#1a2c2e"
+    },
+    {
+        "Path": "bgs\/raylent2_s.jpg",
+        "Avg": "#9b2c81",
+        "Dominant": "#803484"
+    },
+    {
+        "Path": "bgs\/acharya_grass11_s.jpg",
+        "Avg": "#66734f",
+        "Dominant": "#65724e"
+    },
+    {
+        "Path": "bgs\/skin3_s.jpg",
+        "Avg": "#fbeade",
+        "Dominant": "#faebde"
+    },
+    {
+        "Path": "bgs\/tile1_s-1.jpg",
+        "Avg": "#d7a25b",
+        "Dominant": "#d9a35b"
+    },
+    {
+        "Path": "bgs\/fgt_s.jpg",
+        "Avg": "#e1cb93",
+        "Dominant": "#e6d19b"
+    },
+    {
+        "Path": "bgs\/pencils_s.jpg",
+        "Avg": "#a96827",
+        "Dominant": "#b0541d"
+    },
+    {
+        "Path": "bgs\/diamondpattern2_s.jpg",
+        "Avg": "#2b2f34",
+        "Dominant": "#121215"
+    },
+    {
+        "Path": "bgs\/plasterdecor1_s.jpg",
+        "Avg": "#afb1b0",
+        "Dominant": "#b6b9b9"
+    },
+    {
+        "Path": "bgs\/panel2_s.jpg",
+        "Avg": "#5a4224",
+        "Dominant": "#3c260e"
+    },
+    {
+        "Path": "bgs\/bluetile2_s.jpg",
+        "Avg": "#cbcbd5",
+        "Dominant": "#e1dce5"
+    },
+    {
+        "Path": "bgs\/pave40_s.jpg",
+        "Avg": "#826b59",
+        "Dominant": "#88705f"
+    },
+    {
+        "Path": "bgs\/ovals_s-1.jpg",
+        "Avg": "#e1e1e1",
+        "Dominant": "#dcdcdc"
+    },
+    {
+        "Path": "bgs\/waves_s.jpg",
+        "Avg": "#767676",
+        "Dominant": "#888888"
+    },
+    {
+        "Path": "bgs\/karratha_brush_s.jpg",
+        "Avg": "#e29a62",
+        "Dominant": "#e29962"
+    },
+    {
+        "Path": "bgs\/mushroom_s.jpg",
+        "Avg": "#524b33",
+        "Dominant": "#403924"
+    },
+    {
+        "Path": "bgs\/pave64_s.jpg",
+        "Avg": "#968179",
+        "Dominant": "#9f8a83"
+    },
+    {
+        "Path": "bgs\/bevel1_s.jpg",
+        "Avg": "#615f5b",
+        "Dominant": "#4e4d49"
+    },
+    {
+        "Path": "bgs\/mase2_s.jpg",
+        "Avg": "#d3c9bb",
+        "Dominant": "#cdc4b4"
+    },
+    {
+        "Path": "bgs\/stonetile11_s.jpg",
+        "Avg": "#77615c",
+        "Dominant": "#7e6862"
+    },
+    {
+        "Path": "bgs\/misc19_s.jpg",
+        "Avg": "#ab791e",
+        "Dominant": "#c69024"
+    },
+    {
+        "Path": "bgs\/biltmore_cherry_s.jpg",
+        "Avg": "#733722",
+        "Dominant": "#733622"
+    },
+    {
+        "Path": "bgs\/greenbox_s.jpg",
+        "Avg": "#9e9f9e",
+        "Dominant": "#a4a4a4"
+    },
+    {
+        "Path": "bgs\/metal27_s.jpg",
+        "Avg": "#5e310a",
+        "Dominant": "#5f320b"
+    },
+    {
+        "Path": "bgs\/misc24_s.jpg",
+        "Avg": "#20aac1",
+        "Dominant": "#26bcd6"
+    },
+    {
+        "Path": "bgs\/tile17_s.jpg",
+        "Avg": "#6d6c5c",
+        "Dominant": "#e2dfc1"
+    },
+    {
+        "Path": "bgs\/curve9_s.jpg",
+        "Avg": "#e7e7e7",
+        "Dominant": "#d4d4d4"
+    },
+    {
+        "Path": "bgs\/bowtiles_s.jpg",
+        "Avg": "#745c51",
+        "Dominant": "#4c3934"
+    },
+    {
+        "Path": "bgs\/cherrios_s.jpg",
+        "Avg": "#b97f50",
+        "Dominant": "#ba7449"
+    },
+    {
+        "Path": "bgs\/pattern60_s.jpg",
+        "Avg": "#595973",
+        "Dominant": "#575772"
+    },
+    {
+        "Path": "bgs\/acharya_grass2_s.jpg",
+        "Avg": "#5f7f56",
+        "Dominant": "#5e7e55"
+    },
+    {
+        "Path": "bgs\/stamp11_s.jpg",
+        "Avg": "#979697",
+        "Dominant": "#dddddd"
+    },
+    {
+        "Path": "bgs\/lights_red_s.jpg",
+        "Avg": "#4c1111",
+        "Dominant": "#480f0f"
+    },
+    {
+        "Path": "bgs\/water03_s.jpg",
+        "Avg": "#858585",
+        "Dominant": "#7f7f7f"
+    },
+    {
+        "Path": "bgs\/tech_pat2_s.jpg",
+        "Avg": "#3b3b3b",
+        "Dominant": "#2b2b2b"
+    },
+    {
+        "Path": "bgs\/hextile_s.jpg",
+        "Avg": "#6f6e0c",
+        "Dominant": "#6e6d0b"
+    },
+    {
+        "Path": "bgs\/design3_s-1.jpg",
+        "Avg": "#a1a1a1",
+        "Dominant": "#2b2b2b"
+    },
+    {
+        "Path": "bgs\/englishyew_s.jpg",
+        "Avg": "#cb9a18",
+        "Dominant": "#cd9d16"
+    },
+    {
+        "Path": "bgs\/mesh1_s.jpg",
+        "Avg": "#331a18",
+        "Dominant": "#160808"
+    },
+    {
+        "Path": "bgs\/board8_s.jpg",
+        "Avg": "#9e8f87",
+        "Dominant": "#a09189"
+    },
+    {
+        "Path": "bgs\/s_0030_s.jpg",
+        "Avg": "#1f2549",
+        "Dominant": "#0d1444"
+    },
+    {
+        "Path": "bgs\/caustics1_s.jpg",
+        "Avg": "#343434",
+        "Dominant": "#19191a"
+    },
+    {
+        "Path": "bgs\/design25_s.jpg",
+        "Avg": "#52403e",
+        "Dominant": "#332220"
+    },
+    {
+        "Path": "bgs\/water20_s.jpg",
+        "Avg": "#3d6699",
+        "Dominant": "#375f92"
+    },
+    {
+        "Path": "bgs\/flower3_s.jpg",
+        "Avg": "#6b8554",
+        "Dominant": "#6c8755"
+    },
+    {
+        "Path": "bgs\/studiotexture1tile_s.jpg",
+        "Avg": "#534c48",
+        "Dominant": "#544d49"
+    },
+    {
+        "Path": "bgs\/design18_s.jpg",
+        "Avg": "#77837e",
+        "Dominant": "#3f4c49"
+    },
+    {
+        "Path": "bgs\/mandel_s.jpg",
+        "Avg": "#cbcbcb",
+        "Dominant": "#e2e2e2"
+    },
+    {
+        "Path": "bgs\/s_0048_s.jpg",
+        "Avg": "#0d173d",
+        "Dominant": "#070e2a"
+    },
+    {
+        "Path": "bgs\/graffity_s.jpg",
+        "Avg": "#5b5b5b",
+        "Dominant": "#7c7c7c"
+    },
+    {
+        "Path": "bgs\/beans_s.jpg",
+        "Avg": "#7e6145",
+        "Dominant": "#75573a"
+    },
+    {
+        "Path": "bgs\/steelpops7_s.jpg",
+        "Avg": "#c2d3de",
+        "Dominant": "#bccdd9"
+    },
+    {
+        "Path": "bgs\/saint_augustine_door3_s.jpg",
+        "Avg": "#78595d",
+        "Dominant": "#55282b"
+    },
+    {
+        "Path": "bgs\/decorative1_s.jpg",
+        "Avg": "#edf1b6",
+        "Dominant": "#fafae6"
+    },
+    {
+        "Path": "bgs\/jeweltiles_s.jpg",
+        "Avg": "#7b7579",
+        "Dominant": "#777175"
+    },
+    {
+        "Path": "bgs\/s_0029_s.jpg",
+        "Avg": "#4b245a",
+        "Dominant": "#5227c9"
+    },
+    {
+        "Path": "bgs\/hair9_s.jpg",
+        "Avg": "#4b4132",
+        "Dominant": "#3d3426"
+    },
+    {
+        "Path": "bgs\/sky13_s.jpg",
+        "Avg": "#5c80cd",
+        "Dominant": "#6084d2"
+    },
+    {
+        "Path": "bgs\/floortile10_s.jpg",
+        "Avg": "#a41514",
+        "Dominant": "#a20d0e"
+    },
+    {
+        "Path": "bgs\/amari_oak_s.jpg",
+        "Avg": "#7e6755",
+        "Dominant": "#7c6654"
+    },
+    {
+        "Path": "bgs\/coal2_s.jpg",
+        "Avg": "#2a2c31",
+        "Dominant": "#272a2e"
+    },
+    {
+        "Path": "bgs\/misc9_s.jpg",
+        "Avg": "#dce7bd",
+        "Dominant": "#edefcc"
+    },
+    {
+        "Path": "bgs\/uwa_sand1_s.jpg",
+        "Avg": "#b18f5f",
+        "Dominant": "#b69463"
+    },
+    {
+        "Path": "bgs\/kauri_nz_swamp_s.jpg",
+        "Avg": "#ac6a34",
+        "Dominant": "#ab6933"
+    },
+    {
+        "Path": "bgs\/engraving2_s.jpg",
+        "Avg": "#956041",
+        "Dominant": "#b57c54"
+    },
+    {
+        "Path": "bgs\/tile10_s.jpg",
+        "Avg": "#b8a993",
+        "Dominant": "#c8b8a2"
+    },
+    {
+        "Path": "bgs\/bloodstain_s.jpg",
+        "Avg": "#642822",
+        "Dominant": "#642620"
+    },
+    {
+        "Path": "bgs\/40_school_s.jpg",
+        "Avg": "#b59da1",
+        "Dominant": "#ccd5e1"
+    },
+    {
+        "Path": "bgs\/design8_s-1.jpg",
+        "Avg": "#658a6c",
+        "Dominant": "#608568"
+    },
+    {
+        "Path": "bgs\/rock43_s.jpg",
+        "Avg": "#948f68",
+        "Dominant": "#96916a"
+    },
+    {
+        "Path": "bgs\/groundleaf_s.jpg",
+        "Avg": "#816c4f",
+        "Dominant": "#7b654a"
+    },
+    {
+        "Path": "bgs\/avignon1_s.jpg",
+        "Avg": "#e5d3bd",
+        "Dominant": "#e2d1ba"
+    },
+    {
+        "Path": "bgs\/board21_s.jpg",
+        "Avg": "#040d05",
+        "Dominant": "#050a05"
+    },
+    {
+        "Path": "bgs\/icewall1_s.jpg",
+        "Avg": "#616891",
+        "Dominant": "#59618c"
+    },
+    {
+        "Path": "bgs\/roofing5_s.jpg",
+        "Avg": "#392020",
+        "Dominant": "#4b2c2b"
+    },
+    {
+        "Path": "bgs\/people_s.jpg",
+        "Avg": "#363743",
+        "Dominant": "#2d2e39"
+    },
+    {
+        "Path": "bgs\/grntiedie_s.jpg",
+        "Avg": "#055213",
+        "Dominant": "#055113"
+    },
+    {
+        "Path": "bgs\/stone2_s.jpg",
+        "Avg": "#c29e9a",
+        "Dominant": "#d7b3b0"
+    },
+    {
+        "Path": "bgs\/wewerewerewe_s.jpg",
+        "Avg": "#928268",
+        "Dominant": "#b9a682"
+    },
+    {
+        "Path": "bgs\/jigsaw1_s.jpg",
+        "Avg": "#dcd7c4",
+        "Dominant": "#365852"
+    },
+    {
+        "Path": "bgs\/star1_s.jpg",
+        "Avg": "#f8f7f7",
+        "Dominant": "#f8f6f6"
+    },
+    {
+        "Path": "bgs\/tile12_s.jpg",
+        "Avg": "#cd7e50",
+        "Dominant": "#df8a57"
+    },
+    {
+        "Path": "bgs\/tile3_s-1.jpg",
+        "Avg": "#065fa6",
+        "Dominant": "#075ea6"
+    },
+    {
+        "Path": "bgs\/airvent_s.jpg",
+        "Avg": "#75776d",
+        "Dominant": "#74756a"
+    },
+    {
+        "Path": "bgs\/roofing7_s.jpg",
+        "Avg": "#923620",
+        "Dominant": "#8b2c18"
+    },
+    {
+        "Path": "bgs\/tartan4_s.jpg",
+        "Avg": "#8f4344",
+        "Dominant": "#8a3d3f"
+    },
+    {
+        "Path": "bgs\/decorative_s.jpg",
+        "Avg": "#9b9378",
+        "Dominant": "#989589"
+    },
+    {
+        "Path": "bgs\/s_0053_s.jpg",
+        "Avg": "#907a3f",
+        "Dominant": "#776028"
+    },
+    {
+        "Path": "bgs\/avignon3_s.jpg",
+        "Avg": "#ecdbc6",
+        "Dominant": "#ebdac5"
+    },
+    {
+        "Path": "bgs\/greenpattern_s.jpg",
+        "Avg": "#a9c4af",
+        "Dominant": "#a9c5af"
+    },
+    {
+        "Path": "bgs\/stamp2_s.jpg",
+        "Avg": "#a3aac2",
+        "Dominant": "#b1b9d6"
+    },
+    {
+        "Path": "bgs\/stamp14_s.jpg",
+        "Avg": "#908f81",
+        "Dominant": "#cccdbc"
+    },
+    {
+        "Path": "bgs\/water06_s.jpg",
+        "Avg": "#29828b",
+        "Dominant": "#207581"
+    },
+    {
+        "Path": "bgs\/sky11_s.jpg",
+        "Avg": "#6c89ae",
+        "Dominant": "#55729c"
+    },
+    {
+        "Path": "bgs\/lightshutter_s.jpg",
+        "Avg": "#a0acb3",
+        "Dominant": "#a1aeb7"
+    },
+    {
+        "Path": "bgs\/windows13_s.jpg",
+        "Avg": "#978378",
+        "Dominant": "#af856c"
+    },
+    {
+        "Path": "bgs\/mountainview_s.jpg",
+        "Avg": "#bac6cb",
+        "Dominant": "#cbd2db"
+    },
+    {
+        "Path": "bgs\/oceanwave_s.jpg",
+        "Avg": "#6d8cac",
+        "Dominant": "#6c8cac"
+    },
+    {
+        "Path": "bgs\/celestial_kinet_s.jpg",
+        "Avg": "#c1d8d8",
+        "Dominant": "#bcd7d5"
+    },
+    {
+        "Path": "bgs\/mur_vieillepierres_resture_s.jpg",
+        "Avg": "#91886f",
+        "Dominant": "#90886f"
+    },
+    {
+        "Path": "bgs\/skintile18_s.jpg",
+        "Avg": "#784e27",
+        "Dominant": "#a06730"
+    },
+    {
+        "Path": "bgs\/pave61_s.jpg",
+        "Avg": "#9f855c",
+        "Dominant": "#a1865d"
+    },
+    {
+        "Path": "bgs\/cooltexture1_s.jpg",
+        "Avg": "#e2e2e2",
+        "Dominant": "#e0e0e0"
+    },
+    {
+        "Path": "bgs\/wallpaper8_s.jpg",
+        "Avg": "#ecd4be",
+        "Dominant": "#f1e3d2"
+    },
+    {
+        "Path": "bgs\/leather1_s.jpg",
+        "Avg": "#541009",
+        "Dominant": "#4a0c08"
+    },
+    {
+        "Path": "bgs\/laurel_s.jpg",
+        "Avg": "#46692e",
+        "Dominant": "#476d2e"
+    },
+    {
+        "Path": "bgs\/design9_s.jpg",
+        "Avg": "#5a3925",
+        "Dominant": "#3c2c1c"
+    },
+    {
+        "Path": "bgs\/circleblobs_s.jpg",
+        "Avg": "#c8a164",
+        "Dominant": "#c9a163"
+    },
+    {
+        "Path": "bgs\/floralpaper3_s.jpg",
+        "Avg": "#d6a376",
+        "Dominant": "#d5a275"
+    },
+    {
+        "Path": "bgs\/greendiamondtile_s.jpg",
+        "Avg": "#adc4b5",
+        "Dominant": "#bacfc0"
+    },
+    {
+        "Path": "bgs\/floral2_s.jpg",
+        "Avg": "#e2d8e2",
+        "Dominant": "#e2d8e2"
+    },
+    {
+        "Path": "bgs\/claw_s.jpg",
+        "Avg": "#4d0704",
+        "Dominant": "#5b0a05"
+    },
+    {
+        "Path": "bgs\/greenbay_s.jpg",
+        "Avg": "#3b8283",
+        "Dominant": "#3b8283"
+    },
+    {
+        "Path": "bgs\/earthcld_s.jpg",
+        "Avg": "#7bc6e2",
+        "Dominant": "#99d4ea"
+    },
+    {
+        "Path": "bgs\/maze5_s.jpg",
+        "Avg": "#80bc80",
+        "Dominant": "#eff9ee"
+    },
+    {
+        "Path": "bgs\/rock20_s.jpg",
+        "Avg": "#8a8980",
+        "Dominant": "#8c8a81"
+    },
+    {
+        "Path": "bgs\/atrocity_s.jpg",
+        "Avg": "#5f584d",
+        "Dominant": "#5d564b"
+    },
+    {
+        "Path": "bgs\/caustics3_s.jpg",
+        "Avg": "#242424",
+        "Dominant": "#141414"
+    },
+    {
+        "Path": "bgs\/danaebackground_s.jpg",
+        "Avg": "#cdbda4",
+        "Dominant": "#c6b395"
+    },
+    {
+        "Path": "bgs\/woodtile27_s.jpg",
+        "Avg": "#c08e5d",
+        "Dominant": "#c79563"
+    },
+    {
+        "Path": "bgs\/tile8_s.jpg",
+        "Avg": "#d5a05a",
+        "Dominant": "#d8a35b"
+    },
+    {
+        "Path": "bgs\/wooddecoration1_s.jpg",
+        "Avg": "#c6874f",
+        "Dominant": "#c38149"
+    },
+    {
+        "Path": "bgs\/rock19_s.jpg",
+        "Avg": "#adafa4",
+        "Dominant": "#b6b9ad"
+    },
+    {
+        "Path": "bgs\/koa_s.jpg",
+        "Avg": "#be3d06",
+        "Dominant": "#bc3808"
+    },
+    {
+        "Path": "bgs\/steelpops11_s.jpg",
+        "Avg": "#575552",
+        "Dominant": "#484542"
+    },
+    {
+        "Path": "bgs\/tile2_s-1.jpg",
+        "Avg": "#afa08a",
+        "Dominant": "#bfb098"
+    },
+    {
+        "Path": "bgs\/woodtile23_s.jpg",
+        "Avg": "#8c1e12",
+        "Dominant": "#a02013"
+    },
+    {
+        "Path": "bgs\/web_s.jpg",
+        "Avg": "#8c5828",
+        "Dominant": "#703b12"
+    },
+    {
+        "Path": "bgs\/brushed_brass_s.jpg",
+        "Avg": "#905c58",
+        "Dominant": "#673536"
+    },
+    {
+        "Path": "bgs\/panel1_s-1.jpg",
+        "Avg": "#777e78",
+        "Dominant": "#5e695f"
+    },
+    {
+        "Path": "bgs\/design23_s.jpg",
+        "Avg": "#222516",
+        "Dominant": "#1e2313"
+    },
+    {
+        "Path": "bgs\/maze1_s.jpg",
+        "Avg": "#71828b",
+        "Dominant": "#989cac"
+    },
+    {
+        "Path": "bgs\/danaetile_s.jpg",
+        "Avg": "#eddbc8",
+        "Dominant": "#f2e4d2"
+    },
+    {
+        "Path": "bgs\/woodendoor_s.jpg",
+        "Avg": "#b47a2f",
+        "Dominant": "#b47a2f"
+    },
+    {
+        "Path": "bgs\/skin2_s.jpg",
+        "Avg": "#83461f",
+        "Dominant": "#81451d"
+    },
+    {
+        "Path": "bgs\/smoke_granite_s.jpg",
+        "Avg": "#6a6a6a",
+        "Dominant": "#686868"
+    },
+    {
+        "Path": "bgs\/leafypattern_s.jpg",
+        "Avg": "#b6cbbc",
+        "Dominant": "#bdd1c2"
+    },
+    {
+        "Path": "bgs\/floral6_s.jpg",
+        "Avg": "#d5c6b1",
+        "Dominant": "#cbc3b0"
+    },
+    {
+        "Path": "bgs\/hydrant_s.jpg",
+        "Avg": "#ef6146",
+        "Dominant": "#f95636"
+    },
+    {
+        "Path": "bgs\/andorranroof_s.jpg",
+        "Avg": "#4b6b80",
+        "Dominant": "#4e7086"
+    },
+    {
+        "Path": "bgs\/water02_s.jpg",
+        "Avg": "#688ea2",
+        "Dominant": "#61879c"
+    },
+    {
+        "Path": "bgs\/yellowtile_s.jpg",
+        "Avg": "#f9eda8",
+        "Dominant": "#f4d146"
+    },
+    {
+        "Path": "bgs\/crystal_s.jpg",
+        "Avg": "#3374bf",
+        "Dominant": "#2b70bf"
+    },
+    {
+        "Path": "bgs\/vine2_s.jpg",
+        "Avg": "#6e7a57",
+        "Dominant": "#6a7652"
+    },
+    {
+        "Path": "bgs\/s_0057_s.jpg",
+        "Avg": "#ac9aa2",
+        "Dominant": "#d6c2cb"
+    },
+    {
+        "Path": "bgs\/woodroof_s.jpg",
+        "Avg": "#8b6b4a",
+        "Dominant": "#a8825c"
+    },
+    {
+        "Path": "bgs\/tile16_s.jpg",
+        "Avg": "#1e284d",
+        "Dominant": "#0f1535"
+    },
+    {
+        "Path": "bgs\/wenge_rondo_s.jpg",
+        "Avg": "#99918c",
+        "Dominant": "#55453d"
+    },
+    {
+        "Path": "bgs\/rings1_s.jpg",
+        "Avg": "#5f3d62",
+        "Dominant": "#2e1d4f"
+    },
+    {
+        "Path": "bgs\/electricbrick_s.jpg",
+        "Avg": "#1f3955",
+        "Dominant": "#1f3c57"
+    },
+    {
+        "Path": "bgs\/greyruffle_s.jpg",
+        "Avg": "#5e6463",
+        "Dominant": "#343937"
+    },
+    {
+        "Path": "bgs\/white_jigsaw_s.jpg",
+        "Avg": "#f2f2f2",
+        "Dominant": "#e1e1e1"
+    },
+    {
+        "Path": "bgs\/madera_s.jpg",
+        "Avg": "#e0975e",
+        "Dominant": "#e1975f"
+    },
+    {
+        "Path": "bgs\/tecplate_s.jpg",
+        "Avg": "#5a5c56",
+        "Dominant": "#5b5d57"
+    },
+    {
+        "Path": "bgs\/brick26_s.jpg",
+        "Avg": "#a0826c",
+        "Dominant": "#a68670"
+    },
+    {
+        "Path": "bgs\/blobs_s.jpg",
+        "Avg": "#2a2978",
+        "Dominant": "#3f3dab"
+    },
+    {
+        "Path": "bgs\/bark13_s.jpg",
+        "Avg": "#715636",
+        "Dominant": "#745837"
+    },
+    {
+        "Path": "bgs\/artificial4_s.jpg",
+        "Avg": "#6a3b05",
+        "Dominant": "#e87a0c"
+    },
+    {
+        "Path": "bgs\/floor_tile_kitchen_s.jpg",
+        "Avg": "#b89c85",
+        "Dominant": "#ba9f88"
+    },
+    {
+        "Path": "bgs\/snakeskin_s.jpg",
+        "Avg": "#725473",
+        "Dominant": "#715372"
+    },
+    {
+        "Path": "bgs\/hsnowa30_s.jpg",
+        "Avg": "#e6e1d4",
+        "Dominant": "#e6e1d4"
+    },
+    {
+        "Path": "bgs\/stonetile12_s.jpg",
+        "Avg": "#a0a0a0",
+        "Dominant": "#cccccc"
+    },
+    {
+        "Path": "bgs\/artificial6_s.jpg",
+        "Avg": "#42433d",
+        "Dominant": "#2d2e29"
+    },
+    {
+        "Path": "bgs\/floral19_s.jpg",
+        "Avg": "#e6daca",
+        "Dominant": "#e9dfce"
+    },
+    {
+        "Path": "bgs\/waterpl_s.jpg",
+        "Avg": "#2a828b",
+        "Dominant": "#217681"
+    },
+    {
+        "Path": "bgs\/tile2_s-2.jpg",
+        "Avg": "#11a277",
+        "Dominant": "#12a477"
+    },
+    {
+        "Path": "bgs\/waterfalls_s.jpg",
+        "Avg": "#575b68",
+        "Dominant": "#353b37"
+    },
+    {
+        "Path": "bgs\/brick19_s.jpg",
+        "Avg": "#765f4e",
+        "Dominant": "#7e6553"
+    },
+    {
+        "Path": "bgs\/s_0055_s.jpg",
+        "Avg": "#8b9280",
+        "Dominant": "#b5bca9"
+    },
+    {
+        "Path": "bgs\/pave1_s.jpg",
+        "Avg": "#be7756",
+        "Dominant": "#b76946"
+    },
+    {
+        "Path": "bgs\/s_0010_s.jpg",
+        "Avg": "#3c4e4c",
+        "Dominant": "#20302e"
+    },
+    {
+        "Path": "bgs\/blueanglebricktile_s.jpg",
+        "Avg": "#3390ee",
+        "Dominant": "#3295f3"
+    },
+    {
+        "Path": "bgs\/mur_mont_saint_michel_s.jpg",
+        "Avg": "#988567",
+        "Dominant": "#9b886a"
+    },
+    {
+        "Path": "bgs\/tech_pat1_s.jpg",
+        "Avg": "#434343",
+        "Dominant": "#323232"
+    },
+    {
+        "Path": "bgs\/roofing1_s.jpg",
+        "Avg": "#565547",
+        "Dominant": "#35362d"
+    },
+    {
+        "Path": "bgs\/stamp12_s.jpg",
+        "Avg": "#c29574",
+        "Dominant": "#e7d1ab"
+    },
+    {
+        "Path": "bgs\/rimu_pale_s.jpg",
+        "Avg": "#c68552",
+        "Dominant": "#c58452"
+    },
+    {
+        "Path": "bgs\/rock02_s.jpg",
+        "Avg": "#9b9382",
+        "Dominant": "#b1a997"
+    },
+    {
+        "Path": "bgs\/woodpanel9_s.jpg",
+        "Avg": "#c68952",
+        "Dominant": "#c27e48"
+    },
+    {
+        "Path": "bgs\/stone4_s.jpg",
+        "Avg": "#082638",
+        "Dominant": "#072336"
+    },
+    {
+        "Path": "bgs\/computer4_s.jpg",
+        "Avg": "#7eb590",
+        "Dominant": "#74b98b"
+    },
+    {
+        "Path": "bgs\/greennet_s.jpg",
+        "Avg": "#0b5715",
+        "Dominant": "#07500f"
+    },
+    {
+        "Path": "bgs\/tawa_matte_s.jpg",
+        "Avg": "#d4b273",
+        "Dominant": "#d5b374"
+    },
+    {
+        "Path": "bgs\/zebra2_s.jpg",
+        "Avg": "#624937",
+        "Dominant": "#241516"
+    },
+    {
+        "Path": "bgs\/tile14_s.jpg",
+        "Avg": "#762f29",
+        "Dominant": "#66140f"
+    },
+    {
+        "Path": "bgs\/skintile23_s.jpg",
+        "Avg": "#a0704a",
+        "Dominant": "#a4734d"
+    },
+    {
+        "Path": "bgs\/design21_s.jpg",
+        "Avg": "#c1aa9d",
+        "Dominant": "#eddecf"
+    },
+    {
+        "Path": "bgs\/acharya_flowers01_s.jpg",
+        "Avg": "#756489",
+        "Dominant": "#7e6b95"
+    },
+    {
+        "Path": "bgs\/woodtile2_s.jpg",
+        "Avg": "#876368",
+        "Dominant": "#9c757b"
+    },
+    {
+        "Path": "bgs\/apples_s.jpg",
+        "Avg": "#b9885a",
+        "Dominant": "#bbb76c"
+    },
+    {
+        "Path": "bgs\/electronics1_s.jpg",
+        "Avg": "#4b6345",
+        "Dominant": "#476141"
+    },
+    {
+        "Path": "bgs\/buildingfacade2_s.jpg",
+        "Avg": "#a0a28f",
+        "Dominant": "#d1d2bd"
+    },
+    {
+        "Path": "bgs\/danger2_s.jpg",
+        "Avg": "#c06a68",
+        "Dominant": "#970c0e"
+    },
+    {
+        "Path": "bgs\/panel1_s.jpg",
+        "Avg": "#b2443b",
+        "Dominant": "#c33d35"
+    },
+    {
+        "Path": "bgs\/saint_augustine_door7_s.jpg",
+        "Avg": "#6f5e5b",
+        "Dominant": "#776561"
+    },
+    {
+        "Path": "bgs\/ccpit2_s.jpg",
+        "Avg": "#444544",
+        "Dominant": "#373937"
+    },
+    {
+        "Path": "bgs\/diamondpattern1_s.jpg",
+        "Avg": "#8ca79d",
+        "Dominant": "#97b4a9"
+    },
+    {
+        "Path": "bgs\/chimpanzee_s.jpg",
+        "Avg": "#5e5e5e",
+        "Dominant": "#131313"
+    },
+    {
+        "Path": "bgs\/flow1_s.jpg",
+        "Avg": "#52270b",
+        "Dominant": "#270d06"
+    },
+    {
+        "Path": "bgs\/wvtex3_s.jpg",
+        "Avg": "#a6a6a6",
+        "Dominant": "#cbcbcb"
+    },
+    {
+        "Path": "bgs\/fleur_s.jpg",
+        "Avg": "#2d1b3b",
+        "Dominant": "#ad732d"
+    },
+    {
+        "Path": "bgs\/sswall_s.jpg",
+        "Avg": "#741e1b",
+        "Dominant": "#6f1816"
+    },
+    {
+        "Path": "bgs\/seaweed2_s.jpg",
+        "Avg": "#4f6d6b",
+        "Dominant": "#507270"
+    },
+    {
+        "Path": "bgs\/strawberryadf_s.jpg",
+        "Avg": "#5e0a0b",
+        "Dominant": "#610a0b"
+    },
+    {
+        "Path": "bgs\/design3_s.jpg",
+        "Avg": "#22271c",
+        "Dominant": "#1f2419"
+    },
+    {
+        "Path": "bgs\/wood26_s.jpg",
+        "Avg": "#b9704f",
+        "Dominant": "#b9704f"
+    },
+    {
+        "Path": "bgs\/wallpaper2_s.jpg",
+        "Avg": "#655b2f",
+        "Dominant": "#5c562f"
+    },
+    {
+        "Path": "bgs\/cigarette_s.jpg",
+        "Avg": "#dfdedb",
+        "Dominant": "#e4e2e0"
+    },
+    {
+        "Path": "bgs\/leafwall_s.jpg",
+        "Avg": "#95a587",
+        "Dominant": "#7b8d6b"
+    },
+    {
+        "Path": "bgs\/rock17_s.jpg",
+        "Avg": "#8f8a7d",
+        "Dominant": "#948d7f"
+    },
+    {
+        "Path": "bgs\/stonetile7_s.jpg",
+        "Avg": "#746c6f",
+        "Dominant": "#7a7275"
+    },
+    {
+        "Path": "bgs\/water15_s.jpg",
+        "Avg": "#7cdada",
+        "Dominant": "#7bdada"
+    },
+    {
+        "Path": "bgs\/pattern5_s.jpg",
+        "Avg": "#624837",
+        "Dominant": "#cb9d7b"
+    },
+    {
+        "Path": "bgs\/jelly_s.jpg",
+        "Avg": "#41342a",
+        "Dominant": "#372d24"
+    },
+    {
+        "Path": "bgs\/pattern112_s.jpg",
+        "Avg": "#696648",
+        "Dominant": "#686546"
+    },
+    {
+        "Path": "bgs\/s_0038_s.jpg",
+        "Avg": "#422473",
+        "Dominant": "#502b90"
+    },
+    {
+        "Path": "bgs\/box1_s.jpg",
+        "Avg": "#abbeaf",
+        "Dominant": "#dfebd5"
+    },
+    {
+        "Path": "bgs\/leaftile_s.jpg",
+        "Avg": "#dac5b5",
+        "Dominant": "#f0dbcb"
+    },
+    {
+        "Path": "bgs\/tile2_s.jpg",
+        "Avg": "#651611",
+        "Dominant": "#671711"
+    },
+    {
+        "Path": "bgs\/diamondtile3_s.jpg",
+        "Avg": "#cfc5a6",
+        "Dominant": "#c6ba98"
+    },
+    {
+        "Path": "bgs\/fungus6_s.jpg",
+        "Avg": "#a26c4e",
+        "Dominant": "#aa7454"
+    },
+    {
+        "Path": "bgs\/codprose_s.jpg",
+        "Avg": "#d79494",
+        "Dominant": "#d89595"
+    },
+    {
+        "Path": "bgs\/glassblock2_s.jpg",
+        "Avg": "#686964",
+        "Dominant": "#4f504d"
+    },
+    {
+        "Path": "bgs\/rust08_s.jpg",
+        "Avg": "#99967c",
+        "Dominant": "#a2a28d"
+    },
+    {
+        "Path": "bgs\/kalace07_s.jpg",
+        "Avg": "#c0bcb3",
+        "Dominant": "#b9b2a7"
+    },
+    {
+        "Path": "bgs\/glass5_s.jpg",
+        "Avg": "#403527",
+        "Dominant": "#c7a777"
+    },
+    {
+        "Path": "bgs\/arch1_s-1.jpg",
+        "Avg": "#6d6f6d",
+        "Dominant": "#727471"
+    },
+    {
+        "Path": "bgs\/blueribbons_s.jpg",
+        "Avg": "#432366",
+        "Dominant": "#6748ae"
+    },
+    {
+        "Path": "bgs\/hampshire_oak_s.jpg",
+        "Avg": "#d1a558",
+        "Dominant": "#d1a658"
+    },
+    {
+        "Path": "bgs\/brick50_s.jpg",
+        "Avg": "#b4a05d",
+        "Dominant": "#bfaa65"
+    },
+    {
+        "Path": "bgs\/summerchex_s.jpg",
+        "Avg": "#9acdd2",
+        "Dominant": "#99d2d6"
+    },
+    {
+        "Path": "bgs\/piece2_s.jpg",
+        "Avg": "#8fc22f",
+        "Dominant": "#148356"
+    },
+    {
+        "Path": "bgs\/newspaper1_s.jpg",
+        "Avg": "#cdc9c9",
+        "Dominant": "#cecaca"
+    },
+    {
+        "Path": "bgs\/studiotexture2tile_s.jpg",
+        "Avg": "#776f6f",
+        "Dominant": "#776f6f"
+    },
+    {
+        "Path": "bgs\/woodpanel5_s.jpg",
+        "Avg": "#c5834c",
+        "Dominant": "#c17a45"
+    },
+    {
+        "Path": "bgs\/stamp8_s.jpg",
+        "Avg": "#70837b",
+        "Dominant": "#58796b"
+    },
+    {
+        "Path": "bgs\/pave56_s.jpg",
+        "Avg": "#312c28",
+        "Dominant": "#2f2a26"
+    },
+    {
+        "Path": "bgs\/aubergine_s.jpg",
+        "Avg": "#3b303d",
+        "Dominant": "#3c313d"
+    },
+    {
+        "Path": "bgs\/embosspattern_s.jpg",
+        "Avg": "#efeadb",
+        "Dominant": "#f3eee1"
+    },
+    {
+        "Path": "bgs\/tile18_s.jpg",
+        "Avg": "#b19575",
+        "Dominant": "#c09f7f"
+    },
+    {
+        "Path": "bgs\/wallpaper11_s.jpg",
+        "Avg": "#eee3d8",
+        "Dominant": "#f6ece5"
+    },
+    {
+        "Path": "bgs\/acharya_ground15_s.jpg",
+        "Avg": "#797764",
+        "Dominant": "#535546"
+    },
+    {
+        "Path": "bgs\/marble01_s.jpg",
+        "Avg": "#2b2b2b",
+        "Dominant": "#252525"
+    },
+    {
+        "Path": "bgs\/pebbles4_s.jpg",
+        "Avg": "#594f52",
+        "Dominant": "#53484c"
+    },
+    {
+        "Path": "bgs\/rimu_coloured_s.jpg",
+        "Avg": "#975e36",
+        "Dominant": "#955d35"
+    },
+    {
+        "Path": "bgs\/ornatedoor3_s.jpg",
+        "Avg": "#868785",
+        "Dominant": "#9fa09f"
+    },
+    {
+        "Path": "bgs\/carbon_fibre_s.jpg",
+        "Avg": "#2b383b",
+        "Dominant": "#253235"
+    },
+    {
+        "Path": "bgs\/yugoslavia_s.jpg",
+        "Avg": "#987687",
+        "Dominant": "#04349b"
+    },
+    {
+        "Path": "bgs\/net5_s.jpg",
+        "Avg": "#b5b5b5",
+        "Dominant": "#bcbcbc"
+    },
+    {
+        "Path": "bgs\/strawberry1_s.jpg",
+        "Avg": "#691716",
+        "Dominant": "#851a1b"
+    },
+    {
+        "Path": "bgs\/halfroundpattern_s.jpg",
+        "Avg": "#e9e9e9",
+        "Dominant": "#f1f1f1"
+    },
+    {
+        "Path": "bgs\/american_cherry_s.jpg",
+        "Avg": "#bf7d48",
+        "Dominant": "#c07e49"
+    },
+    {
+        "Path": "bgs\/s_0021_s.jpg",
+        "Avg": "#6c4f30",
+        "Dominant": "#412c17"
+    },
+    {
+        "Path": "bgs\/snowflakes_s.jpg",
+        "Avg": "#c8e9f1",
+        "Dominant": "#c8eaf1"
+    },
+    {
+        "Path": "bgs\/board14_s.jpg",
+        "Avg": "#a28977",
+        "Dominant": "#a28876"
+    },
+    {
+        "Path": "bgs\/hsnowlt_s.jpg",
+        "Avg": "#dcdcdc",
+        "Dominant": "#dcdcdc"
+    },
+    {
+        "Path": "bgs\/circuitboard3_s.jpg",
+        "Avg": "#467e65",
+        "Dominant": "#337155"
+    },
+    {
+        "Path": "bgs\/xtile_s.jpg",
+        "Avg": "#eccaa3",
+        "Dominant": "#ecc89f"
+    },
+    {
+        "Path": "bgs\/glass_ripplebyadf_s.jpg",
+        "Avg": "#4e1f12",
+        "Dominant": "#491b0f"
+    },
+    {
+        "Path": "bgs\/skintile10_s.jpg",
+        "Avg": "#83461f",
+        "Dominant": "#83451f"
+    },
+    {
+        "Path": "bgs\/floral17_s.jpg",
+        "Avg": "#9f3272",
+        "Dominant": "#952269"
+    },
+    {
+        "Path": "bgs\/bricktile_s.jpg",
+        "Avg": "#c6ac7a",
+        "Dominant": "#d1b47e"
+    },
+    {
+        "Path": "bgs\/darktile2_s.jpg",
+        "Avg": "#69553d",
+        "Dominant": "#66523a"
+    },
+    {
+        "Path": "bgs\/kafel6_s.jpg",
+        "Avg": "#3c6064",
+        "Dominant": "#25484b"
+    },
+    {
+        "Path": "bgs\/machine2_s.jpg",
+        "Avg": "#7d7d7d",
+        "Dominant": "#868686"
+    },
+    {
+        "Path": "bgs\/ebony_oak_s.jpg",
+        "Avg": "#6e5b54",
+        "Dominant": "#6d5a53"
+    },
+    {
+        "Path": "bgs\/puzzlepieces_s.jpg",
+        "Avg": "#d8d8d8",
+        "Dominant": "#dddddd"
+    },
+    {
+        "Path": "bgs\/spongeadf_s.jpg",
+        "Avg": "#babc9f",
+        "Dominant": "#bbbda0"
+    },
+    {
+        "Path": "bgs\/stained_glass_window_s.jpg",
+        "Avg": "#6c5e47",
+        "Dominant": "#45341f"
+    },
+    {
+        "Path": "bgs\/mold_s.jpg",
+        "Avg": "#176555",
+        "Dominant": "#156454"
+    },
+    {
+        "Path": "bgs\/blotch_s.jpg",
+        "Avg": "#96757d",
+        "Dominant": "#1a2965"
+    },
+    {
+        "Path": "bgs\/misc29_s.jpg",
+        "Avg": "#8f8f8f",
+        "Dominant": "#919191"
+    },
+    {
+        "Path": "bgs\/goldsilverfan_lg_s.jpg",
+        "Avg": "#ab977a",
+        "Dominant": "#ab9e85"
+    },
+    {
+        "Path": "bgs\/diamondtile1_s.jpg",
+        "Avg": "#aeacac",
+        "Dominant": "#b3b1b0"
+    },
+    {
+        "Path": "bgs\/wood19_s.jpg",
+        "Avg": "#5a271c",
+        "Dominant": "#5a261c"
+    },
+    {
+        "Path": "bgs\/copper_stratos_diagonal_s.jpg",
+        "Avg": "#c88d5d",
+        "Dominant": "#c88d5d"
+    },
+    {
+        "Path": "bgs\/orangesquiggle_s.jpg",
+        "Avg": "#9c4114",
+        "Dominant": "#9e4b11"
+    },
+    {
+        "Path": "bgs\/ice3_s.jpg",
+        "Avg": "#489297",
+        "Dominant": "#499497"
+    },
+    {
+        "Path": "bgs\/harvest_s.jpg",
+        "Avg": "#ccb298",
+        "Dominant": "#bea38c"
+    },
+    {
+        "Path": "bgs\/grill5_s.jpg",
+        "Avg": "#736c69",
+        "Dominant": "#948d88"
+    },
+    {
+        "Path": "bgs\/hexpinktile_s.jpg",
+        "Avg": "#e4b9c3",
+        "Dominant": "#e5bac4"
+    },
+    {
+        "Path": "bgs\/glass7_s.jpg",
+        "Avg": "#334360",
+        "Dominant": "#1e1d37"
+    },
+    {
+        "Path": "bgs\/orientalpattern_s.jpg",
+        "Avg": "#1a222e",
+        "Dominant": "#131924"
+    },
+    {
+        "Path": "bgs\/pencils2_s.jpg",
+        "Avg": "#7f4d24",
+        "Dominant": "#d86f22"
+    },
+    {
+        "Path": "bgs\/reddoor1_s.jpg",
+        "Avg": "#83130d",
+        "Dominant": "#8f100a"
+    },
+    {
+        "Path": "bgs\/design1_s.jpg",
+        "Avg": "#574938",
+        "Dominant": "#3a4133"
+    },
+    {
+        "Path": "bgs\/gaspra_s.jpg",
+        "Avg": "#4a4a4a",
+        "Dominant": "#3a3a3a"
+    },
+    {
+        "Path": "bgs\/anglesheets_s.jpg",
+        "Avg": "#092e12",
+        "Dominant": "#115321"
+    },
+    {
+        "Path": "bgs\/rock15_s.jpg",
+        "Avg": "#a28579",
+        "Dominant": "#af9287"
+    },
+    {
+        "Path": "bgs\/water17_s.jpg",
+        "Avg": "#53b2f0",
+        "Dominant": "#52b1f0"
+    },
+    {
+        "Path": "bgs\/design12_s.jpg",
+        "Avg": "#ba9f94",
+        "Dominant": "#e7d4c6"
+    },
+    {
+        "Path": "bgs\/woodtile12_s.jpg",
+        "Avg": "#82492d",
+        "Dominant": "#dc954f"
+    },
+    {
+        "Path": "bgs\/s_0042_s.jpg",
+        "Avg": "#202b68",
+        "Dominant": "#192560"
+    },
+    {
+        "Path": "bgs\/kalace01_s.jpg",
+        "Avg": "#e8dad6",
+        "Dominant": "#efe2e0"
+    },
+    {
+        "Path": "bgs\/metal37_s.jpg",
+        "Avg": "#512d22",
+        "Dominant": "#522d23"
+    },
+    {
+        "Path": "bgs\/satin1_s.jpg",
+        "Avg": "#698282",
+        "Dominant": "#4e6b6d"
+    },
+    {
+        "Path": "bgs\/tuile_bretagne_s.jpg",
+        "Avg": "#857e78",
+        "Dominant": "#857e79"
+    },
+    {
+        "Path": "bgs\/grill1_s.jpg",
+        "Avg": "#85949e",
+        "Dominant": "#b2c3cb"
+    },
+    {
+        "Path": "bgs\/algae1_s.jpg",
+        "Avg": "#31382a",
+        "Dominant": "#053c3c"
+    },
+    {
+        "Path": "bgs\/patterntile1_s.jpg",
+        "Avg": "#776771",
+        "Dominant": "#72616c"
+    },
+    {
+        "Path": "bgs\/blueblok_s.jpg",
+        "Avg": "#9860f5",
+        "Dominant": "#985ef5"
+    },
+    {
+        "Path": "bgs\/tile4_s.jpg",
+        "Avg": "#baab8e",
+        "Dominant": "#d0bd9f"
+    },
+    {
+        "Path": "bgs\/pattern1_s-1.jpg",
+        "Avg": "#bb9c89",
+        "Dominant": "#bda896"
+    },
+    {
+        "Path": "bgs\/wallpaper4_s.jpg",
+        "Avg": "#94aba2",
+        "Dominant": "#8aa49a"
+    },
+    {
+        "Path": "bgs\/purplefloral_s.jpg",
+        "Avg": "#b092b3",
+        "Dominant": "#d2bed7"
+    },
+    {
+        "Path": "bgs\/hexpave2_s.jpg",
+        "Avg": "#c97f5c",
+        "Dominant": "#d08561"
+    },
+    {
+        "Path": "bgs\/strawberries_s.jpg",
+        "Avg": "#af312b",
+        "Dominant": "#b82a26"
+    },
+    {
+        "Path": "bgs\/water13_s.jpg",
+        "Avg": "#434359",
+        "Dominant": "#21223a"
+    },
+    {
+        "Path": "bgs\/stonetile1_s.jpg",
+        "Avg": "#c6cecb",
+        "Dominant": "#cbd4d1"
+    },
+    {
+        "Path": "bgs\/design16_s.jpg",
+        "Avg": "#d1c7c3",
+        "Dominant": "#e8dcd8"
+    },
+    {
+        "Path": "bgs\/pattern3_s.jpg",
+        "Avg": "#9ea6b2",
+        "Dominant": "#c9cdd4"
+    },
+    {
+        "Path": "bgs\/bubbletile_s.jpg",
+        "Avg": "#b7b7b7",
+        "Dominant": "#c1c1c1"
+    },
+    {
+        "Path": "bgs\/goldbirds_lg_s.jpg",
+        "Avg": "#ad732f",
+        "Dominant": "#b07d2c"
+    },
+    {
+        "Path": "bgs\/watery_weavebyadf_s.jpg",
+        "Avg": "#32847b",
+        "Dominant": "#2c8279"
+    },
+    {
+        "Path": "bgs\/golffairway3_s.jpg",
+        "Avg": "#366631",
+        "Dominant": "#356631"
+    },
+    {
+        "Path": "bgs\/marble23_s.jpg",
+        "Avg": "#a9a88b",
+        "Dominant": "#a9a88a"
+    },
+    {
+        "Path": "bgs\/design5_s.jpg",
+        "Avg": "#3b1c1b",
+        "Dominant": "#2a1716"
+    },
+    {
+        "Path": "bgs\/floralsketch1_s.jpg",
+        "Avg": "#6d3232",
+        "Dominant": "#622628"
+    },
+    {
+        "Path": "bgs\/red_cherry_s.jpg",
+        "Avg": "#ab7039",
+        "Dominant": "#ab703a"
+    },
+    {
+        "Path": "bgs\/s_0027_s.jpg",
+        "Avg": "#4a7048",
+        "Dominant": "#406941"
+    },
+    {
+        "Path": "bgs\/jellybeans3_s.jpg",
+        "Avg": "#804d31",
+        "Dominant": "#453126"
+    },
+    {
+        "Path": "bgs\/s_0062_s.jpg",
+        "Avg": "#494b54",
+        "Dominant": "#1f2127"
+    },
+    {
+        "Path": "bgs\/floral13_s.jpg",
+        "Avg": "#b5b69f",
+        "Dominant": "#d8d9c3"
+    },
+    {
+        "Path": "bgs\/leaf_water_tile_s.jpg",
+        "Avg": "#5f97aa",
+        "Dominant": "#71ae13"
+    },
+    {
+        "Path": "bgs\/skintile14_s.jpg",
+        "Avg": "#766461",
+        "Dominant": "#e2c6b3"
+    },
+    {
+        "Path": "bgs\/button2_s.jpg",
+        "Avg": "#7f7f7f",
+        "Dominant": "#a2a2a2"
+    },
+    {
+        "Path": "bgs\/grid01_s.jpg",
+        "Avg": "#545658",
+        "Dominant": "#bfc4c6"
+    },
+    {
+        "Path": "bgs\/granny_s.jpg",
+        "Avg": "#c26762",
+        "Dominant": "#ca6a66"
+    },
+    {
+        "Path": "bgs\/wood1_s.jpg",
+        "Avg": "#8f5808",
+        "Dominant": "#915a0a"
+    },
+    {
+        "Path": "bgs\/rock08_s.jpg",
+        "Avg": "#707070",
+        "Dominant": "#717171"
+    },
+    {
+        "Path": "bgs\/woodpanel3_s.jpg",
+        "Avg": "#cea95e",
+        "Dominant": "#cca75b"
+    },
+    {
+        "Path": "bgs\/graphic10_s.jpg",
+        "Avg": "#7e6b6b",
+        "Dominant": "#7b645e"
+    },
+    {
+        "Path": "bgs\/wenge_s.jpg",
+        "Avg": "#36322b",
+        "Dominant": "#25231c"
+    },
+    {
+        "Path": "bgs\/orchid2_s.jpg",
+        "Avg": "#a07f8e",
+        "Dominant": "#233117"
+    },
+    {
+        "Path": "bgs\/ornatetiles1_s.jpg",
+        "Avg": "#859193",
+        "Dominant": "#828c8d"
+    },
+    {
+        "Path": "bgs\/fertility_s.jpg",
+        "Avg": "#8a8a8a",
+        "Dominant": "#222222"
+    },
+    {
+        "Path": "bgs\/miscpattern_s.jpg",
+        "Avg": "#9e95a7",
+        "Dominant": "#b6b2c2"
+    },
+    {
+        "Path": "bgs\/pattern1_s-2.jpg",
+        "Avg": "#512a67",
+        "Dominant": "#1b2e8e"
+    },
+    {
+        "Path": "bgs\/evergreen_s.jpg",
+        "Avg": "#588921",
+        "Dominant": "#5a8a21"
+    },
+    {
+        "Path": "bgs\/puzzle2_s.jpg",
+        "Avg": "#437858",
+        "Dominant": "#588433"
+    },
+    {
+        "Path": "bgs\/jellybeans1_s.jpg",
+        "Avg": "#8d5040",
+        "Dominant": "#1f0f14"
+    },
+    {
+        "Path": "bgs\/board10_s.jpg",
+        "Avg": "#85563f",
+        "Dominant": "#86573f"
+    },
+    {
+        "Path": "bgs\/brick69_s.jpg",
+        "Avg": "#686167",
+        "Dominant": "#676167"
+    },
+    {
+        "Path": "bgs\/shoreline2_s.jpg",
+        "Avg": "#97bbc0",
+        "Dominant": "#b2d0cd"
+    },
+    {
+        "Path": "bgs\/chrome4_s.jpg",
+        "Avg": "#3e5b67",
+        "Dominant": "#3b5764"
+    },
+    {
+        "Path": "bgs\/scribble_s.jpg",
+        "Avg": "#fac749",
+        "Dominant": "#fac649"
+    },
+    {
+        "Path": "bgs\/mutedtrees_s.jpg",
+        "Avg": "#99dece",
+        "Dominant": "#8ee3d4"
+    },
+    {
+        "Path": "bgs\/cloud07_s.jpg",
+        "Avg": "#959ab7",
+        "Dominant": "#9398b6"
+    },
+    {
+        "Path": "bgs\/pawprint_s.jpg",
+        "Avg": "#b0b0b0",
+        "Dominant": "#c5c5c5"
+    },
+    {
+        "Path": "bgs\/butterfly1_s.jpg",
+        "Avg": "#d2ebfa",
+        "Dominant": "#c6e6f9"
+    },
+    {
+        "Path": "bgs\/skintile16_s.jpg",
+        "Avg": "#95663d",
+        "Dominant": "#63341c"
+    },
+    {
+        "Path": "bgs\/misc12_s.jpg",
+        "Avg": "#cde2cb",
+        "Dominant": "#e4f4e1"
+    },
+    {
+        "Path": "bgs\/stonetile3_s.jpg",
+        "Avg": "#7c7d7c",
+        "Dominant": "#777878"
+    },
+    {
+        "Path": "bgs\/design14_s.jpg",
+        "Avg": "#b9977d",
+        "Dominant": "#b9967d"
+    },
+    {
+        "Path": "bgs\/pattern1_s.jpg",
+        "Avg": "#f2eba5",
+        "Dominant": "#f7f2ba"
+    },
+    {
+        "Path": "bgs\/wallpaper6_s.jpg",
+        "Avg": "#d8c8b0",
+        "Dominant": "#eedeca"
+    },
+    {
+        "Path": "bgs\/s_0044_s.jpg",
+        "Avg": "#2c2776",
+        "Dominant": "#201b69"
+    },
+    {
+        "Path": "bgs\/graphictile_s.jpg",
+        "Avg": "#4c7a6a",
+        "Dominant": "#2d7474"
+    },
+    {
+        "Path": "bgs\/xbox_s.jpg",
+        "Avg": "#137c15",
+        "Dominant": "#0e550f"
+    },
+    {
+        "Path": "bgs\/bluemandala_s.jpg",
+        "Avg": "#707491",
+        "Dominant": "#535578"
+    },
+    {
+        "Path": "bgs\/redtile_s.jpg",
+        "Avg": "#90431c",
+        "Dominant": "#8e3b10"
+    },
+    {
+        "Path": "bgs\/fourtile_s.jpg",
+        "Avg": "#aca3bd",
+        "Dominant": "#c4bbd3"
+    },
+    {
+        "Path": "bgs\/pyramid_s.jpg",
+        "Avg": "#6b6b6b",
+        "Dominant": "#4e4e4e"
+    },
+    {
+        "Path": "bgs\/design7_s.jpg",
+        "Avg": "#a8b2b8",
+        "Dominant": "#a1adb3"
+    },
+    {
+        "Path": "bgs\/plant10_s.jpg",
+        "Avg": "#3a5f42",
+        "Dominant": "#355a3d"
+    },
+    {
+        "Path": "bgs\/plaid_s.jpg",
+        "Avg": "#0a053d",
+        "Dominant": "#06053f"
+    },
+    {
+        "Path": "bgs\/greenlace_s.jpg",
+        "Avg": "#81c88f",
+        "Dominant": "#96daa5"
+    },
+    {
+        "Path": "bgs\/hsnow_s.jpg",
+        "Avg": "#9e9e9e",
+        "Dominant": "#9e9e9e"
+    },
+    {
+        "Path": "bgs\/scandinavian_with_circle_s.jpg",
+        "Avg": "#ad7d63",
+        "Dominant": "#b98468"
+    },
+    {
+        "Path": "bgs\/board4_s.jpg",
+        "Avg": "#537b56",
+        "Dominant": "#49734e"
+    },
+    {
+        "Path": "bgs\/satin3_s.jpg",
+        "Avg": "#a99d93",
+        "Dominant": "#a4978c"
+    },
+    {
+        "Path": "bgs\/leaves2_s.jpg",
+        "Avg": "#2d4c0d",
+        "Dominant": "#29480c"
+    },
+    {
+        "Path": "bgs\/kalace03_s.jpg",
+        "Avg": "#d7e7d3",
+        "Dominant": "#e1eddb"
+    },
+    {
+        "Path": "bgs\/pills_s.jpg",
+        "Avg": "#77404b",
+        "Dominant": "#432637"
+    },
+    {
+        "Path": "bgs\/tile6_s.jpg",
+        "Avg": "#9ba1a2",
+        "Dominant": "#b7bcbc"
+    },
+    {
+        "Path": "bgs\/circleblobs_s-1.jpg",
+        "Avg": "#c8a164",
+        "Dominant": "#c9a163"
+    },
+    {
+        "Path": "bgs\/wallpaper12_s.jpg",
+        "Avg": "#dededc",
+        "Dominant": "#d6d4d3"
+    },
+    {
+        "Path": "bgs\/woodpanel6_s.jpg",
+        "Avg": "#7b4d3d",
+        "Dominant": "#794b3c"
+    },
+    {
+        "Path": "bgs\/colourtile_s.jpg",
+        "Avg": "#b77c89",
+        "Dominant": "#c68396"
+    },
+    {
+        "Path": "bgs\/floral16_s.jpg",
+        "Avg": "#571533",
+        "Dominant": "#5f1537"
+    },
+    {
+        "Path": "bgs\/fadedflower_s.jpg",
+        "Avg": "#e1e1e0",
+        "Dominant": "#e2e3e2"
+    },
+    {
+        "Path": "bgs\/waldorf_cherry_s.jpg",
+        "Avg": "#815d54",
+        "Dominant": "#805c53"
+    },
+    {
+        "Path": "bgs\/strawberry2_s.jpg",
+        "Avg": "#9b9173",
+        "Dominant": "#a5ab8c"
+    },
+    {
+        "Path": "bgs\/upclose1_s.jpg",
+        "Avg": "#558261",
+        "Dominant": "#4c7a59"
+    },
+    {
+        "Path": "bgs\/housefacade_s.jpg",
+        "Avg": "#705961",
+        "Dominant": "#6a4d50"
+    },
+    {
+        "Path": "bgs\/colourembospaper_s.jpg",
+        "Avg": "#cbc3c5",
+        "Dominant": "#e3dcd7"
+    },
+    {
+        "Path": "bgs\/misc15_s.jpg",
+        "Avg": "#737373",
+        "Dominant": "#8a8a8a"
+    },
+    {
+        "Path": "bgs\/redleaves_s.jpg",
+        "Avg": "#865d33",
+        "Dominant": "#6d572a"
+    },
+    {
+        "Path": "bgs\/water16_s.jpg",
+        "Avg": "#358cb4",
+        "Dominant": "#2d87b0"
+    },
+    {
+        "Path": "bgs\/design13_s.jpg",
+        "Avg": "#595d3e",
+        "Dominant": "#565a3b"
+    },
+    {
+        "Path": "bgs\/pattern6_s.jpg",
+        "Avg": "#2f482b",
+        "Dominant": "#2c4528"
+    },
+    {
+        "Path": "bgs\/bluemaze_s.jpg",
+        "Avg": "#080747",
+        "Dominant": "#060641"
+    },
+    {
+        "Path": "bgs\/wallpaper1_s.jpg",
+        "Avg": "#96a79d",
+        "Dominant": "#96a79d"
+    },
+    {
+        "Path": "bgs\/wood25_s.jpg",
+        "Avg": "#ae7e42",
+        "Dominant": "#ac7c40"
+    },
+    {
+        "Path": "bgs\/lemon_s.jpg",
+        "Avg": "#e7c119",
+        "Dominant": "#f7d21f"
+    },
+    {
+        "Path": "bgs\/rooftop_s.jpg",
+        "Avg": "#6e6b76",
+        "Dominant": "#6b6873"
+    },
+    {
+        "Path": "bgs\/hinge1_s.jpg",
+        "Avg": "#6b5e51",
+        "Dominant": "#6c5f53"
+    },
+    {
+        "Path": "bgs\/rust3_s.jpg",
+        "Avg": "#91634b",
+        "Dominant": "#764432"
+    },
+    {
+        "Path": "bgs\/saint_augustine_door8_s.jpg",
+        "Avg": "#664b3d",
+        "Dominant": "#614536"
+    },
+    {
+        "Path": "bgs\/wiremesh2_s.jpg",
+        "Avg": "#686868",
+        "Dominant": "#626262"
+    },
+    {
+        "Path": "bgs\/pattern30_s.jpg",
+        "Avg": "#cabdd1",
+        "Dominant": "#cbbfd3"
+    },
+    {
+        "Path": "bgs\/black_jigsaw_s.jpg",
+        "Avg": "#0a0a0a",
+        "Dominant": "#060606"
+    },
+    {
+        "Path": "bgs\/satin4_s.jpg",
+        "Avg": "#795575",
+        "Dominant": "#674664"
+    },
+    {
+        "Path": "bgs\/geometric_s.jpg",
+        "Avg": "#cdbeb0",
+        "Dominant": "#ccbbad"
+    },
+    {
+        "Path": "bgs\/redthreads_s.jpg",
+        "Avg": "#e85f37",
+        "Dominant": "#dc352d"
+    },
+    {
+        "Path": "bgs\/angel_s.jpg",
+        "Avg": "#8e8e8e",
+        "Dominant": "#b1b1b1"
+    },
+    {
+        "Path": "bgs\/overlappingtile_s.jpg",
+        "Avg": "#b35b16",
+        "Dominant": "#b65911"
+    },
+    {
+        "Path": "bgs\/bluety_s.jpg",
+        "Avg": "#3e77af",
+        "Dominant": "#3e6ead"
+    },
+    {
+        "Path": "bgs\/tile4_s-1.jpg",
+        "Avg": "#3d7559",
+        "Dominant": "#11a23e"
+    },
+    {
+        "Path": "bgs\/70sprint_s.jpg",
+        "Avg": "#93bc69",
+        "Dominant": "#a4c976"
+    },
+    {
+        "Path": "bgs\/rescue1_s.jpg",
+        "Avg": "#e7dc86",
+        "Dominant": "#f6df10"
+    },
+    {
+        "Path": "bgs\/tile1_s.jpg",
+        "Avg": "#751208",
+        "Dominant": "#811108"
+    },
+    {
+        "Path": "bgs\/blueandgoldpattern_s.jpg",
+        "Avg": "#405949",
+        "Dominant": "#152119"
+    },
+    {
+        "Path": "bgs\/roughfome_s.jpg",
+        "Avg": "#17e989",
+        "Dominant": "#14ec9a"
+    },
+    {
+        "Path": "bgs\/box2_s.jpg",
+        "Avg": "#d9cfb4",
+        "Dominant": "#e8dec3"
+    },
+    {
+        "Path": "bgs\/s_0083_s.jpg",
+        "Avg": "#92c8f2",
+        "Dominant": "#65b4f1"
+    },
+    {
+        "Path": "bgs\/leaf3_s.jpg",
+        "Avg": "#647846",
+        "Dominant": "#647947"
+    },
+    {
+        "Path": "bgs\/marble19_s.jpg",
+        "Avg": "#0b3018",
+        "Dominant": "#0c3118"
+    },
+    {
+        "Path": "bgs\/kalace06_s.jpg",
+        "Avg": "#cbbee4",
+        "Dominant": "#ddcfee"
+    },
+    {
+        "Path": "bgs\/blueangletile_s.jpg",
+        "Avg": "#338ee5",
+        "Dominant": "#3394ef"
+    },
+    {
+        "Path": "bgs\/glass4_s.jpg",
+        "Avg": "#68673b",
+        "Dominant": "#323226"
+    },
+    {
+        "Path": "bgs\/satin6_s.jpg",
+        "Avg": "#1a4057",
+        "Dominant": "#051826"
+    },
+    {
+        "Path": "bgs\/shadowbrick_s.jpg",
+        "Avg": "#dddddc",
+        "Dominant": "#f2f2f1"
+    },
+    {
+        "Path": "bgs\/s_0039_s.jpg",
+        "Avg": "#41237f",
+        "Dominant": "#3a1e7f"
+    },
+    {
+        "Path": "bgs\/window_louvres_blinds_s.jpg",
+        "Avg": "#82654e",
+        "Dominant": "#78593e"
+    },
+    {
+        "Path": "bgs\/tile3_s.jpg",
+        "Avg": "#c8a070",
+        "Dominant": "#cba372"
+    },
+    {
+        "Path": "bgs\/cornkernels_s.jpg",
+        "Avg": "#bc783a",
+        "Dominant": "#b87132"
+    },
+    {
+        "Path": "bgs\/wallpaper3_s.jpg",
+        "Avg": "#d9a46c",
+        "Dominant": "#d39e66"
+    },
+    {
+        "Path": "bgs\/brick48_s.jpg",
+        "Avg": "#674f3e",
+        "Dominant": "#523b2b"
+    },
+    {
+        "Path": "bgs\/zigzagtile_s.jpg",
+        "Avg": "#224a7c",
+        "Dominant": "#0d7881"
+    },
+    {
+        "Path": "bgs\/rock16_s.jpg",
+        "Avg": "#969286",
+        "Dominant": "#b8b2a3"
+    },
+    {
+        "Path": "bgs\/design11_s.jpg",
+        "Avg": "#52563b",
+        "Dominant": "#50553a"
+    },
+    {
+        "Path": "bgs\/irregulargrid1_s.jpg",
+        "Avg": "#9c9b9b",
+        "Dominant": "#a3a2a2"
+    },
+    {
+        "Path": "bgs\/pattern4_s.jpg",
+        "Avg": "#8b605f",
+        "Dominant": "#885a57"
+    },
+    {
+        "Path": "bgs\/flowerpattern_s.jpg",
+        "Avg": "#6e6bb1",
+        "Dominant": "#6b68af"
+    },
+    {
+        "Path": "bgs\/woodendoor_s-1.jpg",
+        "Avg": "#888888",
+        "Dominant": "#969696"
+    },
+    {
+        "Path": "bgs\/marble24_s.jpg",
+        "Avg": "#66c9b4",
+        "Dominant": "#bff2da"
+    },
+    {
+        "Path": "bgs\/design2_s.jpg",
+        "Avg": "#52352f",
+        "Dominant": "#3a2623"
+    },
+    {
+        "Path": "bgs\/patterntile1_s-1.jpg",
+        "Avg": "#baafba",
+        "Dominant": "#c9bec4"
+    },
+    {
+        "Path": "bgs\/skintile1_s.jpg",
+        "Avg": "#b49d94",
+        "Dominant": "#b39c92"
+    },
+    {
+        "Path": "bgs\/golfgreen2_s.jpg",
+        "Avg": "#59a440",
+        "Dominant": "#58a33f"
+    },
+    {
+        "Path": "bgs\/pawprint2_s.jpg",
+        "Avg": "#bf9f86",
+        "Dominant": "#f1ebe6"
+    },
+    {
+        "Path": "bgs\/snow3_s.jpg",
+        "Avg": "#67655a",
+        "Dominant": "#424034"
+    },
+    {
+        "Path": "bgs\/onion_s.jpg",
+        "Avg": "#d2bf7c",
+        "Dominant": "#d2bf7b"
+    },
+    {
+        "Path": "bgs\/darktile1_s.jpg",
+        "Avg": "#65563d",
+        "Dominant": "#584a32"
+    },
+    {
+        "Path": "bgs\/s_0020_s.jpg",
+        "Avg": "#765531",
+        "Dominant": "#775430"
+    },
+    {
+        "Path": "bgs\/crosstile_s.jpg",
+        "Avg": "#a59f9b",
+        "Dominant": "#9a958f"
+    },
+    {
+        "Path": "bgs\/ornatedoor2_s.jpg",
+        "Avg": "#918986",
+        "Dominant": "#351f19"
+    },
+    {
+        "Path": "bgs\/blueblobs_s.jpg",
+        "Avg": "#32b2d2",
+        "Dominant": "#4acac1"
+    },
+    {
+        "Path": "bgs\/streetblock_s.jpg",
+        "Avg": "#646661",
+        "Dominant": "#474b48"
+    },
+    {
+        "Path": "bgs\/sage_blue_spice_s.jpg",
+        "Avg": "#667c8a",
+        "Dominant": "#647c8c"
+    },
+    {
+        "Path": "bgs\/wallpaper10_s.jpg",
+        "Avg": "#ddc550",
+        "Dominant": "#d5b728"
+    },
+    {
+        "Path": "bgs\/corn_s.jpg",
+        "Avg": "#fab705",
+        "Dominant": "#fab907"
+    },
+    {
+        "Path": "bgs\/freize01_s.jpg",
+        "Avg": "#939393",
+        "Dominant": "#8e8e8e"
+    },
+    {
+        "Path": "bgs\/earth2_s.jpg",
+        "Avg": "#536f78",
+        "Dominant": "#2a4f59"
+    },
+    {
+        "Path": "bgs\/woodpanel4_s.jpg",
+        "Avg": "#c99760",
+        "Dominant": "#cf995c"
+    },
+    {
+        "Path": "bgs\/stamp9_s.jpg",
+        "Avg": "#8e9499",
+        "Dominant": "#e4dfd1"
+    },
+    {
+        "Path": "bgs\/pastelmosaic1_s.jpg",
+        "Avg": "#dad3d1",
+        "Dominant": "#dcd6d3"
+    },
+    {
+        "Path": "bgs\/tile20_s.jpg",
+        "Avg": "#a1947e",
+        "Dominant": "#b1a48d"
+    },
+    {
+        "Path": "bgs\/ivy1_s.jpg",
+        "Avg": "#7b8f57",
+        "Dominant": "#7e9358"
+    },
+    {
+        "Path": "bgs\/marble41_s.jpg",
+        "Avg": "#9a9b97",
+        "Dominant": "#2a2b2c"
+    },
+    {
+        "Path": "bgs\/spanje1_s.jpg",
+        "Avg": "#f47320",
+        "Dominant": "#f50a31"
+    },
+    {
+        "Path": "bgs\/moon_s.jpg",
+        "Avg": "#0a0a28",
+        "Dominant": "#040423"
+    },
+    {
+        "Path": "bgs\/newton3_s.jpg",
+        "Avg": "#d1d1d1",
+        "Dominant": "#d8d8d8"
+    },
+    {
+        "Path": "bgs\/floral10_s.jpg",
+        "Avg": "#f2d0e3",
+        "Dominant": "#f2b9d6"
+    },
+    {
+        "Path": "bgs\/s_0061_s.jpg",
+        "Avg": "#44504c",
+        "Dominant": "#343f3c"
+    },
+    {
+        "Path": "bgs\/wood42_s.jpg",
+        "Avg": "#8e452c",
+        "Dominant": "#8d442b"
+    },
+    {
+        "Path": "bgs\/s_0024_s.jpg",
+        "Avg": "#0c0e4e",
+        "Dominant": "#070737"
+    },
+    {
+        "Path": "bgs\/chrome5_s.jpg",
+        "Avg": "#757575",
+        "Dominant": "#505050"
+    },
+    {
+        "Path": "bgs\/knight_s.jpg",
+        "Avg": "#515151",
+        "Dominant": "#1d1d1d"
+    },
+    {
+        "Path": "bgs\/water09_s.jpg",
+        "Avg": "#2d8990",
+        "Dominant": "#227883"
+    },
+    {
+        "Path": "bgs\/grapepaper_s.jpg",
+        "Avg": "#76604e",
+        "Dominant": "#78624f"
+    },
+    {
+        "Path": "bgs\/fadedwallpaper_s.jpg",
+        "Avg": "#5d7170",
+        "Dominant": "#5b6f6e"
+    },
+    {
+        "Path": "bgs\/feather200x_s.jpg",
+        "Avg": "#a18186",
+        "Dominant": "#8d6a6c"
+    },
+    {
+        "Path": "bgs\/greenapples_s.jpg",
+        "Avg": "#7b8528",
+        "Dominant": "#8d9a2b"
+    },
+    {
+        "Path": "bgs\/brick10_s.jpg",
+        "Avg": "#853c35",
+        "Dominant": "#883c35"
+    },
+    {
+        "Path": "bgs\/floral1_s-1.jpg",
+        "Avg": "#c28a7e",
+        "Dominant": "#af4132"
+    },
+    {
+        "Path": "bgs\/mocha_fineline_s.jpg",
+        "Avg": "#a47d6c",
+        "Dominant": "#a17a69"
+    },
+    {
+        "Path": "bgs\/colourtiles_s.jpg",
+        "Avg": "#6b4b51",
+        "Dominant": "#3d314e"
+    },
+    {
+        "Path": "bgs\/marble39_s.jpg",
+        "Avg": "#4a3e3c",
+        "Dominant": "#3e3433"
+    },
+    {
+        "Path": "bgs\/coppertile_s.jpg",
+        "Avg": "#a2653c",
+        "Dominant": "#915731"
+    },
+    {
+        "Path": "bgs\/swiss_pear_s.jpg",
+        "Avg": "#d8b182",
+        "Dominant": "#d9b182"
+    },
+    {
+        "Path": "bgs\/patterntile2_s.jpg",
+        "Avg": "#b3b7b2",
+        "Dominant": "#c5c7c4"
+    },
+    {
+        "Path": "bgs\/colourfloralwallpaper_s.jpg",
+        "Avg": "#e0dfe1",
+        "Dominant": "#f2eced"
+    },
+    {
+        "Path": "bgs\/tile7_s.jpg",
+        "Avg": "#5e88b7",
+        "Dominant": "#95daf5"
+    },
+    {
+        "Path": "bgs\/leaf5_s.jpg",
+        "Avg": "#515629",
+        "Dominant": "#515629"
+    },
+    {
+        "Path": "bgs\/s_0085_s.jpg",
+        "Avg": "#deb86e",
+        "Dominant": "#e4c077"
+    },
+    {
+        "Path": "bgs\/grill2_s.jpg",
+        "Avg": "#96927a",
+        "Dominant": "#b7ad87"
+    },
+    {
+        "Path": "bgs\/board5_s.jpg",
+        "Avg": "#855318",
+        "Dominant": "#855318"
+    },
+    {
+        "Path": "bgs\/other1_s.jpg",
+        "Avg": "#e8c799",
+        "Dominant": "#e9c89a"
+    },
+    {
+        "Path": "bgs\/cells_s.jpg",
+        "Avg": "#f98e47",
+        "Dominant": "#fbaf4c"
+    },
+    {
+        "Path": "bgs\/kalace02_s.jpg",
+        "Avg": "#e2cedb",
+        "Dominant": "#efdfea"
+    },
+    {
+        "Path": "bgs\/design6_s.jpg",
+        "Avg": "#bbbdbf",
+        "Dominant": "#e1e0db"
+    },
+    {
+        "Path": "bgs\/pasta2_s.jpg",
+        "Avg": "#6f5520",
+        "Dominant": "#715621"
+    },
+    {
+        "Path": "bgs\/rock12_s.jpg",
+        "Avg": "#9c9178",
+        "Dominant": "#aca086"
+    },
+    {
+        "Path": "bgs\/stonetile2_s.jpg",
+        "Avg": "#968b88",
+        "Dominant": "#a39894"
+    },
+    {
+        "Path": "bgs\/design15_s.jpg",
+        "Avg": "#c1bab0",
+        "Dominant": "#c9c2b8"
+    },
+    {
+        "Path": "bgs\/purpletear_s.jpg",
+        "Avg": "#58285c",
+        "Dominant": "#251327"
+    },
+    {
+        "Path": "bgs\/brick1_s.jpg",
+        "Avg": "#d1b597",
+        "Dominant": "#dbbfa1"
+    },
+    {
+        "Path": "bgs\/s_0045_s.jpg",
+        "Avg": "#0e1639",
+        "Dominant": "#090f2b"
+    },
+    {
+        "Path": "bgs\/wallpaper7_s.jpg",
+        "Avg": "#f2e4d2",
+        "Dominant": "#f2e5d3"
+    },
+    {
+        "Path": "bgs\/birman_with_lilies_s.jpg",
+        "Avg": "#c9c7b8",
+        "Dominant": "#d2d0c2"
+    },
+    {
+        "Path": "bgs\/s_0000_s.jpg",
+        "Avg": "#beb269",
+        "Dominant": "#d7c974"
+    },
+    {
+        "Path": "bgs\/woodtile15_s.jpg",
+        "Avg": "#c76937",
+        "Dominant": "#d2713a"
+    },
+    {
+        "Path": "bgs\/bareboard1_s.jpg",
+        "Avg": "#626b64",
+        "Dominant": "#636a65"
+    },
+    {
+        "Path": "bgs\/brick09_s.jpg",
+        "Avg": "#ad6d40",
+        "Dominant": "#ad6b3c"
+    },
+    {
+        "Path": "bgs\/circular_stained_glass_s.jpg",
+        "Avg": "#88746a",
+        "Dominant": "#857168"
+    },
+    {
+        "Path": "bgs\/cloud20_s.jpg",
+        "Avg": "#4e5159",
+        "Dominant": "#454d5b"
+    },
+    {
+        "Path": "bgs\/bush01_s.jpg",
+        "Avg": "#527960",
+        "Dominant": "#537a61"
+    },
+    {
+        "Path": "bgs\/design4_s.jpg",
+        "Avg": "#b7b1b7",
+        "Dominant": "#d6cacd"
+    },
+    {
+        "Path": "bgs\/steeldoor1_s.jpg",
+        "Avg": "#b1b1b1",
+        "Dominant": "#c1c1c1"
+    },
+    {
+        "Path": "bgs\/s_0047_s.jpg",
+        "Avg": "#1f2965",
+        "Dominant": "#132054"
+    },
+    {
+        "Path": "bgs\/wallpaper5_s.jpg",
+        "Avg": "#843565",
+        "Dominant": "#803160"
+    },
+    {
+        "Path": "bgs\/design17_s.jpg",
+        "Avg": "#999fa5",
+        "Dominant": "#aeb7c0"
+    },
+    {
+        "Path": "bgs\/pattern2_s.jpg",
+        "Avg": "#a3a5a6",
+        "Dominant": "#a3a5a5"
+    },
+    {
+        "Path": "bgs\/plamy_s.jpg",
+        "Avg": "#cab4ea",
+        "Dominant": "#bfaceb"
+    },
+    {
+        "Path": "bgs\/riverpearl_s.jpg",
+        "Avg": "#ede9e2",
+        "Dominant": "#eeeae3"
+    },
+    {
+        "Path": "bgs\/s_0087_s.jpg",
+        "Avg": "#a1916b",
+        "Dominant": "#8f8059"
+    },
+    {
+        "Path": "bgs\/leaf7_s.jpg",
+        "Avg": "#3e5f2a",
+        "Dominant": "#40622b"
+    },
+    {
+        "Path": "bgs\/floor_slate_128_s.jpg",
+        "Avg": "#938988",
+        "Dominant": "#8c8180"
+    },
+    {
+        "Path": "bgs\/tile5_s.jpg",
+        "Avg": "#747474",
+        "Dominant": "#b1b1b1"
+    },
+    {
+        "Path": "bgs\/ifossil_corrugate_s.jpg",
+        "Avg": "#51514d",
+        "Dominant": "#5d5e59"
+    },
+    {
+        "Path": "bgs\/roughwaves_s.jpg",
+        "Avg": "#04615f",
+        "Dominant": "#066361"
+    },
+    {
+        "Path": "bgs\/glass2_s.jpg",
+        "Avg": "#5a5370",
+        "Dominant": "#35324d"
+    },
+    {
+        "Path": "bgs\/grassandconcrete_s.jpg",
+        "Avg": "#797f61",
+        "Dominant": "#797e60"
+    },
+    {
+        "Path": "bgs\/roadwork_s.jpg",
+        "Avg": "#ba9630",
+        "Dominant": "#e9b426"
+    },
+    {
+        "Path": "bgs\/wood38_s.jpg",
+        "Avg": "#c9885e",
+        "Dominant": "#c8875d"
+    },
+    {
+        "Path": "bgs\/moss6_s.jpg",
+        "Avg": "#2c5811",
+        "Dominant": "#234a0d"
+    },
+    {
+        "Path": "bgs\/ripples1_s.jpg",
+        "Avg": "#0e0e63",
+        "Dominant": "#0a0959"
+    },
+    {
+        "Path": "bgs\/woodpanel2_s.jpg",
+        "Avg": "#d8bd7e",
+        "Dominant": "#eadba6"
+    },
+    {
+        "Path": "bgs\/psych_s.jpg",
+        "Avg": "#8951f9",
+        "Dominant": "#7f56f8"
+    },
+    {
+        "Path": "bgs\/frost_quartite_s.jpg",
+        "Avg": "#adafa8",
+        "Dominant": "#adb0a9"
+    },
+    {
+        "Path": "bgs\/ornatetiles2_s.jpg",
+        "Avg": "#858676",
+        "Dominant": "#8d8776"
+    },
+    {
+        "Path": "bgs\/curve1_s.jpg",
+        "Avg": "#d9d9d9",
+        "Dominant": "#c7c7c7"
+    },
+    {
+        "Path": "bgs\/hand_s.jpg",
+        "Avg": "#954b28",
+        "Dominant": "#984e28"
+    },
+    {
+        "Path": "bgs\/acharya_fabric1_s.jpg",
+        "Avg": "#7d716a",
+        "Dominant": "#7b6e66"
+    },
+    {
+        "Path": "bgs\/office_window_s.jpg",
+        "Avg": "#7d736c",
+        "Dominant": "#847b74"
+    },
+    {
+        "Path": "bgs\/door2_s.jpg",
+        "Avg": "#9a9a94",
+        "Dominant": "#3c2122"
+    },
+    {
+        "Path": "bgs\/beigebrick_s.jpg",
+        "Avg": "#e6d3b3",
+        "Dominant": "#efdcbc"
+    },
+    {
+        "Path": "bgs\/butterfly2_s.jpg",
+        "Avg": "#dbcbe9",
+        "Dominant": "#dbcbe9"
+    },
+    {
+        "Path": "bgs\/baseballs_s.jpg",
+        "Avg": "#8e8c8b",
+        "Dominant": "#787676"
+    },
+    {
+        "Path": "bgs\/brain1_s.jpg",
+        "Avg": "#c89b8d",
+        "Dominant": "#d9ab9e"
+    },
+    {
+        "Path": "bgs\/net2_s.jpg",
+        "Avg": "#898989",
+        "Dominant": "#8c8c8c"
+    },
+    {
+        "Path": "bgs\/flower08_s.jpg",
+        "Avg": "#678170",
+        "Dominant": "#4f7fb2"
+    },
+    {
+        "Path": "bgs\/s_0063_s.jpg",
+        "Avg": "#4a4d57",
+        "Dominant": "#32353e"
+    },
+    {
+        "Path": "bgs\/tile5_s-1.jpg",
+        "Avg": "#e2916d",
+        "Dominant": "#ec9874"
+    },
+    {
+        "Path": "bgs\/norfolk_granite_s.jpg",
+        "Avg": "#697764",
+        "Dominant": "#687764"
+    },
+    {
+        "Path": "bgs\/bolzano_marble_s.jpg",
+        "Avg": "#67696c",
+        "Dominant": "#67696c"
+    }
+]

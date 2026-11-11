@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>starsh</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+
+    <link rel="icon" type="image/x-icon" href="../../public/favicon/favicon.ico">
+
+
+</head>
+
+<body>
+
+    <main>
+        <!-- <h1>starsh your entire soul.</h1> -->
+        <!-- <input type="file" id="img-upl" accept="image/*" /> -->
+        <div id="picker"></div>
+        <div id="password-slot">
+            <form onsubmit="unlock(); return false;">
+                <input type="text" id="password" placeholder="******" />
+            </form>
+        </div>
+        <div id="results">
+            <p>
+                happy 23rd star!
+                <br>
+                <br>
+                a camera roll of 7,327 images.
+                <br>
+                you may only search by color.
+            </p>
+        </div>
+        <p id="tip">↓ space to save favorites ↓</p>
+        <div id="spacer">
+        </div>
+    </main>
+    <footer>
+        <p>Shade made this with love for his sister Star on her 23rd birthday.</p>
+        <p>November 12, 2026</p>
+    </footer>
+</body>
+
+
+<script src="https://colorjs.io/dist/color.global.js"></script>
+<script src="index.js"></script>
+
+</html>

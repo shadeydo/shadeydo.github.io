@@ -1,0 +1,228 @@
+:root {
+    --picked-color: white;
+    --contrast-color: contrast-color(var(--picked-color));
+    cursor: url("assets/cursor.png") 14 14, auto;
+
+}
+
+
+
+#results {
+    margin-top: 64px;
+    display:flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    width:90%;
+    z-index: 2;
+}
+
+#password-slot {
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 12px 8px 8px 8px;
+    background-color: var(--picked-color);
+    border-right: 16px ridge var(--picked-color);
+    border-bottom: 16px ridge var(--picked-color);
+}
+
+#password {
+    background-color: color-mix(in srgb, var(--picked-color), var(--contrast-color) 5%);
+    border:none;
+    border-bottom: 3px solid color-mix(in srgb, var(--picked-color), var(--contrast-color) 30%);
+    padding: 4px 6px 1px 6px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size:large;
+    letter-spacing:1px;
+    width: 8ch;
+    color: color-mix(in srgb, var(--picked-color), var(--contrast-color) 50%);
+}
+
+#password:focus {
+    border-bottom: 3px solid color-mix(in srgb, var(--picked-color), var(--contrast-color) 50%);
+    outline: none;
+    box-shadow: none;
+}
+
+#password::placeholder {
+    color: color-mix(in srgb, var(--picked-color), var(--contrast-color) 30%);
+}
+
+#spacer{
+    height: 100vh;
+    width: 20px;
+}
+
+@media (max-width: 600px) {
+    #results {
+        flex-direction: column;
+        width:65%;
+        margin-bottom: 150px;
+        margin-top: 100px;
+        gap: 32px;
+    }
+
+    #password-slot {
+        position:relative;
+        border:16px ridge var(--picked-color);
+        z-index: 80;
+        box-shadow: 0px 15px 20px 1px rgba(0,0,0,0.75);
+        margin-top: 30px;
+
+    }
+
+    /* #picker {
+        position: sticky;
+        top: 8px;
+        box-shadow: 0px 15px 20px 1px rgba(0,0,0,0.75);
+    } */
+
+    #tip {
+        display:none;
+    }
+
+    #spacer {
+        height: 200px;
+    }
+
+}
+
+
+.color-image > img {
+    flex:1;
+    width: 100%;
+    height: auto;
+    border-width: 16px;
+    border-style: ridge;
+    box-sizing: border-box;
+    box-shadow: 0px 15px 20px 1px rgba(0,0,0,0.75);
+
+    transition: 0.5s ease;
+    user-select: none;
+}
+
+p {
+    z-index: 10;
+    margin:0;
+    font-family: monospace;
+    font-optical-sizing: auto;
+    color: var(--contrast-color);
+    /* background-color: rgb(from var(--fontColor) r g b / 50%); */
+    background-color: var(--picked-color);
+    padding: 4px 8px;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+
+
+
+.color-image {
+    animation: zoomIn .2s ease;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2px;
+
+}
+
+.color-image>img:hover {
+    transform: translateY(-10px) rotateZ(random(-2deg,2deg));
+    /* animation: shiver .1s linear infinite; */
+    box-shadow: 0px 25px 30px 1px rgba(0,0,0,.9);
+
+}
+
+
+
+.date {
+    font-size: small;
+    opacity:0;
+}
+
+.color-image>img:hover + .date {
+    opacity: 1;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.95) translateY(50px) rotateZ(2deg);
+        opacity: 0;
+    }
+    to {
+        transform:none;
+        opacity:1;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:100%;
+    margin:0;
+
+}
+
+body {
+    margin:0;
+}
+
+
+
+/* 
+.IroWheelBorder {
+
+    border: 16px ridge var(--picked-color) !important;
+} */
+
+#tip {
+    z-index: 1;
+    font-size:x-small;
+    position: absolute;
+    bottom: 8px;
+    visibility: hidden;
+}
+
+#picker {
+    background-color: var(--picked-color);
+    border: 16px ridge var(--picked-color);
+    padding: 8px 16px;
+    margin: 30px 0 0 0;
+    z-index: 90;
+}
+
+@keyframes shiver {
+  from { translate:2px 0; }
+  to {translate: -2px 0; }
+}
+
+.shivering {
+    animation: shiver .1s 3;
+}
+
+
+footer {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    height:80px;
+    background-color: var(--picked-color);
+    border-top: 16px ridge var(--picked-color);
+    padding: 0 20px;
+
+   
+}
+
+
+
+footer p {
+    color: color-mix(in srgb, var(--picked-color), var(--contrast-color) 75%);
+    background-color: transparent;
+    padding:0;
+    font-size:smaller;
+}
