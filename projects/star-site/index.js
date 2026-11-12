@@ -183,7 +183,8 @@ function unlock() {
     }
 };
 
-if (window.matchMedia('(pointer: fine)').matches) {
+console.log(window.innerWidth)
+if (window.innerWidth > 600) {
     interact('.color-image')
         .draggable({
             // enable inertial throwing

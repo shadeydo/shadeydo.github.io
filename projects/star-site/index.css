@@ -2,7 +2,7 @@
     --picked-color: white;
     --contrast-color: contrast-color(var(--picked-color));
     cursor: url("assets/cursor.png") 14 14, auto;
-
+    background-color: var(--picked-color);
 }
 
 
@@ -88,6 +88,8 @@
     }
 
 }
+
+
 
 
 .color-image > img {
