@@ -20,7 +20,7 @@ var colorPicker = new iro.ColorPicker('#picker', {
     ]
 });
 
-
+var zIndexIncrement = 10;
 var unlocked = false;
 
 const results = document.getElementById("results");
@@ -68,32 +68,33 @@ async function go(colora) {
         // results.innerHTML = "";
 
         const clone = results.cloneNode(true);
+        clone.removeAttribute("id");
+        clone.classList.add("saved-result")
 
         clone.style.position = "absolute";
         clone.style.top = results.getBoundingClientRect().top - 64 + "px";
         clone.style.left = results.getBoundingClientRect().left + "px";
         clone.style.pointerEvents = "none";
         clone.style.zIndex = 1;
-
+    
+        var hasPersistent = false;
         for (const element of clone.children) {
             element.style.animation = "none";
-            if (element.getAttribute("persistent") != "true") {
-                element.style.visibility = "hidden";
-                // element.style.opacity = 0.5;
-                element.style.pointerEvents = "none";
-            } else {
+            if (element.getAttribute("persistent") == "true") {
+                hasPersistent = true;
                 element.style.pointerEvents = "auto";
+            } else {
+                element.style.visibility = "hidden";
+                element.style.pointerEvents = "none";
             }
         }
+        if (hasPersistent) {
+            document.documentElement.appendChild(clone);
+        }
 
-        document.documentElement.appendChild(clone);
-
-
-
+       
 
         results.innerHTML = "";
-
-
         for (let i = 0; i < 5; i++) {
             const imgData = data[i]
 
@@ -165,7 +166,7 @@ function diffCompare(imgA, imgB) {
 function unlock() {
     const input = document.getElementById("password");
 
-    console.log("testing")
+    // console.log("testing")
     if (input.value == "froggy") {
         document.getElementById("password-slot").style.display = "none";
         unlocked = true;
@@ -183,7 +184,7 @@ function unlock() {
     }
 };
 
-console.log(window.innerWidth)
+// console.log(window.innerWidth)
 if (window.innerWidth > 600) {
     interact('.color-image')
         .draggable({
@@ -203,9 +204,17 @@ if (window.innerWidth > 600) {
                 // call this function on every dragmove event
                 move: dragMoveListener,
 
+                start(event){
+                    event.target.style.zIndex = zIndexIncrement;
+                    zIndexIncrement += 1;
+                },
+
                 // call this function on every dragend event
                 end(event) {
                     event.target.setAttribute("persistent", "true")
+                    // move to top.
+
+
                     // const img = event.target;
                     // const clone = img.cloneNode(true);
                     // clone.style.visibility = "hidden";
@@ -225,6 +234,7 @@ if (window.innerWidth > 600) {
 
 function dragMoveListener(event) {
     var target = event.target
+
     // keep the dragged position in the data-x/data-y attributes
     var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
     var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy

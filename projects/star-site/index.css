@@ -7,7 +7,7 @@
 
 
 
-#results {
+#results, .saved-result {
     margin-top: 64px;
     display:flex;
     gap: 10px;
@@ -15,6 +15,7 @@
     align-items: center;
     width:90%;
     z-index: 2;
+    pointer-events: none;
 }
 
 #password-slot {
@@ -56,7 +57,7 @@
 }
 
 @media (max-width: 600px) {
-    #results {
+    #results, .saved-result {
         flex-direction: column;
         width:65%;
         margin-bottom: 150px;
@@ -67,7 +68,7 @@
     #password-slot {
         position:relative;
         border:16px ridge var(--picked-color);
-        z-index: 80;
+        z-index: 10000;
         box-shadow: 0px 15px 20px 1px rgba(0,0,0,0.75);
         margin-top: 30px;
 
@@ -127,6 +128,7 @@ p {
     flex-direction: column;
     align-items: center;
     gap:2px;
+    pointer-events: auto;
 
 }
 
@@ -193,7 +195,7 @@ body {
     border: 16px ridge var(--picked-color);
     padding: 8px 16px;
     margin: 30px 0 0 0;
-    z-index: 90;
+    z-index: 1000000;
 }
 
 @keyframes shiver {
